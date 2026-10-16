@@ -57,10 +57,6 @@ button{
     --texto:#26332c;
 }
 
-/* =========================
-   MODO ESCURO
-========================= */
-
 body.dark{
     --bg-card:#1e2a24;
     --bg-app:#121a15;
@@ -475,7 +471,7 @@ body.dark .page-title h2{
 }
 
 /* =========================
-   BOTÕES GENÉRICOS
+   BOTÕES
 ========================= */
 
 .btn{
@@ -499,10 +495,6 @@ body.dark .page-title h2{
     background-position:100% 0;
     transform:translateY(-2px);
     box-shadow:0 12px 28px rgba(25,135,84,.45);
-}
-
-.btn-primary:active{
-    transform:translateY(0);
 }
 
 .btn-secondary{
@@ -541,10 +533,6 @@ body.dark .page-title h2{
     width:100%;
 }
 
-/* =========================
-   TRANSIÇÃO DE TELAS
-========================= */
-
 .screen,
 .app{
     animation:screenFade .5s ease both;
@@ -554,10 +542,6 @@ body.dark .page-title h2{
     from{opacity:0;}
     to{opacity:1;}
 }
-
-/* =========================
-   SISTEMA
-========================= */
 
 .app{
     min-height:100vh;
@@ -575,6 +559,7 @@ body.dark .page-title h2{
     padding:25px 15px;
     z-index:10;
     box-shadow:4px 0 20px rgba(0,0,0,.15);
+    overflow-y:auto;
 }
 
 .sidebar-logo{
@@ -794,6 +779,7 @@ body.dark .stat h3{
     align-items:center;
     gap:15px;
     margin-bottom:20px;
+    flex-wrap:wrap;
 }
 
 .card-header h3{
@@ -804,10 +790,6 @@ body.dark .stat h3{
 body.dark .card-header h3{
     color:#4ade80;
 }
-
-/* =========================
-   FORM GROUP
-========================= */
 
 .form-group{
     margin-bottom:20px;
@@ -842,10 +824,6 @@ body.dark .form-group label{
     box-shadow:0 0 0 4px rgba(25,135,84,.1);
 }
 
-/* =========================
-   PROFESSOR
-========================= */
-
 .professor-question{
     background:var(--bg-card);
     border:1px solid var(--borda);
@@ -879,10 +857,6 @@ body.dark .form-group label{
     font-size:14px;
 }
 
-/* =========================
-   RESPOSTAS
-========================= */
-
 .answer-box{
     background:var(--bg-app);
     border:1px solid var(--borda);
@@ -897,10 +871,6 @@ body.dark .form-group label{
     margin-top:10px;
     color:inherit;
 }
-
-/* =========================
-   HISTÓRICO
-========================= */
 
 .history-item{
     display:flex;
@@ -977,10 +947,6 @@ body.dark .badge{
     margin-bottom:10px;
 }
 
-/* =========================
-   TEMA TOGGLE
-========================= */
-
 .theme-toggle{
     background:var(--bg-app);
     border:1px solid var(--borda);
@@ -997,10 +963,6 @@ body.dark .badge{
 .theme-toggle:hover{
     transform:rotate(20deg) scale(1.1);
 }
-
-/* =========================
-   STATUS DE ENVIO E PROGRESSO
-========================= */
 
 .send-status{
     display:flex;
@@ -1025,16 +987,6 @@ body.dark .badge{
     border-left:4px solid #f59e0b;
 }
 
-body.dark .send-status.status-sent{
-    background:#1a2f24;
-    color:#4ade80;
-}
-
-body.dark .send-status.status-not-sent{
-    background:#3a2a10;
-    color:#fbbf24;
-}
-
 .send-status-icon{
     font-size:22px;
 }
@@ -1053,87 +1005,6 @@ body.dark .send-status.status-not-sent{
     background:linear-gradient(90deg,#22c55e,#0d6efd);
     border-radius:10px;
     transition:width .5s ease;
-}
-
-body.dark .progress-bar{
-    background:#2f4038;
-}
-
-.teachers-list{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    margin-top:15px;
-}
-
-.teacher-item{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:12px 15px;
-    border:1px solid var(--borda);
-    border-radius:12px;
-    transition:all .25s ease;
-}
-
-.teacher-item:hover{
-    border-color:var(--verde);
-}
-
-.teacher-avatar{
-    width:38px;
-    height:38px;
-    border-radius:50%;
-    background:var(--grad);
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:700;
-    font-size:13px;
-    flex-shrink:0;
-}
-
-.teacher-info{
-    flex:1;
-}
-
-.teacher-info strong{
-    display:block;
-    font-size:14px;
-}
-
-.teacher-info small{
-    color:var(--cinza);
-    font-size:12px;
-}
-
-.teacher-status{
-    padding:5px 12px;
-    border-radius:20px;
-    font-size:11.5px;
-    font-weight:700;
-    letter-spacing:.3px;
-}
-
-.teacher-status.answered{
-    background:#e8f6ee;
-    color:#12663f;
-}
-
-.teacher-status.pending{
-    background:#fff4e5;
-    color:#8a5a00;
-}
-
-body.dark .teacher-status.answered{
-    background:#1a2f24;
-    color:#4ade80;
-}
-
-body.dark .teacher-status.pending{
-    background:#3a2a10;
-    color:#fbbf24;
 }
 
 .menu-notification{
@@ -1190,11 +1061,6 @@ body.dark .teacher-status.pending{
 body.dark .question-card{
     background:#1e2a24;
     border-color:#2f4038;
-    color:#e8f0eb;
-}
-
-body.dark .question-card:hover{
-    border-color:#22c55e;
 }
 
 .question-card-header{
@@ -1287,25 +1153,11 @@ body.dark .question-card-btn{
     color:#cbd5e1;
 }
 
-body.dark .question-card-btn:hover{
-    background:#166534;
-    color:#bbf7d0;
-}
-
-body.dark .question-card-btn.danger:hover{
-    background:#7f1d1d;
-    color:#fecaca;
-}
-
 .question-card-hint{
     font-size:11.5px;
     color:#9ca3af;
     margin-top:8px;
     font-style:italic;
-}
-
-body.dark .question-card-hint{
-    color:#6b7280;
 }
 
 /* =========================
@@ -1470,11 +1322,6 @@ body.dark .modal-textarea{
     cursor:pointer;
 }
 
-.modal-section-select:focus{
-    border-color:#22c55e;
-    box-shadow:0 0 0 4px rgba(34,197,94,.15);
-}
-
 body.dark .modal-section-select{
     background:#121a15;
     color:#e8f0eb;
@@ -1498,7 +1345,6 @@ body.dark .modal-section-select{
     border-radius:14px;
     padding:20px;
     transition:all .25s ease;
-    position:relative;
 }
 
 .turma-card:hover{
@@ -1558,11 +1404,6 @@ body.dark .turma-card-name{
     color:#991b1b;
 }
 
-body.dark .turma-card-btn{
-    background:#2f4038;
-    color:#cbd5e1;
-}
-
 .turma-info-row{
     display:flex;
     justify-content:space-between;
@@ -1597,16 +1438,6 @@ body.dark .turma-card-btn{
     color:#8a5a00;
 }
 
-body.dark .turma-send-status.sent{
-    background:#1a2f24;
-    color:#4ade80;
-}
-
-body.dark .turma-send-status.not-sent{
-    background:#3a2a10;
-    color:#fbbf24;
-}
-
 .turma-btn-send{
     width:100%;
     margin-top:14px;
@@ -1636,12 +1467,6 @@ body.dark .turma-send-status.not-sent{
     background:#d1fae5;
 }
 
-body.dark .turma-btn-send.reenviar{
-    background:#2f4038;
-    color:#4ade80;
-}
-
-/* Cards de turma do professor */
 .turma-prof-card{
     background:var(--bg-card);
     border:1px solid var(--borda);
@@ -1653,7 +1478,6 @@ body.dark .turma-btn-send.reenviar{
 
 .turma-prof-card:hover{
     border-color:var(--verde);
-    box-shadow:0 4px 16px rgba(25,135,84,.1);
 }
 
 .turma-prof-header{
@@ -1695,24 +1519,10 @@ body.dark .turma-prof-name{
     color:#8a5a00;
 }
 
-body.dark .turma-prof-status.answered{
-    background:#1a2f24;
-    color:#4ade80;
-}
-
-body.dark .turma-prof-status.pending{
-    background:#3a2a10;
-    color:#fbbf24;
-}
-
 .turma-prof-body{
     margin-top:18px;
     padding-top:18px;
     border-top:1px solid var(--borda);
-}
-
-.turma-prof-body.hidden{
-    display:none!important;
 }
 
 .turma-prof-toggle-icon{
@@ -1725,7 +1535,10 @@ body.dark .turma-prof-status.pending{
     transform:rotate(180deg);
 }
 
-/* Filtros */
+/* =========================
+   FILTROS
+========================= */
+
 .filter-bar{
     display:flex;
     gap:10px;
@@ -1760,6 +1573,289 @@ body.dark .filter-bar label{
 .filter-select:focus{
     border-color:var(--verde);
     box-shadow:0 0 0 4px rgba(25,135,84,.1);
+}
+
+/* =========================
+   ALUNOS
+========================= */
+
+.aluno-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 16px;
+    border:1px solid var(--borda);
+    border-radius:12px;
+    margin-bottom:10px;
+    background:var(--bg-card);
+    transition:all .25s ease;
+    flex-wrap:wrap;
+}
+
+.aluno-row:hover{
+    border-color:var(--verde);
+}
+
+.aluno-row.avaliado-otimo{
+    border-left:5px solid #16a34a;
+}
+
+.aluno-row.avaliado-bom{
+    border-left:5px solid #4ade80;
+}
+
+.aluno-row.avaliado-regular{
+    border-left:5px solid #f59e0b;
+}
+
+.aluno-row.avaliado-ruim{
+    border-left:5px solid #dc3545;
+}
+
+.aluno-nome{
+    font-weight:600;
+    font-size:15px;
+    min-width:180px;
+    flex:1;
+}
+
+.aluno-emoji-btns{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.emoji-btn{
+    border:2px solid var(--borda);
+    background:var(--bg-card);
+    border-radius:12px;
+    padding:8px 14px;
+    font-size:22px;
+    cursor:pointer;
+    transition:all .25s ease;
+    line-height:1;
+    position:relative;
+}
+
+.emoji-btn:hover{
+    transform:scale(1.1);
+    border-color:var(--verde);
+}
+
+.emoji-btn.selected-otimo{
+    background:#d1fae5;
+    border-color:#16a34a;
+    box-shadow:0 0 0 3px rgba(22,163,74,.2);
+}
+
+.emoji-btn.selected-bom{
+    background:#dcfce7;
+    border-color:#4ade80;
+    box-shadow:0 0 0 3px rgba(74,222,128,.25);
+}
+
+.emoji-btn.selected-regular{
+    background:#fef3c7;
+    border-color:#f59e0b;
+    box-shadow:0 0 0 3px rgba(245,158,11,.2);
+}
+
+.emoji-btn.selected-ruim{
+    background:#fee2e2;
+    border-color:#dc3545;
+    box-shadow:0 0 0 3px rgba(220,53,69,.2);
+}
+
+.aluno-obs{
+    width:100%;
+    margin-top:8px;
+}
+
+.aluno-obs textarea{
+    width:100%;
+    min-height:60px;
+    border:2px solid var(--borda);
+    border-radius:10px;
+    padding:10px 14px;
+    font-size:13.5px;
+    resize:vertical;
+    background:var(--bg-card);
+    color:inherit;
+    font-family:inherit;
+}
+
+.aluno-obs textarea:focus{
+    border-color:var(--verde);
+    outline:none;
+    box-shadow:0 0 0 3px rgba(25,135,84,.1);
+}
+
+.aluno-obs textarea.erro{
+    border-color:#dc3545;
+}
+
+/* =========================
+   PANORAMA
+========================= */
+
+.panorama-resumo{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    margin-bottom:25px;
+}
+
+@media(max-width:900px){
+    .panorama-resumo{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+.panorama-card{
+    border-radius:14px;
+    padding:18px;
+    color:white;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.panorama-card.otimo{
+    background:linear-gradient(135deg,#16a34a,#15803d);
+}
+
+.panorama-card.bom{
+    background:linear-gradient(135deg,#4ade80,#22c55e);
+}
+
+.panorama-card.regular{
+    background:linear-gradient(135deg,#f59e0b,#d97706);
+}
+
+.panorama-card.ruim{
+    background:linear-gradient(135deg,#dc3545,#b91c1c);
+}
+
+.panorama-card .emoji{
+    font-size:36px;
+    margin-bottom:6px;
+}
+
+.panorama-card .num{
+    font-size:32px;
+    font-weight:800;
+    line-height:1;
+}
+
+.panorama-card .lbl{
+    font-size:12.5px;
+    opacity:.95;
+    margin-top:4px;
+    font-weight:600;
+    letter-spacing:.5px;
+}
+
+.panorama-turma-bloco{
+    border:1px solid var(--borda);
+    border-radius:14px;
+    padding:20px;
+    margin-bottom:16px;
+    background:var(--bg-card);
+}
+
+.panorama-turma-bloco h3{
+    color:var(--verdeescuro);
+    margin-bottom:16px;
+    font-size:17px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+body.dark .panorama-turma-bloco h3{
+    color:#4ade80;
+}
+
+.barra-wrapper{
+    margin-bottom:12px;
+}
+
+.barra-label{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:5px;
+}
+
+.barra-track{
+    width:100%;
+    height:22px;
+    background:#f3f4f6;
+    border-radius:11px;
+    overflow:hidden;
+}
+
+body.dark .barra-track{
+    background:#2f4038;
+}
+
+.barra-fill{
+    height:100%;
+    border-radius:11px;
+    transition:width .5s ease;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    padding-right:8px;
+    color:white;
+    font-size:11.5px;
+    font-weight:700;
+}
+
+.barra-fill.otimo{background:linear-gradient(90deg,#16a34a,#22c55e);}
+.barra-fill.bom{background:linear-gradient(90deg,#4ade80,#86efac);}
+.barra-fill.regular{background:linear-gradient(90deg,#f59e0b,#fbbf24);}
+.barra-fill.ruim{background:linear-gradient(90deg,#dc3545,#ef4444);}
+
+.aluno-destaque-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 14px;
+    border:1px solid var(--borda);
+    border-radius:10px;
+    margin-bottom:8px;
+    background:var(--bg-card);
+    flex-wrap:wrap;
+}
+
+.aluno-destaque-item .nome{
+    flex:1;
+    font-weight:600;
+    font-size:14px;
+    min-width:120px;
+}
+
+.aluno-destaque-item .contagem{
+    font-size:12px;
+    font-weight:700;
+    padding:4px 10px;
+    border-radius:20px;
+    background:var(--verdeclaro);
+    color:var(--verdeescuro);
+}
+
+.aluno-destaque-item .turma-tag{
+    font-size:11px;
+    color:var(--cinza);
+    padding:3px 8px;
+    background:#f3f4f6;
+    border-radius:8px;
+}
+
+body.dark .aluno-destaque-item .turma-tag{
+    background:#2f4038;
 }
 
 /* =========================
@@ -1823,15 +1919,6 @@ body.dark .filter-bar label{
     }
 }
 
-@media(max-width:420px){
-    .auth-left{
-        padding:28px 22px;
-    }
-    .auth-content h2{
-        font-size:22px;
-    }
-}
-
 </style>
 
 </head>
@@ -1839,9 +1926,7 @@ body.dark .filter-bar label{
 <body>
 
 
-<!-- =====================================================
-     TELA DE AUTENTICAÇÃO
-===================================================== -->
+<!-- TELA DE AUTENTICAÇÃO -->
 
 <section id="welcomeScreen" class="screen">
 
@@ -1855,24 +1940,16 @@ body.dark .filter-bar label{
 
         <div class="auth-content">
 
-            <!-- LOGIN -->
             <div id="loginPanel">
 
                 <h2>Bem-vindo</h2>
                 <p class="auth-subtitle">Entre com sua conta institucional</p>
 
                 <div class="auth-role-tabs">
-                    <button
-                        id="tabProfessor"
-                        type="button"
-                        class="active"
-                        onclick="selectAuthRole('professor')">
+                    <button id="tabProfessor" type="button" class="active" onclick="selectAuthRole('professor')">
                         Professor
                     </button>
-                    <button
-                        id="tabDiretor"
-                        type="button"
-                        onclick="selectAuthRole('diretor')">
+                    <button id="tabDiretor" type="button" onclick="selectAuthRole('diretor')">
                         Diretor
                     </button>
                 </div>
@@ -1882,21 +1959,12 @@ body.dark .filter-bar label{
                 <form onsubmit="login(event)">
 
                     <div class="auth-input-group">
-                        <input
-                            id="loginEmail"
-                            type="text"
-                            placeholder="nome.sobrenome"
-                            autocomplete="username"
-                            required>
+                        <input id="loginEmail" type="text" placeholder="nome.sobrenome" autocomplete="username" required>
                         <span class="auth-input-suffix">@escola.pr.gov.br</span>
                     </div>
 
                     <div class="auth-input">
-                        <input
-                            id="loginPassword"
-                            type="password"
-                            placeholder="Senha"
-                            required>
+                        <input id="loginPassword" type="password" placeholder="Senha" required>
                     </div>
 
                     <div class="auth-options">
@@ -1909,22 +1977,17 @@ body.dark .filter-bar label{
                         </a>
                     </div>
 
-                    <button type="submit" class="auth-submit">
-                        ENTRAR
-                    </button>
+                    <button type="submit" class="auth-submit">ENTRAR</button>
 
                 </form>
 
                 <p class="auth-switch">
                     Não tem cadastro?
-                    <button type="button" onclick="switchAuthPanel('register')">
-                        Cadastre-se
-                    </button>
+                    <button type="button" onclick="switchAuthPanel('register')">Cadastre-se</button>
                 </p>
 
             </div>
 
-            <!-- CADASTRO -->
             <div id="registerPanel" class="hidden">
 
                 <h2>Criar conta</h2>
@@ -1933,17 +1996,10 @@ body.dark .filter-bar label{
                 <div id="registerAlert"></div>
 
                 <div class="auth-role-tabs">
-                    <button
-                        id="registerProfessor"
-                        type="button"
-                        class="active"
-                        onclick="selectRegisterRole('professor')">
+                    <button id="registerProfessor" type="button" class="active" onclick="selectRegisterRole('professor')">
                         Professor
                     </button>
-                    <button
-                        id="registerDiretor"
-                        type="button"
-                        onclick="selectRegisterRole('diretor')">
+                    <button id="registerDiretor" type="button" onclick="selectRegisterRole('diretor')">
                         Diretor
                     </button>
                 </div>
@@ -1951,49 +2007,29 @@ body.dark .filter-bar label{
                 <form onsubmit="registerUser(event)">
 
                     <div class="auth-input">
-                        <input
-                            id="registerName"
-                            placeholder="Nome completo"
-                            required>
+                        <input id="registerName" placeholder="Nome completo" required>
                     </div>
 
                     <div class="auth-input-group">
-                        <input
-                            id="registerEmail"
-                            type="text"
-                            placeholder="nome.sobrenome"
-                            autocomplete="username"
-                            required>
+                        <input id="registerEmail" type="text" placeholder="nome.sobrenome" autocomplete="username" required>
                         <span class="auth-input-suffix">@escola.pr.gov.br</span>
                     </div>
 
                     <div class="auth-input">
-                        <input
-                            id="registerPassword"
-                            type="password"
-                            placeholder="Senha"
-                            required>
+                        <input id="registerPassword" type="password" placeholder="Senha" required>
                     </div>
 
                     <div class="auth-input">
-                        <input
-                            id="registerConfirm"
-                            type="password"
-                            placeholder="Confirmar senha"
-                            required>
+                        <input id="registerConfirm" type="password" placeholder="Confirmar senha" required>
                     </div>
 
-                    <button type="submit" class="auth-submit">
-                        CRIAR CONTA
-                    </button>
+                    <button type="submit" class="auth-submit">CRIAR CONTA</button>
 
                 </form>
 
                 <p class="auth-switch">
                     Já tem conta?
-                    <button type="button" onclick="switchAuthPanel('login')">
-                        Entrar
-                    </button>
+                    <button type="button" onclick="switchAuthPanel('login')">Entrar</button>
                 </p>
 
             </div>
@@ -2004,14 +2040,9 @@ body.dark .filter-bar label{
 
     <div class="auth-right">
 
-        <svg
-            class="auth-illustration"
-            viewBox="0 0 600 500"
-            xmlns="http://www.w3.org/2000/svg">
+        <svg class="auth-illustration" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
 
-            <path
-                d="M 60 250 Q 60 90 220 80 Q 380 70 480 130 Q 560 180 555 290 Q 550 400 430 430 Q 300 460 180 430 Q 60 400 60 250 Z"
-                fill="#e8f0fb"/>
+            <path d="M 60 250 Q 60 90 220 80 Q 380 70 480 130 Q 560 180 555 290 Q 550 400 430 430 Q 300 460 180 430 Q 60 400 60 250 Z" fill="#e8f0fb"/>
 
             <g transform="translate(230, 90)">
                 <ellipse cx="0" cy="0" rx="38" ry="42" fill="#facc15"/>
@@ -2021,9 +2052,7 @@ body.dark .filter-bar label{
             </g>
 
             <g transform="translate(450, 110)">
-                <path
-                    d="M 0 -35 L 8 -35 L 10 -25 L 20 -22 L 27 -30 L 33 -24 L 26 -17 L 29 -7 L 39 -5 L 39 5 L 29 7 L 26 17 L 33 24 L 27 30 L 20 22 L 10 25 L 8 35 L 0 35 L -2 25 L -12 22 L -19 30 L -25 24 L -18 17 L -21 7 L -31 5 L -31 -5 L -21 -7 L -18 -17 L -25 -24 L -19 -30 L -12 -22 L -2 -25 Z"
-                    fill="#7c3aed"/>
+                <path d="M 0 -35 L 8 -35 L 10 -25 L 20 -22 L 27 -30 L 33 -24 L 26 -17 L 29 -7 L 39 -5 L 39 5 L 29 7 L 26 17 L 33 24 L 27 30 L 20 22 L 10 25 L 8 35 L 0 35 L -2 25 L -12 22 L -19 30 L -25 24 L -18 17 L -21 7 L -31 5 L -31 -5 L -21 -7 L -18 -17 L -25 -24 L -19 -30 L -12 -22 L -2 -25 Z" fill="#7c3aed"/>
                 <circle cx="4" cy="0" r="9" fill="#e8f0fb"/>
             </g>
 
@@ -2149,64 +2178,50 @@ body.dark .filter-bar label{
 </section>
 
 
-<!-- =====================================================
-     APLICAÇÃO
-===================================================== -->
+<!-- APLICAÇÃO -->
 
 <div id="app" class="app hidden">
 
 <aside id="sidebar" class="sidebar">
 
 <div class="sidebar-logo">
-
-<div class="mini-logo">
-📚
-</div>
-
+<div class="mini-logo">📚</div>
 <h2>Pré-Conselho</h2>
-
 <p>Sistema Escolar</p>
-
 </div>
 
 <nav class="menu">
 
-<button
-id="menuDashboard"
-onclick="showPage('dashboard')">
-
+<button id="menuDashboard" onclick="showPage('dashboard')">
 <span class="menu-icon">🏠</span>
 Dashboard
-
 </button>
 
-<button
-id="menuQuestionarios"
-onclick="showPage('questionarios')">
-
+<button id="menuQuestionarios" onclick="showPage('questionarios')">
 <span class="menu-icon">📝</span>
 Questionário
 <span id="menuQuestionariosBadge"></span>
-
 </button>
 
-<button
-id="menuRespostas"
-class="director-only"
-onclick="showPage('respostas')">
+<button id="menuAlunos" onclick="showPage('alunos')">
+<span class="menu-icon">👥</span>
+Alunos
+<span id="menuAlunosBadge"></span>
+</button>
 
+<button id="menuRespostas" class="director-only" onclick="showPage('respostas')">
 <span class="menu-icon">📊</span>
 Respostas
-
 </button>
 
-<button
-id="menuHistorico"
-onclick="showPage('historico')">
+<button id="menuPanorama" class="director-only" onclick="showPage('panorama')">
+<span class="menu-icon">📈</span>
+Panorama
+</button>
 
+<button id="menuHistorico" onclick="showPage('historico')">
 <span class="menu-icon">🕐</span>
 Histórico
-
 </button>
 
 </nav>
@@ -2214,20 +2229,11 @@ Histórico
 <div class="sidebar-bottom">
 
 <div class="user-mini">
-
 <strong id="sidebarUserName">Usuário</strong>
-
 <small id="sidebarUserRole">Professor</small>
-
 </div>
 
-<button
-class="logout"
-onclick="logout()">
-
-Sair
-
-</button>
+<button class="logout" onclick="logout()">Sair</button>
 
 </div>
 
@@ -2239,34 +2245,14 @@ Sair
 <header class="topbar">
 
 <div style="display:flex;align-items:center;gap:12px;">
-
-<button
-class="mobile-menu"
-onclick="toggleSidebar()">
-
-☰
-
-</button>
-
+<button class="mobile-menu" onclick="toggleSidebar()">☰</button>
 <h1 id="pageTitle">Dashboard</h1>
-
 </div>
 
 <div class="top-user">
-
-<button
-class="theme-toggle"
-onclick="toggleTheme()"
-title="Alternar tema">
-
-🌙
-
-</button>
-
+<button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">🌙</button>
 <div id="avatar" class="avatar">U</div>
-
 <span id="topUserName">Usuário</span>
-
 </div>
 
 </header>
@@ -2280,11 +2266,8 @@ title="Alternar tema">
 <section id="pageDashboard" class="page">
 
 <div class="page-title">
-
 <h2>Olá, <span id="welcomeName"></span>!</h2>
-
 <p>Bem-vindo ao sistema de Pré-Conselho de Classe.</p>
-
 </div>
 
 <div class="stats">
@@ -2318,17 +2301,8 @@ title="Alternar tema">
 <div class="card">
 
 <div class="card-header">
-
 <h3>Últimas atividades</h3>
-
-<button
-class="btn btn-secondary"
-onclick="showPage('historico')">
-
-Ver histórico
-
-</button>
-
+<button class="btn btn-secondary" onclick="showPage('historico')">Ver histórico</button>
 </div>
 
 <div id="dashboardHistory"></div>
@@ -2343,87 +2317,46 @@ Ver histórico
 <section id="pageQuestionarios" class="page hidden">
 
 <div class="page-title">
-
 <h2>Ficha Individual – Pré-Conselho</h2>
-
-<p id="questionPageDescription">
-Questionário do Pré-Conselho de Classe.
-</p>
-
+<p id="questionPageDescription">Questionário do Pré-Conselho de Classe.</p>
 </div>
 
-
-<!-- ==================== DIRETOR ==================== -->
 <div id="directorQuestionEditor" class="hidden">
 
-    <!-- Editor de perguntas -->
     <div class="card">
 
         <div class="card-header">
-
             <div>
                 <h3>✏️ Perguntas do questionário</h3>
                 <p>Clique em um card para editar. As perguntas são compartilhadas por todas as turmas.</p>
             </div>
-
         </div>
 
         <div class="form-group">
-
             <label>Título do questionário</label>
-
-            <input
-            id="editorTitle"
-            value="Ficha Individual – Pré-Conselho de Classe">
-
+            <input id="editorTitle" value="Ficha Individual – Pré-Conselho de Classe">
         </div>
 
         <div id="questionsEditor" class="questions-grid"></div>
 
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;">
-
-            <button
-            class="btn btn-secondary"
-            onclick="addNewQuestion()">
-
-            + Adicionar pergunta
-
-            </button>
-
+            <button class="btn btn-secondary" onclick="addNewQuestion()">+ Adicionar pergunta</button>
         </div>
 
     </div>
 
-    <!-- Turmas -->
     <div class="card">
 
         <div class="card-header">
-
             <div>
                 <h3>🏫 Turmas</h3>
-                <p>Gerencie as turmas e envie o questionário para cada uma.</p>
+                <p>Gerencie as turmas e envie o questionário.</p>
             </div>
-
-            <button
-            class="btn btn-primary"
-            onclick="abrirModalNovaTurma()">
-
-            + Nova turma
-
-            </button>
-
+            <button class="btn btn-primary" onclick="abrirModalNovaTurma()">+ Nova turma</button>
         </div>
 
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;">
-
-            <button
-            class="btn btn-blue"
-            onclick="enviarParaTodasTurmas()">
-
-            📤 Enviar para todas as turmas
-
-            </button>
-
+            <button class="btn btn-blue" onclick="enviarParaTodasTurmas()">📤 Enviar para todas as turmas</button>
         </div>
 
         <div id="turmasContainer"></div>
@@ -2433,25 +2366,15 @@ Questionário do Pré-Conselho de Classe.
 </div>
 
 
-<!-- ==================== PROFESSOR ==================== -->
 <div id="professorQuestionnaire" class="hidden">
 
     <div class="card">
 
         <div class="card-header">
-
             <div>
-
-                <h3 id="professorQuestionnaireTitle">
-                Ficha Individual – Pré-Conselho
-                </h3>
-
-                <p>
-                Escolha uma turma abaixo e preencha a ficha.
-                </p>
-
+                <h3 id="professorQuestionnaireTitle">Ficha Individual – Pré-Conselho</h3>
+                <p>Escolha uma turma abaixo e preencha a ficha.</p>
             </div>
-
         </div>
 
         <div id="professorTurmasContainer"></div>
@@ -2463,31 +2386,51 @@ Questionário do Pré-Conselho de Classe.
 </section>
 
 
+<!-- ALUNOS -->
+
+<section id="pageAlunos" class="page hidden">
+
+<div class="page-title">
+<h2>👥 Avaliação de Alunos</h2>
+<p id="alunosPageDescription">Avalie cada aluno com uma carinha e uma observação.</p>
+</div>
+
+<div id="alunosContainer"></div>
+
+</section>
+
+
 <!-- RESPOSTAS -->
 
 <section id="pageRespostas" class="page hidden">
 
 <div class="page-title">
-
 <h2>Respostas dos Professores</h2>
-
 <p>Somente a direção possui acesso às respostas.</p>
-
 </div>
 
 <div class="filter-bar">
-
 <label for="filterTurma">Filtrar por turma:</label>
-
 <select id="filterTurma" class="filter-select" onchange="renderAnswers()">
-
 <option value="">Todas as turmas</option>
-
 </select>
-
 </div>
 
 <div id="answersContainer"></div>
+
+</section>
+
+
+<!-- PANORAMA -->
+
+<section id="pagePanorama" class="page hidden">
+
+<div class="page-title">
+<h2>📈 Panorama Geral</h2>
+<p id="panoramaDescription">Visão consolidada das avaliações de alunos.</p>
+</div>
+
+<div id="panoramaContainer"></div>
 
 </section>
 
@@ -2497,17 +2440,12 @@ Questionário do Pré-Conselho de Classe.
 <section id="pageHistorico" class="page hidden">
 
 <div class="page-title">
-
 <h2>Histórico</h2>
-
 <p id="historyDescription">Atividades realizadas no sistema.</p>
-
 </div>
 
 <div class="card">
-
 <div id="historyContainer"></div>
-
 </div>
 
 </section>
@@ -2529,66 +2467,59 @@ Questionário do Pré-Conselho de Classe.
 const USERS_KEY="pc_users";
 const QUESTIONNAIRE_KEY="pc_questionnaire";
 const TURMAS_KEY="pc_turmas";
+const ALUNOS_KEY="pc_alunos";
+const AVALIACOES_KEY="pc_avaliacoes";
 const ANSWERS_KEY="pc_answers";
 const HISTORY_KEY="pc_history";
 const SESSION_KEY="pc_session";
 const THEME_KEY="pc_theme";
 
-let currentUser=null;
-let selectedRole="professor";
+const CATEGORIAS = {
+    otimo:  { label:"Ótimo",   emoji:"😄" },
+    bom:    { label:"Bom",     emoji:"🙂" },
+    regular:{ label:"Regular", emoji:"😐" },
+    ruim:   { label:"Ruim",    emoji:"😞" }
+};
+
+let currentUser = null;
+let selectedRole = "professor";
+let turmaAlunoSelecionada = null;
+let turmaSelecionadaDiretor = null;
 
 
 /* =====================================================
    STORAGE
 ===================================================== */
 
-function getUsers(){
-    return JSON.parse(localStorage.getItem(USERS_KEY)||"[]");
+function getUsers(){ return JSON.parse(localStorage.getItem(USERS_KEY)||"[]"); }
+function saveUsers(d){ localStorage.setItem(USERS_KEY, JSON.stringify(d)); }
+
+function getQuestionnaire(){ return JSON.parse(localStorage.getItem(QUESTIONNAIRE_KEY)||"null"); }
+function persistQuestionnaire(d){
+    try{ localStorage.setItem(QUESTIONNAIRE_KEY, JSON.stringify(d)); }
+    catch(e){ alert("Não foi possível salvar (armazenamento cheio)."); }
 }
 
-function saveUsers(data){
-    localStorage.setItem(USERS_KEY, JSON.stringify(data));
+function getTurmas(){ return JSON.parse(localStorage.getItem(TURMAS_KEY)||"[]"); }
+function saveTurmas(d){ localStorage.setItem(TURMAS_KEY, JSON.stringify(d)); }
+
+function getAlunos(){ return JSON.parse(localStorage.getItem(ALUNOS_KEY)||"[]"); }
+function saveAlunos(d){ localStorage.setItem(ALUNOS_KEY, JSON.stringify(d)); }
+
+function getAvaliacoes(){ return JSON.parse(localStorage.getItem(AVALIACOES_KEY)||"[]"); }
+function saveAvaliacoes(d){
+    try{ localStorage.setItem(AVALIACOES_KEY, JSON.stringify(d)); }
+    catch(e){ alert("Não foi possível salvar as avaliações."); }
 }
 
-function getQuestionnaire(){
-    return JSON.parse(localStorage.getItem(QUESTIONNAIRE_KEY)||"null");
+function getAnswers(){ return JSON.parse(localStorage.getItem(ANSWERS_KEY)||"[]"); }
+function saveAnswers(d){
+    try{ localStorage.setItem(ANSWERS_KEY, JSON.stringify(d)); }
+    catch(e){ alert("Não foi possível salvar as respostas."); }
 }
 
-function persistQuestionnaire(data){
-    try{
-        localStorage.setItem(QUESTIONNAIRE_KEY, JSON.stringify(data));
-    }catch(e){
-        alert("Não foi possível salvar (armazenamento cheio).");
-    }
-}
-
-function getTurmas(){
-    return JSON.parse(localStorage.getItem(TURMAS_KEY)||"[]");
-}
-
-function saveTurmas(data){
-    localStorage.setItem(TURMAS_KEY, JSON.stringify(data));
-}
-
-function getAnswers(){
-    return JSON.parse(localStorage.getItem(ANSWERS_KEY)||"[]");
-}
-
-function saveAnswers(data){
-    try{
-        localStorage.setItem(ANSWERS_KEY, JSON.stringify(data));
-    }catch(e){
-        alert("Não foi possível salvar as respostas.");
-    }
-}
-
-function getHistory(){
-    return JSON.parse(localStorage.getItem(HISTORY_KEY)||"[]");
-}
-
-function saveHistory(data){
-    localStorage.setItem(HISTORY_KEY, JSON.stringify(data));
-}
+function getHistory(){ return JSON.parse(localStorage.getItem(HISTORY_KEY)||"[]"); }
+function saveHistory(d){ localStorage.setItem(HISTORY_KEY, JSON.stringify(d)); }
 
 
 /* =====================================================
@@ -2596,34 +2527,27 @@ function saveHistory(data){
 ===================================================== */
 
 function toggleTheme(){
-    const isDark=document.body.classList.toggle("dark");
+    const isDark = document.body.classList.toggle("dark");
     localStorage.setItem(THEME_KEY, isDark?"dark":"light");
-    const btn=document.querySelector(".theme-toggle");
-    if(btn) btn.textContent=isDark?"☀️":"🌙";
+    const btn = document.querySelector(".theme-toggle");
+    if(btn) btn.textContent = isDark?"☀️":"🌙";
 }
 
 function applyTheme(){
-    const theme=localStorage.getItem(THEME_KEY);
+    const theme = localStorage.getItem(THEME_KEY);
     if(theme==="dark"){
         document.body.classList.add("dark");
-        const btn=document.querySelector(".theme-toggle");
-        if(btn) btn.textContent="☀️";
+        const btn = document.querySelector(".theme-toggle");
+        if(btn) btn.textContent = "☀️";
     }
 }
 
 
 /* =====================================================
-   ID
+   UTILITÁRIOS
 ===================================================== */
 
-function id(){
-    return Date.now().toString(36)+Math.random().toString(36).substring(2);
-}
-
-
-/* =====================================================
-   SEGURANÇA HTML
-===================================================== */
+function id(){ return Date.now().toString(36)+Math.random().toString(36).substring(2); }
 
 function esc(value){
     if(value===null||value===undefined) return "";
@@ -2641,75 +2565,22 @@ function esc(value){
 ===================================================== */
 
 function defaultQuestionnaire(){
-
 return {
-
-id:id(),
-
-title:"Ficha Individual – Pré-Conselho de Classe",
-
-createdAt:new Date().toISOString(),
-
-questions:[
-
-{
-id:id(),
-section:"1. PANORAMA DA TURMA",
-text:"Como você avalia o desenvolvimento geral da turma em relação à aprendizagem?"
-},
-
-{
-id:id(),
-section:"1. PANORAMA DA TURMA",
-text:"Como está a participação, o envolvimento e a postura dos estudantes nas aulas?"
-},
-
-{
-id:id(),
-section:"2. APRENDIZAGEM E FREQUÊNCIA",
-text:"Quais habilidades/conteúdos apresentam maior dificuldade para a turma?"
-},
-
-{
-id:id(),
-section:"2. APRENDIZAGEM E FREQUÊNCIA",
-text:"Há estudantes com baixa frequência ou que necessitam de acompanhamento mais próximo? Quais e por quê?"
-},
-
-{
-id:id(),
-section:"3. DESTAQUES E SITUAÇÕES QUE MERECEM ATENÇÃO",
-text:"Estudantes que se destacaram positivamente (aprendizagem, participação, responsabilidade ou protagonismo):"
-},
-
-{
-id:id(),
-section:"3. DESTAQUES E SITUAÇÕES QUE MERECEM ATENÇÃO",
-text:"Estudantes que apresentam dificuldades significativas ou que necessitam de intervenção/encaminhamento:"
-},
-
-{
-id:id(),
-section:"4. ENCAMINHAMENTOS",
-text:"Quais estratégias já foram realizadas e quais ações você sugere para o próximo período?"
-},
-
-{
-id:id(),
-section:"4. ENCAMINHAMENTOS",
-text:"Há alguma observação importante que deve ser registrada no Pré-Conselho?"
-},
-
-{
-id:id(),
-section:"5. SÍNTESE DO PROFESSOR",
-text:"Deixe aqui uma observação geral sobre a turma e/ou sobre algum estudante que considere relevante para o Conselho de Classe:"
-}
-
-]
-
+    id:id(),
+    title:"Ficha Individual – Pré-Conselho de Classe",
+    createdAt:new Date().toISOString(),
+    questions:[
+        { id:id(), section:"1. PANORAMA DA TURMA", text:"Como você avalia o desenvolvimento geral da turma em relação à aprendizagem?" },
+        { id:id(), section:"1. PANORAMA DA TURMA", text:"Como está a participação, o envolvimento e a postura dos estudantes nas aulas?" },
+        { id:id(), section:"2. APRENDIZAGEM E FREQUÊNCIA", text:"Quais habilidades/conteúdos apresentam maior dificuldade para a turma?" },
+        { id:id(), section:"2. APRENDIZAGEM E FREQUÊNCIA", text:"Há estudantes com baixa frequência ou que necessitam de acompanhamento mais próximo? Quais e por quê?" },
+        { id:id(), section:"3. DESTAQUES E SITUAÇÕES QUE MERECEM ATENÇÃO", text:"Estudantes que se destacaram positivamente (aprendizagem, participação, responsabilidade ou protagonismo):" },
+        { id:id(), section:"3. DESTAQUES E SITUAÇÕES QUE MERECEM ATENÇÃO", text:"Estudantes que apresentam dificuldades significativas ou que necessitam de intervenção/encaminhamento:" },
+        { id:id(), section:"4. ENCAMINHAMENTOS", text:"Quais estratégias já foram realizadas e quais ações você sugere para o próximo período?" },
+        { id:id(), section:"4. ENCAMINHAMENTOS", text:"Há alguma observação importante que deve ser registrada no Pré-Conselho?" },
+        { id:id(), section:"5. SÍNTESE DO PROFESSOR", text:"Deixe aqui uma observação geral sobre a turma e/ou sobre algum estudante que considere relevante para o Conselho de Classe:" }
+    ]
 };
-
 }
 
 
@@ -2719,41 +2590,25 @@ text:"Deixe aqui uma observação geral sobre a turma e/ou sobre algum estudante
 
 function initialize(){
 
-    let users=getUsers();
+    let users = getUsers();
 
     if(!users.some(u=>u.email==="diretor@escola.pr.gov.br")){
-        users.push({
-            id:"diretor-demo",
-            name:"Diretor",
-            email:"diretor@escola.pr.gov.br",
-            password:"1234",
-            role:"diretor"
-        });
+        users.push({ id:"diretor-demo", name:"Diretor", email:"diretor@escola.pr.gov.br", password:"1234", role:"diretor" });
     }
 
     if(!users.some(u=>u.email==="professor@escola.pr.gov.br")){
-        users.push({
-            id:"professor-demo",
-            name:"Professor",
-            email:"professor@escola.pr.gov.br",
-            password:"1234",
-            role:"professor"
-        });
+        users.push({ id:"professor-demo", name:"Professor", email:"professor@escola.pr.gov.br", password:"1234", role:"professor" });
     }
 
     saveUsers(users);
 
-    if(!getQuestionnaire()){
-        persistQuestionnaire(defaultQuestionnaire());
-    }
-
-    if(!localStorage.getItem(TURMAS_KEY)){
-        saveTurmas([]);
-    }
+    if(!getQuestionnaire()) persistQuestionnaire(defaultQuestionnaire());
+    if(!localStorage.getItem(TURMAS_KEY)) saveTurmas([]);
+    if(!localStorage.getItem(ALUNOS_KEY)) saveAlunos([]);
+    if(!localStorage.getItem(AVALIACOES_KEY)) saveAvaliacoes([]);
 
     applyTheme();
     checkSession();
-
 }
 
 
@@ -2765,7 +2620,7 @@ function addHistory(action,description){
 
     if(!currentUser)return;
 
-    let history=getHistory();
+    let history = getHistory();
 
     history.unshift({
         id:id(),
@@ -2778,7 +2633,6 @@ function addHistory(action,description){
     });
 
     saveHistory(history);
-
 }
 
 
@@ -2788,8 +2642,8 @@ function addHistory(action,description){
 
 function selectAuthRole(role){
     selectedRole = role;
-    document.getElementById("tabProfessor").classList.toggle("active", role === "professor");
-    document.getElementById("tabDiretor").classList.toggle("active", role === "diretor");
+    document.getElementById("tabProfessor").classList.toggle("active", role==="professor");
+    document.getElementById("tabDiretor").classList.toggle("active", role==="diretor");
     document.getElementById("loginAlert").innerHTML = "";
 }
 
@@ -2797,7 +2651,7 @@ function switchAuthPanel(panel){
     const loginPanel = document.getElementById("loginPanel");
     const registerPanel = document.getElementById("registerPanel");
 
-    if(panel === "register"){
+    if(panel==="register"){
         loginPanel.classList.add("hidden");
         registerPanel.classList.remove("hidden");
     }else{
@@ -2809,9 +2663,8 @@ function switchAuthPanel(panel){
     document.getElementById("registerAlert").innerHTML = "";
 }
 
-
 function selectRegisterRole(role){
-    selectedRole=role;
+    selectedRole = role;
     document.getElementById("registerProfessor").classList.toggle("active", role==="professor");
     document.getElementById("registerDiretor").classList.toggle("active", role==="diretor");
 }
@@ -2821,67 +2674,39 @@ function registerUser(event){
 
     event.preventDefault();
 
-    const name=document.getElementById("registerName").value.trim();
-    const username=document.getElementById("registerEmail").value.trim().toLowerCase();
-    const password=document.getElementById("registerPassword").value;
-    const confirm=document.getElementById("registerConfirm").value;
-    const alert=document.getElementById("registerAlert");
+    const name = document.getElementById("registerName").value.trim();
+    const username = document.getElementById("registerEmail").value.trim().toLowerCase();
+    const password = document.getElementById("registerPassword").value;
+    const confirm = document.getElementById("registerConfirm").value;
+    const alert = document.getElementById("registerAlert");
 
-    if(name.length<3){
-        alert.innerHTML=`<div class="alert alert-error">Digite seu nome completo.</div>`;
-        return;
-    }
+    if(name.length<3){ alert.innerHTML=`<div class="alert alert-error">Digite seu nome completo.</div>`; return; }
+    if(username.length<3){ alert.innerHTML=`<div class="alert alert-error">O usuário deve ter pelo menos 3 caracteres.</div>`; return; }
 
-    if(username.length<3){
-        alert.innerHTML=`<div class="alert alert-error">O usuário deve ter pelo menos 3 caracteres.</div>`;
-        return;
-    }
-
-    let cleanUser = username.replace(/@escola\.pr\.gov\.br$/i, "").replace(/@.*$/, "");
+    let cleanUser = username.replace(/@escola\.pr\.gov\.br$/i,"").replace(/@.*$/,"");
     const userRegex = /^[a-z0-9._-]+$/;
 
-    if(!userRegex.test(cleanUser)){
-        alert.innerHTML=`<div class="alert alert-error">O usuário deve conter apenas letras, números, ponto, underline ou hífen.</div>`;
-        return;
-    }
+    if(!userRegex.test(cleanUser)){ alert.innerHTML=`<div class="alert alert-error">O usuário deve conter apenas letras, números, ponto, underline ou hífen.</div>`; return; }
 
     const email = cleanUser + "@escola.pr.gov.br";
 
-    if(password.length<4){
-        alert.innerHTML=`<div class="alert alert-error">A senha deve possuir pelo menos 4 caracteres.</div>`;
-        return;
-    }
+    if(password.length<4){ alert.innerHTML=`<div class="alert alert-error">A senha deve possuir pelo menos 4 caracteres.</div>`; return; }
+    if(password!==confirm){ alert.innerHTML=`<div class="alert alert-error">As senhas não são iguais.</div>`; return; }
 
-    if(password!==confirm){
-        alert.innerHTML=`<div class="alert alert-error">As senhas não são iguais.</div>`;
-        return;
-    }
+    let users = getUsers();
 
-    let users=getUsers();
+    if(users.some(u=>u.email===email)){ alert.innerHTML=`<div class="alert alert-error">Este usuário já está cadastrado.</div>`; return; }
 
-    if(users.some(u=>u.email===email)){
-        alert.innerHTML=`<div class="alert alert-error">Este usuário já está cadastrado.</div>`;
-        return;
-    }
-
-    users.push({
-        id:id(),
-        name,
-        email,
-        password,
-        role:selectedRole
-    });
-
+    users.push({ id:id(), name, email, password, role:selectedRole });
     saveUsers(users);
 
-    alert.innerHTML=`<div class="alert alert-success">Cadastro realizado com sucesso!</div>`;
+    alert.innerHTML = `<div class="alert alert-success">Cadastro realizado com sucesso!</div>`;
 
     setTimeout(()=>{
         switchAuthPanel("login");
-        document.getElementById("loginEmail").value=cleanUser;
+        document.getElementById("loginEmail").value = cleanUser;
         selectAuthRole(selectedRole);
     },1000);
-
 }
 
 
@@ -2889,76 +2714,66 @@ function login(event){
 
     event.preventDefault();
 
-    let username=document.getElementById("loginEmail").value.trim().toLowerCase();
-    const password=document.getElementById("loginPassword").value;
+    let username = document.getElementById("loginEmail").value.trim().toLowerCase();
+    const password = document.getElementById("loginPassword").value;
 
-    username = username.replace(/@escola\.pr\.gov\.br$/i, "").replace(/@.*$/, "");
-
+    username = username.replace(/@escola\.pr\.gov\.br$/i,"").replace(/@.*$/,"");
     const email = username + "@escola.pr.gov.br";
 
-    const user=getUsers().find(
-        u=> u.email===email && u.password===password && u.role===selectedRole
-    );
+    const user = getUsers().find(u=> u.email===email && u.password===password && u.role===selectedRole);
 
     if(!user){
-        document.getElementById("loginAlert").innerHTML=
+        document.getElementById("loginAlert").innerHTML =
         `<div class="alert alert-error">Usuário, senha ou perfil incorreto.</div>`;
         return;
     }
 
-    currentUser=user;
-
+    currentUser = user;
     localStorage.setItem(SESSION_KEY, JSON.stringify({userId:user.id}));
 
-    addHistory("login", "Entrou no sistema.");
+    addHistory("login","Entrou no sistema.");
 
     document.getElementById("welcomeScreen").classList.add("hidden");
     document.getElementById("app").classList.remove("hidden");
 
     initializeApp();
-
 }
 
 
 function checkSession(){
 
-    const session=JSON.parse(localStorage.getItem(SESSION_KEY)||"null");
+    const session = JSON.parse(localStorage.getItem(SESSION_KEY)||"null");
     if(!session)return;
 
-    const user=getUsers().find(u=>u.id===session.userId);
+    const user = getUsers().find(u=>u.id===session.userId);
     if(!user)return;
 
-    currentUser=user;
+    currentUser = user;
 
     document.getElementById("welcomeScreen").classList.add("hidden");
     document.getElementById("app").classList.remove("hidden");
 
     initializeApp();
-
 }
 
 
 function initializeApp(){
 
-    document.getElementById("sidebarUserName").textContent=currentUser.name;
-    document.getElementById("sidebarUserRole").textContent=
-        currentUser.role==="diretor" ? "Diretor" : "Professor";
-    document.getElementById("topUserName").textContent=currentUser.name;
-    document.getElementById("welcomeName").textContent=currentUser.name.split(" ")[0];
-    document.getElementById("avatar").textContent=
-        currentUser.name.substring(0,2).toUpperCase();
+    document.getElementById("sidebarUserName").textContent = currentUser.name;
+    document.getElementById("sidebarUserRole").textContent = currentUser.role==="diretor"?"Diretor":"Professor";
+    document.getElementById("topUserName").textContent = currentUser.name;
+    document.getElementById("welcomeName").textContent = currentUser.name.split(" ")[0];
+    document.getElementById("avatar").textContent = currentUser.name.substring(0,2).toUpperCase();
 
     document.querySelectorAll(".director-only").forEach(el=>{
-        if(currentUser.role==="diretor")
-            el.classList.remove("hidden");
-        else
-            el.classList.add("hidden");
+        if(currentUser.role==="diretor") el.classList.remove("hidden");
+        else el.classList.add("hidden");
     });
 
     updateDashboard();
     showPage("dashboard");
     updateMenuBadge();
-
+    updateMenuAlunosBadge();
 }
 
 
@@ -2970,39 +2785,37 @@ function showPage(page){
 
     document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
 
-    const element=document.getElementById(
-        "page"+page.charAt(0).toUpperCase()+page.slice(1)
-    );
-
+    const element = document.getElementById("page"+page.charAt(0).toUpperCase()+page.slice(1));
     if(element) element.classList.remove("hidden");
 
     document.querySelectorAll(".menu button").forEach(b=>b.classList.remove("active"));
 
-    const menu=document.getElementById(
-        "menu"+page.charAt(0).toUpperCase()+page.slice(1)
-    );
+    const menu = document.getElementById("menu"+page.charAt(0).toUpperCase()+page.slice(1));
     if(menu) menu.classList.add("active");
 
-    const titles={
+    const titles = {
         dashboard:"Dashboard",
         questionarios:"Questionário",
+        alunos:"Alunos",
         respostas:"Respostas",
+        panorama:"Panorama",
         historico:"Histórico"
     };
 
-    document.getElementById("pageTitle").textContent=titles[page];
+    document.getElementById("pageTitle").textContent = titles[page];
     document.getElementById("sidebar").classList.remove("open");
 
     if(page==="dashboard") updateDashboard();
     if(page==="questionarios") renderQuestionnaire();
+    if(page==="alunos") renderAlunos();
     if(page==="respostas") renderAnswers();
+    if(page==="panorama") renderPanorama();
     if(page==="historico") renderHistory();
-
 }
 
 
 /* =====================================================
-   RENDERIZAÇÃO DO QUESTIONÁRIO
+   QUESTIONÁRIO
 ===================================================== */
 
 function renderQuestionnaire(){
@@ -3012,18 +2825,17 @@ function renderQuestionnaire(){
         document.getElementById("directorQuestionEditor").classList.remove("hidden");
         document.getElementById("professorQuestionnaire").classList.add("hidden");
 
-        const q=getQuestionnaire();
-        document.getElementById("editorTitle").value=q.title;
+        const q = getQuestionnaire();
+        document.getElementById("editorTitle").value = q.title;
 
-        const editor=document.getElementById("questionsEditor");
-        editor.innerHTML="";
+        const editor = document.getElementById("questionsEditor");
+        editor.innerHTML = "";
 
         if(q.questions.length===0){
             editor.innerHTML = `
                 <div class="empty" style="padding:30px 20px;grid-column:1/-1;">
                     <div class="empty-icon">📝</div>
-                    Nenhuma pergunta cadastrada.<br>
-                    Clique em <strong>"+ Adicionar pergunta"</strong> para começar.
+                    Nenhuma pergunta cadastrada.
                 </div>
             `;
         }else{
@@ -3039,18 +2851,8 @@ function renderQuestionnaire(){
                                 </div>
                             </div>
                             <div class="question-card-actions" onclick="event.stopPropagation()">
-                                <button
-                                class="question-card-btn"
-                                title="Editar"
-                                onclick="abrirModalEdicao('${question.id}')">
-                                    ✏️
-                                </button>
-                                <button
-                                class="question-card-btn danger"
-                                title="Excluir"
-                                onclick="deleteQuestion('${question.id}')">
-                                    🗑️
-                                </button>
+                                <button class="question-card-btn" title="Editar" onclick="abrirModalEdicao('${question.id}')">✏️</button>
+                                <button class="question-card-btn danger" title="Excluir" onclick="deleteQuestion('${question.id}')">🗑️</button>
                             </div>
                         </div>
                         <div class="question-card-hint">Clique para editar</div>
@@ -3066,7 +2868,6 @@ function renderQuestionnaire(){
         document.getElementById("professorQuestionnaire").classList.remove("hidden");
         renderProfessorTurmas();
     }
-
 }
 
 
@@ -3093,6 +2894,7 @@ function renderTurmas(){
     }
 
     const answers = getAnswers();
+    const alunos = getAlunos();
 
     let html = `<div class="turmas-grid">`;
 
@@ -3100,42 +2902,24 @@ function renderTurmas(){
 
         const enviada = !!turma.sent;
         const enviadaEm = turma.sentAt ? formatDateTime(turma.sentAt) : "";
-
-        const totalRespostas = answers.filter(a => a.turmaId === turma.id).length;
+        const totalRespostas = answers.filter(a=>a.turmaId===turma.id).length;
+        const totalAlunos = alunos.filter(a=>a.turmaId===turma.id).length;
 
         html += `
             <div class="turma-card">
 
                 <div class="turma-card-header">
-
-                    <div class="turma-card-name">
-                        🏫 ${esc(turma.nome)}
-                    </div>
-
+                    <div class="turma-card-name">🏫 ${esc(turma.nome)}</div>
                     <div class="turma-card-actions">
-
-                        <button
-                        class="turma-card-btn"
-                        title="Renomear"
-                        onclick="abrirModalRenomearTurma('${turma.id}')">
-                            ✏️
-                        </button>
-
-                        <button
-                        class="turma-card-btn danger"
-                        title="Excluir"
-                        onclick="excluirTurma('${turma.id}')">
-                            🗑️
-                        </button>
-
+                        <button class="turma-card-btn" title="Renomear" onclick="abrirModalRenomearTurma('${turma.id}')">✏️</button>
+                        <button class="turma-card-btn danger" title="Excluir" onclick="excluirTurma('${turma.id}')">🗑️</button>
                     </div>
-
                 </div>
 
                 <div class="turma-info-row">
                     <span>Status:</span>
                     <span class="turma-send-status ${enviada?'sent':'not-sent'}">
-                        ${enviada ? '✓ ENVIADA' : '⏳ NÃO ENVIADA'}
+                        ${enviada?'✓ ENVIADA':'⏳ NÃO ENVIADA'}
                     </span>
                 </div>
 
@@ -3143,20 +2927,20 @@ function renderTurmas(){
                 <div class="turma-info-row">
                     <span>Enviada em:</span>
                     <span style="font-size:12px;">${enviadaEm}</span>
-                </div>
-                ` : ''}
+                </div>` : ''}
 
                 <div class="turma-info-row">
                     <span>Respostas recebidas:</span>
                     <span><strong>${totalRespostas}</strong></span>
                 </div>
 
-                <button
-                class="turma-btn-send ${enviada ? 'reenviar' : 'enviar'}"
-                onclick="enviarParaTurma('${turma.id}')">
+                <div class="turma-info-row">
+                    <span>Alunos cadastrados:</span>
+                    <span><strong>${totalAlunos}</strong></span>
+                </div>
 
-                ${enviada ? '🔄 Reenviar para esta turma' : '📤 Enviar para esta turma'}
-
+                <button class="turma-btn-send ${enviada?'reenviar':'enviar'}" onclick="enviarParaTurma('${turma.id}')">
+                    ${enviada?'🔄 Reenviar para esta turma':'📤 Enviar para esta turma'}
                 </button>
 
             </div>
@@ -3174,37 +2958,25 @@ function abrirModalNovaTurma(){
     const modal = document.createElement("div");
     modal.className = "modal-overlay";
     modal.id = "modalTurma";
-    modal.onclick = (e) => { if(e.target === modal) fecharModalTurma(); };
+    modal.onclick = (e)=>{ if(e.target===modal) fecharModalTurma(); };
 
     modal.innerHTML = `
         <div class="modal-box" style="max-width:500px;" onclick="event.stopPropagation()">
-
             <button class="modal-close" onclick="fecharModalTurma()">✕</button>
-
             <h2 class="modal-title">Nova turma</h2>
             <p class="modal-subtitle">Digite o nome da turma.</p>
-
             <label class="modal-label">Nome da turma</label>
-            <input
-                id="novaTurmaNome"
-                class="modal-textarea"
-                style="min-height:auto;padding:14px 18px;"
-                placeholder="Ex: 1º Ano A"
-                onkeydown="if(event.key==='Enter'){event.preventDefault();salvarNovaTurma();}">
-
+            <input id="novaTurmaNome" class="modal-textarea" style="min-height:auto;padding:14px 18px;" placeholder="Ex: 1º Ano A" onkeydown="if(event.key==='Enter'){event.preventDefault();salvarNovaTurma();}">
             <div class="modal-actions">
                 <button class="btn btn-secondary" onclick="fecharModalTurma()">Cancelar</button>
                 <button class="btn btn-primary" onclick="salvarNovaTurma()">💾 Criar turma</button>
             </div>
-
         </div>
     `;
 
     document.body.appendChild(modal);
-
     setTimeout(()=> document.getElementById("novaTurmaNome").focus(), 100);
 }
-
 
 function fecharModalTurma(){
     const modal = document.getElementById("modalTurma");
@@ -3216,28 +2988,20 @@ function salvarNovaTurma(){
 
     const nome = document.getElementById("novaTurmaNome").value.trim();
 
-    if(nome.length < 2){
-        alert("Digite um nome válido para a turma.");
-        return;
-    }
+    if(nome.length < 2){ alert("Digite um nome válido."); return; }
 
     const turmas = getTurmas();
-
-    if(turmas.some(t => t.nome.toLowerCase() === nome.toLowerCase())){
+    if(turmas.some(t=>t.nome.toLowerCase()===nome.toLowerCase())){
         alert("Já existe uma turma com este nome.");
         return;
     }
 
     turmas.push({
-        id: id(),
-        nome: nome,
-        sent: false,
-        sentAt: null,
-        createdAt: new Date().toISOString()
+        id:id(), nome, sent:false, sentAt:null,
+        createdAt:new Date().toISOString()
     });
 
     saveTurmas(turmas);
-
     addHistory("created_turma", `Criou a turma "${nome}".`);
 
     fecharModalTurma();
@@ -3249,40 +3013,28 @@ function salvarNovaTurma(){
 function abrirModalRenomearTurma(turmaId){
 
     const turmas = getTurmas();
-    const turma = turmas.find(t => t.id === turmaId);
+    const turma = turmas.find(t=>t.id===turmaId);
     if(!turma) return;
 
     const modal = document.createElement("div");
     modal.className = "modal-overlay";
     modal.id = "modalTurma";
-    modal.onclick = (e) => { if(e.target === modal) fecharModalTurma(); };
+    modal.onclick = (e)=>{ if(e.target===modal) fecharModalTurma(); };
 
     modal.innerHTML = `
         <div class="modal-box" style="max-width:500px;" onclick="event.stopPropagation()">
-
             <button class="modal-close" onclick="fecharModalTurma()">✕</button>
-
             <h2 class="modal-title">Renomear turma</h2>
-            <p class="modal-subtitle">Altere o nome da turma.</p>
-
             <label class="modal-label">Nome da turma</label>
-            <input
-                id="novaTurmaNome"
-                class="modal-textarea"
-                style="min-height:auto;padding:14px 18px;"
-                value="${esc(turma.nome)}"
-                onkeydown="if(event.key==='Enter'){event.preventDefault();salvarRenomearTurma('${turmaId}');}">
-
+            <input id="novaTurmaNome" class="modal-textarea" style="min-height:auto;padding:14px 18px;" value="${esc(turma.nome)}" onkeydown="if(event.key==='Enter'){event.preventDefault();salvarRenomearTurma('${turmaId}');}">
             <div class="modal-actions">
                 <button class="btn btn-secondary" onclick="fecharModalTurma()">Cancelar</button>
                 <button class="btn btn-primary" onclick="salvarRenomearTurma('${turmaId}')">💾 Salvar</button>
             </div>
-
         </div>
     `;
 
     document.body.appendChild(modal);
-
     setTimeout(()=> document.getElementById("novaTurmaNome").focus(), 100);
 }
 
@@ -3290,31 +3042,23 @@ function abrirModalRenomearTurma(turmaId){
 function salvarRenomearTurma(turmaId){
 
     const nome = document.getElementById("novaTurmaNome").value.trim();
-
-    if(nome.length < 2){
-        alert("Digite um nome válido para a turma.");
-        return;
-    }
+    if(nome.length < 2){ alert("Digite um nome válido."); return; }
 
     const turmas = getTurmas();
 
-    if(turmas.some(t => t.id !== turmaId && t.nome.toLowerCase() === nome.toLowerCase())){
+    if(turmas.some(t=>t.id!==turmaId && t.nome.toLowerCase()===nome.toLowerCase())){
         alert("Já existe outra turma com este nome.");
         return;
     }
 
-    const turma = turmas.find(t => t.id === turmaId);
-    if(!turma){
-        fecharModalTurma();
-        return;
-    }
+    const turma = turmas.find(t=>t.id===turmaId);
+    if(!turma){ fecharModalTurma(); return; }
 
     const nomeAntigo = turma.nome;
     turma.nome = nome;
 
     saveTurmas(turmas);
-
-    addHistory("renamed_turma", `Renomeou a turma "${nomeAntigo}" para "${nome}".`);
+    addHistory("renamed_turma", `Renomeou "${nomeAntigo}" para "${nome}".`);
 
     fecharModalTurma();
     renderTurmas();
@@ -3325,20 +3069,20 @@ function salvarRenomearTurma(turmaId){
 function excluirTurma(turmaId){
 
     const turmas = getTurmas();
-    const turma = turmas.find(t => t.id === turmaId);
+    const turma = turmas.find(t=>t.id===turmaId);
     if(!turma) return;
 
-    const respostas = getAnswers().filter(a => a.turmaId === turmaId).length;
+    const respostas = getAnswers().filter(a=>a.turmaId===turmaId).length;
+    const alunos = getAlunos().filter(a=>a.turmaId===turmaId).length;
 
     let msg = `Deseja realmente excluir a turma "${turma.nome}"?`;
-    if(respostas > 0){
-        msg += `\n\n⚠️ Existem ${respostas} resposta(s) vinculada(s) a esta turma.`;
+    if(respostas>0 || alunos>0){
+        msg += `\n\n⚠️ Existem ${respostas} resposta(s) e ${alunos} aluno(s) vinculado(s).`;
     }
 
     if(!confirm(msg)) return;
 
-    const novasTurmas = turmas.filter(t => t.id !== turmaId);
-    saveTurmas(novasTurmas);
+    saveTurmas(turmas.filter(t=>t.id!==turmaId));
 
     addHistory("deleted_turma", `Excluiu a turma "${turma.nome}".`);
 
@@ -3351,20 +3095,13 @@ function enviarParaTurma(turmaId){
 
     const q = getQuestionnaire();
 
-    if(q.questions.length === 0){
-        alert("Adicione pelo menos uma pergunta antes de enviar.");
-        return;
-    }
-
+    if(q.questions.length===0){ alert("Adicione pelo menos uma pergunta."); return; }
     for(const question of q.questions){
-        if(!question.text.trim()){
-            alert("Existe uma pergunta vazia. Preencha ou exclua.");
-            return;
-        }
+        if(!question.text.trim()){ alert("Existe uma pergunta vazia."); return; }
     }
 
     const turmas = getTurmas();
-    const turma = turmas.find(t => t.id === turmaId);
+    const turma = turmas.find(t=>t.id===turmaId);
     if(!turma) return;
 
     const titleInput = document.getElementById("editorTitle");
@@ -3374,25 +3111,20 @@ function enviarParaTurma(turmaId){
     }
 
     const jaEnviada = turma.sent;
-
     const msg = jaEnviada
-        ? `Reenviar o questionário para a turma "${turma.nome}"?`
-        : `Enviar o questionário para a turma "${turma.nome}"?`;
+        ? `Reenviar para "${turma.nome}"?`
+        : `Enviar para "${turma.nome}"?`;
 
     if(!confirm(msg)) return;
 
     turma.sent = true;
     turma.sentAt = new Date().toISOString();
-
     saveTurmas(turmas);
 
-    addHistory(
-        "sent_questionnaire",
-        `${jaEnviada?"Reenviou":"Enviou"} o questionário para a turma "${turma.nome}".`
-    );
+    addHistory("sent_questionnaire", `${jaEnviada?"Reenviou":"Enviou"} para "${turma.nome}".`);
 
     renderTurmas();
-    showToast(jaEnviada ? "✅ Reenviado!" : "✅ Enviado para a turma!");
+    showToast(jaEnviada?"✅ Reenviado!":"✅ Enviado!");
 }
 
 
@@ -3400,24 +3132,13 @@ function enviarParaTodasTurmas(){
 
     const q = getQuestionnaire();
 
-    if(q.questions.length === 0){
-        alert("Adicione pelo menos uma pergunta antes de enviar.");
-        return;
-    }
-
+    if(q.questions.length===0){ alert("Adicione pelo menos uma pergunta."); return; }
     for(const question of q.questions){
-        if(!question.text.trim()){
-            alert("Existe uma pergunta vazia. Preencha ou exclua.");
-            return;
-        }
+        if(!question.text.trim()){ alert("Existe uma pergunta vazia."); return; }
     }
 
     const turmas = getTurmas();
-
-    if(turmas.length === 0){
-        alert("Cadastre pelo menos uma turma antes de enviar.");
-        return;
-    }
+    if(turmas.length===0){ alert("Cadastre pelo menos uma turma."); return; }
 
     const titleInput = document.getElementById("editorTitle");
     if(titleInput && titleInput.value.trim()){
@@ -3425,21 +3146,13 @@ function enviarParaTodasTurmas(){
         persistQuestionnaire(q);
     }
 
-    if(!confirm(`Enviar o questionário para TODAS as ${turmas.length} turmas?`)) return;
+    if(!confirm(`Enviar para TODAS as ${turmas.length} turmas?`)) return;
 
     const agora = new Date().toISOString();
-
-    turmas.forEach(turma => {
-        turma.sent = true;
-        turma.sentAt = agora;
-    });
-
+    turmas.forEach(t=>{ t.sent = true; t.sentAt = agora; });
     saveTurmas(turmas);
 
-    addHistory(
-        "sent_questionnaire",
-        `Enviou o questionário para todas as ${turmas.length} turmas.`
-    );
+    addHistory("sent_questionnaire", `Enviou para todas as ${turmas.length} turmas.`);
 
     renderTurmas();
     showToast(`✅ Enviado para ${turmas.length} turma(s)!`);
@@ -3472,14 +3185,13 @@ function renderProfessorTurmas(){
         return;
     }
 
-    const turmasEnviadas = turmas.filter(t => t.sent);
+    const turmasEnviadas = turmas.filter(t=>t.sent);
 
     if(turmasEnviadas.length === 0){
         container.innerHTML = `
             <div class="empty">
                 <div class="empty-icon">⏳</div>
                 <h3>Nenhuma ficha enviada ainda</h3>
-                <p>Aguarde a direção enviar o questionário.</p>
             </div>
         `;
         return;
@@ -3489,39 +3201,23 @@ function renderProfessorTurmas(){
 
     turmasEnviadas.forEach(turma => {
 
-        const minhaResposta = answers.find(
-            a => a.turmaId === turma.id && a.userId === currentUser.id
-        );
-
+        const minhaResposta = answers.find(a=>a.turmaId===turma.id && a.userId===currentUser.id);
         const respondida = !!minhaResposta;
 
         html += `
             <div class="turma-prof-card" id="turmaProf${turma.id}">
-
                 <div class="turma-prof-header" onclick="toggleTurmaProfessor('${turma.id}')">
-
-                    <div class="turma-prof-name">
-                        🏫 ${esc(turma.nome)}
-                    </div>
-
+                    <div class="turma-prof-name">🏫 ${esc(turma.nome)}</div>
                     <div style="display:flex;align-items:center;gap:12px;">
-
                         <span class="turma-prof-status ${respondida?'answered':'pending'}">
-                            ${respondida ? '✓ RESPONDIDA' : '⏳ PENDENTE'}
+                            ${respondida?'✓ RESPONDIDA':'⏳ PENDENTE'}
                         </span>
-
                         <span class="turma-prof-toggle-icon">▼</span>
-
                     </div>
-
                 </div>
-
                 <div class="turma-prof-body hidden" id="turmaBody${turma.id}">
-
                     ${renderTurmaProfessorBody(turma, minhaResposta, q)}
-
                 </div>
-
             </div>
         `;
     });
@@ -3533,7 +3229,6 @@ function renderProfessorTurmas(){
 function renderTurmaProfessorBody(turma, minhaResposta, q){
 
     if(minhaResposta){
-
         let html = `
             <div class="alert alert-success" style="background:#e8f6ee;color:#12663f;border-left:4px solid #22c55e;padding:12px 16px;border-radius:12px;margin-bottom:16px;font-size:13.5px;">
             ✅ Você respondeu em <strong>${formatDateTime(minhaResposta.createdAt)}</strong>.
@@ -3542,19 +3237,18 @@ function renderTurmaProfessorBody(turma, minhaResposta, q){
 
         let lastSection = "";
 
-        minhaResposta.responses.forEach((response, index) => {
-
-            const question = q.questions.find(x => x.id === response.questionId);
+        minhaResposta.responses.forEach((response,index)=>{
+            const question = q.questions.find(x=>x.id===response.questionId);
             const section = question ? question.section : "";
 
-            if(section !== lastSection){
+            if(section!==lastSection){
                 lastSection = section;
                 html += `<div class="section-title">${esc(section)}</div>`;
             }
 
             html += `
                 <div class="professor-question">
-                    <label>${index+1}. ${esc(response.questionText || (question?question.text:"Pergunta"))}</label>
+                    <label>${index+1}. ${esc(response.questionText||(question?question.text:"Pergunta"))}</label>
                     <div class="answer-text">${esc(response.text)}</div>
                 </div>
             `;
@@ -3565,15 +3259,14 @@ function renderTurmaProfessorBody(turma, minhaResposta, q){
 
     let html = `
         <div style="background:#e8f6ee;color:#12663f;border-left:4px solid #22c55e;padding:12px 16px;border-radius:12px;margin-bottom:16px;font-size:13.5px;">
-        📩 <strong>Nova ficha disponível!</strong> Preencha todas as perguntas e clique em "Enviar ficha preenchida".
+        📩 <strong>Nova ficha disponível!</strong> Preencha todas as perguntas.
         </div>
     `;
 
     let lastSection = "";
 
-    q.questions.forEach((question, index) => {
-
-        if(question.section !== lastSection){
+    q.questions.forEach((question,index)=>{
+        if(question.section!==lastSection){
             lastSection = question.section;
             html += `<div class="section-title">${esc(lastSection)}</div>`;
         }
@@ -3581,22 +3274,14 @@ function renderTurmaProfessorBody(turma, minhaResposta, q){
         html += `
             <div class="professor-question">
                 <label>${index+1}. ${esc(question.text)}</label>
-                <textarea
-                class="professor-answer"
-                data-turma="${turma.id}"
-                data-id="${question.id}"
-                placeholder="Digite sua resposta..."></textarea>
+                <textarea class="professor-answer" data-turma="${turma.id}" data-id="${question.id}" placeholder="Digite sua resposta..."></textarea>
             </div>
         `;
     });
 
     html += `
-        <button
-        class="btn btn-primary btn-full"
-        onclick="submitFullQuestionnaire('${turma.id}')">
-
+        <button class="btn btn-primary btn-full" onclick="submitFullQuestionnaire('${turma.id}')">
         Enviar ficha preenchida
-
         </button>
     `;
 
@@ -3605,14 +3290,693 @@ function renderTurmaProfessorBody(turma, minhaResposta, q){
 
 
 function toggleTurmaProfessor(turmaId){
-
-    const card = document.getElementById("turmaProf" + turmaId);
-    const body = document.getElementById("turmaBody" + turmaId);
-
+    const card = document.getElementById("turmaProf"+turmaId);
+    const body = document.getElementById("turmaBody"+turmaId);
     if(!card || !body) return;
-
     card.classList.toggle("open");
     body.classList.toggle("hidden");
+}
+
+
+/* =====================================================
+   ABA ALUNOS
+===================================================== */
+
+function renderAlunos(){
+
+    const container = document.getElementById("alunosContainer");
+    if(!container) return;
+
+    if(currentUser.role === "professor"){
+        renderAlunosProfessor(container);
+    }else{
+        renderAlunosDiretor(container);
+    }
+}
+
+
+/* --------- PROFESSOR --------- */
+
+function renderAlunosProfessor(container){
+
+    const turmas = getTurmas();
+    const turmasComAlunos = turmas.filter(turma => {
+        return getAlunos().some(a=>a.turmaId===turma.id);
+    });
+
+    if(turmasComAlunos.length === 0){
+        container.innerHTML = `
+            <div class="card">
+                <div class="empty">
+                    <div class="empty-icon">👥</div>
+                    <h3>Nenhum aluno cadastrado ainda</h3>
+                    <p>Aguarde a direção cadastrar os alunos nas turmas.</p>
+                </div>
+            </div>
+        `;
+        return;
+    }
+
+    if(!turmaAlunoSelecionada || !turmasComAlunos.some(t=>t.id===turmaAlunoSelecionada)){
+        turmaAlunoSelecionada = turmasComAlunos[0].id;
+    }
+
+    const alunos = getAlunos().filter(a=>a.turmaId===turmaAlunoSelecionada);
+    const turmaSelecionada = turmasComAlunos.find(t=>t.id===turmaAlunoSelecionada);
+
+    const avaliacoes = getAvaliacoes();
+    const minhasAvaliacoes = {};
+    avaliacoes.forEach(av=>{
+        if(av.turmaId===turmaAlunoSelecionada && av.userId===currentUser.id){
+            minhasAvaliacoes[av.alunoId] = av;
+        }
+    });
+
+    let html = `
+        <div class="card">
+
+            <div class="card-header">
+                <div>
+                    <h3>👥 Avaliação de Alunos</h3>
+                    <p>Avalie cada aluno com uma carinha. A observação é obrigatória.</p>
+                </div>
+            </div>
+
+            <div class="filter-bar" style="margin-bottom:20px;">
+                <label for="seletorTurmaAluno">Turma:</label>
+                <select id="seletorTurmaAluno" class="filter-select" onchange="mudarTurmaAluno(this.value)">
+                    ${turmasComAlunos.map(t=>`
+                        <option value="${t.id}" ${t.id===turmaAlunoSelecionada?'selected':''}>${esc(t.nome)}</option>
+                    `).join("")}
+                </select>
+            </div>
+
+            <div id="listaAlunosAvaliar">
+    `;
+
+    if(alunos.length === 0){
+        html += `
+            <div class="empty">
+                <div class="empty-icon">📭</div>
+                <p>Nenhum aluno cadastrado nesta turma.</p>
+            </div>
+        `;
+    }else{
+        alunos.forEach(aluno => {
+            const minhaAv = minhasAvaliacoes[aluno.id];
+            const catAtual = minhaAv ? minhaAv.categoria : null;
+            const obsAtual = minhaAv ? minhaAv.observacao : "";
+
+            html += `
+                <div class="aluno-row ${catAtual?'avaliado-'+catAtual:''}" data-aluno="${aluno.id}">
+
+                    <div class="aluno-nome">👤 ${esc(aluno.nome)}</div>
+
+                    <div class="aluno-emoji-btns">
+                        ${Object.keys(CATEGORIAS).map(cat=>`
+                            <button
+                            class="emoji-btn ${catAtual===cat?'selected-'+cat:''}"
+                            title="${CATEGORIAS[cat].label}"
+                            onclick="selecionarCategoria('${aluno.id}','${cat}')"
+                            data-cat="${cat}"
+                            data-aluno="${aluno.id}">
+                                ${CATEGORIAS[cat].emoji}
+                            </button>
+                        `).join("")}
+                    </div>
+
+                    <div class="aluno-obs">
+                        <textarea
+                        placeholder="Observação obrigatória sobre ${esc(aluno.nome)}..."
+                        data-aluno="${aluno.id}">${esc(obsAtual)}</textarea>
+                    </div>
+
+                </div>
+            `;
+        });
+
+        html += `
+            <button class="btn btn-primary btn-full" style="margin-top:20px;" onclick="salvarAvaliacoes('${turmaAlunoSelecionada}')">
+                💾 Salvar avaliações da turma ${esc(turmaSelecionada.nome)}
+            </button>
+        `;
+    }
+
+    html += `
+            </div>
+        </div>
+    `;
+
+    container.innerHTML = html;
+}
+
+
+function mudarTurmaAluno(turmaId){
+    turmaAlunoSelecionada = turmaId;
+    renderAlunos();
+}
+
+
+function selecionarCategoria(alunoId, cat){
+
+    const row = document.querySelector(`.aluno-row[data-aluno="${alunoId}"]`);
+    if(!row) return;
+
+    row.classList.remove("avaliado-otimo","avaliado-bom","avaliado-regular","avaliado-ruim");
+    row.classList.add("avaliado-"+cat);
+
+    row.querySelectorAll(".emoji-btn").forEach(btn=>{
+        btn.classList.remove("selected-otimo","selected-bom","selected-regular","selected-ruim");
+        if(btn.dataset.cat === cat){
+            btn.classList.add("selected-"+cat);
+        }
+    });
+}
+
+
+function salvarAvaliacoes(turmaId){
+
+    const alunos = getAlunos().filter(a=>a.turmaId===turmaId);
+
+    if(alunos.length === 0){
+        alert("Nenhum aluno nesta turma.");
+        return;
+    }
+
+    const novasAvaliacoes = [];
+    const erros = [];
+
+    for(const aluno of alunos){
+
+        const row = document.querySelector(`.aluno-row[data-aluno="${aluno.id}"]`);
+        if(!row) continue;
+
+        const btnSelecionado = row.querySelector(".emoji-btn[class*='selected-']");
+        const textarea = row.querySelector(`textarea[data-aluno="${aluno.id}"]`);
+        const obs = textarea ? textarea.value.trim() : "";
+
+        let categoria = null;
+        if(btnSelecionado){
+            categoria = btnSelecionado.dataset.cat;
+        }
+
+        if(!categoria){
+            erros.push(`Selecione uma carinha para ${aluno.nome}.`);
+            continue;
+        }
+
+        if(!obs){
+            erros.push(`Digite uma observação para ${aluno.nome}.`);
+            if(textarea) textarea.classList.add("erro");
+            continue;
+        }
+
+        if(textarea) textarea.classList.remove("erro");
+
+        novasAvaliacoes.push({
+            alunoId: aluno.id,
+            alunoNome: aluno.nome,
+            turmaId: turmaId,
+            turmaNome: (getTurmas().find(t=>t.id===turmaId)||{}).nome || "",
+            userId: currentUser.id,
+            userName: currentUser.name,
+            categoria: categoria,
+            observacao: obs,
+            createdAt: new Date().toISOString()
+        });
+    }
+
+    if(erros.length > 0){
+        alert("⚠️ Corrija os itens abaixo:\n\n" + erros.join("\n"));
+        return;
+    }
+
+    if(!confirm(`Salvar as avaliações da turma? Você pode reenviar depois se precisar.`)) return;
+
+    const avaliacoes = getAvaliacoes();
+
+    novasAvaliacoes.forEach(nova=>{
+        const idx = avaliacoes.findIndex(a =>
+            a.alunoId===nova.alunoId && a.userId===nova.userId
+        );
+
+        if(idx >= 0){
+            avaliacoes[idx] = { ...avaliacoes[idx], ...nova, updatedAt: new Date().toISOString() };
+        }else{
+            avaliacoes.push(nova);
+        }
+    });
+
+    saveAvaliacoes(avaliacoes);
+
+    addHistory("saved_evaluation", `Avaliou ${novasAvaliacoes.length} aluno(s) da turma "${(getTurmas().find(t=>t.id===turmaId)||{}).nome}".`);
+
+    showToast(`✅ ${novasAvaliacoes.length} avaliação(ões) salva(s)!`);
+
+    renderAlunos();
+    updateMenuAlunosBadge();
+    updateDashboard();
+}
+
+
+/* --------- DIRETOR --------- */
+
+function renderAlunosDiretor(container){
+
+    const turmas = getTurmas();
+    const alunos = getAlunos();
+    const avaliacoes = getAvaliacoes();
+
+    if(turmas.length === 0){
+        container.innerHTML = `
+            <div class="card">
+                <div class="empty">
+                    <div class="empty-icon">🏫</div>
+                    <h3>Nenhuma turma cadastrada</h3>
+                    <p>Cadastre turmas na aba <strong>Questionário</strong> antes de adicionar alunos.</p>
+                </div>
+            </div>
+        `;
+        return;
+    }
+
+    if(!turmaSelecionadaDiretor || !turmas.some(t=>t.id===turmaSelecionadaDiretor)){
+        turmaSelecionadaDiretor = turmas[0].id;
+    }
+
+    const turmaAtual = turmas.find(t=>t.id===turmaSelecionadaDiretor);
+    const alunosTurma = alunos.filter(a=>a.turmaId===turmaSelecionadaDiretor);
+
+    let html = `
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3>👥 Cadastrar alunos</h3>
+                    <p>Selecione a turma e adicione os alunos que serão avaliados.</p>
+                </div>
+            </div>
+
+            <div class="filter-bar" style="margin-bottom:20px;">
+                <label for="seletorTurmaAlunoDiretor">Turma:</label>
+                <select
+                    id="seletorTurmaAlunoDiretor"
+                    class="filter-select"
+                    onchange="mudarTurmaAlunoDiretor(this.value)">
+                    ${turmas.map(t=>`
+                        <option value="${t.id}" ${t.id===turmaSelecionadaDiretor?'selected':''}>
+                            ${esc(t.nome)}
+                        </option>
+                    `).join("")}
+                </select>
+            </div>
+
+            <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
+                <input
+                    id="novoAlunoNome"
+                    class="modal-textarea"
+                    style="min-height:auto;padding:13px 18px;flex:1;min-width:200px;"
+                    placeholder="Nome do aluno"
+                    onkeydown="if(event.key==='Enter'){event.preventDefault();adicionarAlunoDiretor('${turmaSelecionadaDiretor}');}">
+                <button class="btn btn-primary" onclick="adicionarAlunoDiretor('${turmaSelecionadaDiretor}')">
+                    + Adicionar aluno
+                </button>
+            </div>
+
+            <div style="font-size:13px;font-weight:600;color:var(--verdeescuro);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--verdeclaro);">
+                📋 Alunos cadastrados em ${esc(turmaAtual.nome)} (${alunosTurma.length})
+            </div>
+
+            <div id="listaAlunosDiretor">
+    `;
+
+    if(alunosTurma.length === 0){
+        html += `
+            <div class="empty" style="padding:24px 20px;">
+                <div class="empty-icon" style="font-size:32px;">📭</div>
+                Nenhum aluno cadastrado nesta turma ainda.
+            </div>
+        `;
+    }else{
+        alunosTurma.forEach(aluno => {
+            html += `
+                <div class="aluno-row" style="cursor:default;">
+                    <div class="aluno-nome">👤 ${esc(aluno.nome)}</div>
+                    <div class="question-card-actions">
+                        <button
+                            class="question-card-btn"
+                            title="Renomear"
+                            onclick="renomearAluno('${aluno.id}')">
+                            ✏️
+                        </button>
+                        <button
+                            class="question-card-btn danger"
+                            title="Excluir"
+                            onclick="removerAlunoDiretor('${aluno.id}')">
+                            🗑️
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    html += `
+            </div>
+        </div>
+    `;
+
+    const avaliacoesTurma = avaliacoes.filter(a=>a.turmaId===turmaSelecionadaDiretor);
+
+    html += `
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3>📊 Avaliações recebidas — ${esc(turmaAtual.nome)}</h3>
+                    <p>Veja o que os professores responderam sobre cada aluno.</p>
+                </div>
+            </div>
+    `;
+
+    if(alunosTurma.length === 0){
+        html += `<p style="color:var(--cinza);text-align:center;padding:20px;">Cadastre alunos primeiro para ver as avaliações.</p>`;
+    }else if(avaliacoesTurma.length === 0){
+        html += `<p style="color:var(--cinza);text-align:center;padding:20px;">Nenhuma avaliação recebida ainda.</p>`;
+    }else{
+
+        const porAluno = {};
+        avaliacoesTurma.forEach(av=>{
+            if(!porAluno[av.alunoId]) porAluno[av.alunoId] = { nome: av.alunoNome, avaliacoes: [] };
+            porAluno[av.alunoId].avaliacoes.push(av);
+        });
+
+        Object.keys(porAluno).forEach(alunoId=>{
+            const info = porAluno[alunoId];
+
+            html += `
+                <div style="border:1px solid var(--borda);border-radius:12px;padding:14px;margin-bottom:12px;">
+                    <div style="font-weight:700;font-size:15px;margin-bottom:10px;color:var(--verdeescuro);">
+                        👤 ${esc(info.nome)}
+                    </div>
+            `;
+
+            info.avaliacoes.forEach(av=>{
+                const cat = CATEGORIAS[av.categoria] || { label:av.categoria, emoji:"?" };
+
+                html += `
+                    <div style="display:flex;gap:10px;padding:10px;background:var(--bg-app);border-radius:8px;margin-bottom:8px;border-left:4px solid ${
+                        av.categoria==='otimo'?'#16a34a':
+                        av.categoria==='bom'?'#4ade80':
+                        av.categoria==='regular'?'#f59e0b':'#dc3545'
+                    };">
+                        <span style="font-size:22px;">${cat.emoji}</span>
+                        <div style="flex:1;">
+                            <div style="font-size:12.5px;font-weight:700;color:var(--cinza);">
+                                ${esc(av.userName)} — <span style="color:inherit;">${cat.label}</span>
+                            </div>
+                            <div style="font-size:13.5px;margin-top:4px;white-space:pre-wrap;">${esc(av.observacao)}</div>
+                            <div style="font-size:11px;color:var(--cinza);margin-top:6px;">${formatDateTime(av.createdAt)}</div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+        });
+    }
+
+    html += `</div>`;
+
+    container.innerHTML = html;
+}
+
+
+function mudarTurmaAlunoDiretor(turmaId){
+    turmaSelecionadaDiretor = turmaId;
+    renderAlunos();
+}
+
+
+function adicionarAlunoDiretor(turmaId){
+
+    const input = document.getElementById("novoAlunoNome");
+    const nome = input.value.trim();
+
+    if(nome.length < 2){
+        alert("Digite um nome válido.");
+        return;
+    }
+
+    const alunos = getAlunos();
+
+    if(alunos.some(a=>a.turmaId===turmaId && a.nome.toLowerCase()===nome.toLowerCase())){
+        alert("Este aluno já está cadastrado nesta turma.");
+        return;
+    }
+
+    alunos.push({
+        id:id(),
+        turmaId:turmaId,
+        nome:nome,
+        createdAt:new Date().toISOString()
+    });
+
+    saveAlunos(alunos);
+
+    addHistory("created_aluno", `Cadastrou o aluno "${nome}".`);
+
+    input.value = "";
+
+    renderAlunos();
+    showToast("✅ Aluno cadastrado!");
+}
+
+
+function renomearAluno(alunoId){
+
+    const alunos = getAlunos();
+    const aluno = alunos.find(a=>a.id===alunoId);
+    if(!aluno) return;
+
+    const novoNome = prompt("Novo nome do aluno:", aluno.nome);
+    if(novoNome === null) return;
+
+    const nomeLimpo = novoNome.trim();
+
+    if(nomeLimpo.length < 2){
+        alert("Digite um nome válido.");
+        return;
+    }
+
+    if(alunos.some(a=>a.id!==alunoId && a.turmaId===aluno.turmaId && a.nome.toLowerCase()===nomeLimpo.toLowerCase())){
+        alert("Já existe um aluno com este nome nesta turma.");
+        return;
+    }
+
+    aluno.nome = nomeLimpo;
+    saveAlunos(alunos);
+
+    const avaliacoes = getAvaliacoes();
+    avaliacoes.forEach(av=>{
+        if(av.alunoId === alunoId){
+            av.alunoNome = nomeLimpo;
+        }
+    });
+    saveAvaliacoes(avaliacoes);
+
+    addHistory("renamed_aluno", `Renomeou o aluno para "${nomeLimpo}".`);
+
+    renderAlunos();
+    showToast("✅ Aluno renomeado!");
+}
+
+
+function removerAlunoDiretor(alunoId){
+
+    const alunos = getAlunos();
+    const aluno = alunos.find(a=>a.id===alunoId);
+    if(!aluno) return;
+
+    const avaliacoesDoAluno = getAvaliacoes().filter(a=>a.alunoId===alunoId).length;
+
+    let msg = `Remover o aluno "${aluno.nome}"?`;
+    if(avaliacoesDoAluno > 0){
+        msg += `\n\n⚠️ ${avaliacoesDoAluno} avaliação(ões) deste aluno também serão removidas.`;
+    }
+
+    if(!confirm(msg)) return;
+
+    saveAlunos(alunos.filter(a=>a.id!==alunoId));
+    saveAvaliacoes(getAvaliacoes().filter(a=>a.alunoId!==alunoId));
+
+    addHistory("deleted_aluno", `Removeu o aluno "${aluno.nome}".`);
+
+    renderAlunos();
+    showToast("🗑️ Aluno removido.");
+}
+
+
+/* =====================================================
+   PANORAMA
+===================================================== */
+
+function renderPanorama(){
+
+    const container = document.getElementById("panoramaContainer");
+    if(!container) return;
+
+    const turmas = getTurmas();
+    const alunos = getAlunos();
+    const avaliacoes = getAvaliacoes();
+
+    if(avaliacoes.length === 0){
+        container.innerHTML = `
+            <div class="card">
+                <div class="empty">
+                    <div class="empty-icon">📈</div>
+                    <h3>Sem dados ainda</h3>
+                    <p>Quando os professores avaliarem os alunos, o panorama aparece aqui.</p>
+                </div>
+            </div>
+        `;
+        return;
+    }
+
+    const contadores = { otimo:0, bom:0, regular:0, ruim:0 };
+    avaliacoes.forEach(av=>{
+        if(contadores[av.categoria] !== undefined) contadores[av.categoria]++;
+    });
+
+    let html = `
+        <div class="panorama-resumo">
+            <div class="panorama-card otimo">
+                <div class="emoji">😄</div>
+                <div class="num">${contadores.otimo}</div>
+                <div class="lbl">ÓTIMO</div>
+            </div>
+            <div class="panorama-card bom">
+                <div class="emoji">🙂</div>
+                <div class="num">${contadores.bom}</div>
+                <div class="lbl">BOM</div>
+            </div>
+            <div class="panorama-card regular">
+                <div class="emoji">😐</div>
+                <div class="num">${contadores.regular}</div>
+                <div class="lbl">REGULAR</div>
+            </div>
+            <div class="panorama-card ruim">
+                <div class="emoji">😞</div>
+                <div class="num">${contadores.ruim}</div>
+                <div class="lbl">RUIM</div>
+            </div>
+        </div>
+    `;
+
+    html += `<div class="card"><div class="card-header"><h3>🏫 Por turma</h3></div>`;
+
+    turmas.forEach(turma => {
+        const avTurma = avaliacoes.filter(a=>a.turmaId===turma.id);
+        if(avTurma.length === 0) return;
+
+        const total = avTurma.length;
+        const cnt = { otimo:0, bom:0, regular:0, ruim:0 };
+        avTurma.forEach(a=>{ if(cnt[a.categoria]!==undefined) cnt[a.categoria]++; });
+
+        html += `
+            <div class="panorama-turma-bloco">
+                <h3>🏫 ${esc(turma.nome)} <span class="badge">${total} avaliação(ões)</span></h3>
+        `;
+
+        Object.keys(CATEGORIAS).forEach(cat=>{
+            const qtd = cnt[cat];
+            const pct = total > 0 ? Math.round((qtd/total)*100) : 0;
+
+            html += `
+                <div class="barra-wrapper">
+                    <div class="barra-label">
+                        <span>${CATEGORIAS[cat].emoji} ${CATEGORIAS[cat].label}</span>
+                        <span>${qtd} (${pct}%)</span>
+                    </div>
+                    <div class="barra-track">
+                        <div class="barra-fill ${cat}" style="width:${pct}%;">${pct>10?pct+'%':''}</div>
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `</div>`;
+    });
+
+    html += `</div>`;
+
+    const porAluno = {};
+
+    avaliacoes.forEach(av=>{
+        const chave = av.turmaId + "::" + av.alunoNome;
+        if(!porAluno[chave]){
+            porAluno[chave] = {
+                nome: av.alunoNome,
+                turmaId: av.turmaId,
+                turmaNome: av.turmaNome,
+                otimo:0, bom:0, regular:0, ruim:0, total:0
+            };
+        }
+        porAluno[chave][av.categoria] = (porAluno[chave][av.categoria]||0) + 1;
+        porAluno[chave].total++;
+    });
+
+    const listaAlunos = Object.values(porAluno);
+
+    const bemAvaliados = listaAlunos
+        .map(a=>({ ...a, pontosPositivos: a.otimo*2 + a.bom }))
+        .filter(a=>a.pontosPositivos > 0)
+        .sort((a,b)=>b.pontosPositivos - a.pontosPositivos)
+        .slice(0,10);
+
+    const precisamAtencao = listaAlunos
+        .map(a=>({ ...a, pontosNegativos: a.ruim*2 + a.regular }))
+        .filter(a=>a.pontosNegativos > 0)
+        .sort((a,b)=>b.pontosNegativos - a.pontosNegativos)
+        .slice(0,10);
+
+    html += `<div class="card"><div class="card-header"><h3>🌟 Alunos mais bem avaliados</h3></div>`;
+
+    if(bemAvaliados.length === 0){
+        html += `<p style="color:var(--cinza);">Sem dados ainda.</p>`;
+    }else{
+        bemAvaliados.forEach(a=>{
+            html += `
+                <div class="aluno-destaque-item">
+                    <span style="font-size:22px;">😄</span>
+                    <span class="nome">${esc(a.nome)}</span>
+                    <span class="turma-tag">${esc(a.turmaNome||"—")}</span>
+                    <span class="contagem">${a.otimo}× Ótimo • ${a.bom}× Bom</span>
+                </div>
+            `;
+        });
+    }
+
+    html += `</div>`;
+
+    html += `<div class="card"><div class="card-header"><h3>⚠️ Alunos que precisam de atenção</h3></div>`;
+
+    if(precisamAtencao.length === 0){
+        html += `<p style="color:var(--cinza);">Sem dados ainda.</p>`;
+    }else{
+        precisamAtencao.forEach(a=>{
+            html += `
+                <div class="aluno-destaque-item">
+                    <span style="font-size:22px;">😞</span>
+                    <span class="nome">${esc(a.nome)}</span>
+                    <span class="turma-tag">${esc(a.turmaNome||"—")}</span>
+                    <span class="contagem">${a.ruim}× Ruim • ${a.regular}× Regular</span>
+                </div>
+            `;
+        });
+    }
+
+    html += `</div>`;
+
+    container.innerHTML = html;
 }
 
 
@@ -3635,33 +3999,25 @@ function abrirModalEdicao(questionId){
     const modal = document.createElement("div");
     modal.className = "modal-overlay";
     modal.id = "modalEdicao";
-    modal.onclick = (e) => { if(e.target === modal) fecharModalEdicao(); };
+    modal.onclick = (e)=>{ if(e.target===modal) fecharModalEdicao(); };
 
     modal.innerHTML = `
         <div class="modal-box" onclick="event.stopPropagation()">
-
             <button class="modal-close" onclick="fecharModalEdicao()">✕</button>
-
             <h2 class="modal-title">Editar pergunta</h2>
-            <p class="modal-subtitle">Ajuste o texto da pergunta e a seção a que pertence.</p>
+            <p class="modal-subtitle">Ajuste o texto da pergunta e a seção.</p>
 
             <label class="modal-label">Seção</label>
             <select class="modal-section-select" id="modalSection">
-                ${secoes.map(s => `
-                    <option value="${esc(s)}" ${s===question.section?"selected":""}>
-                        ${esc(s)}
-                    </option>
+                ${secoes.map(s=>`
+                    <option value="${esc(s)}" ${s===question.section?"selected":""}>${esc(s)}</option>
                 `).join("")}
                 <option value="__NOVA__">+ Criar nova seção...</option>
             </select>
 
             <div id="novaSecaoWrap" style="display:none;margin-bottom:18px;">
                 <label class="modal-label">Nome da nova seção</label>
-                <input
-                    id="modalNovaSecao"
-                    class="modal-textarea"
-                    style="min-height:auto;padding:12px 16px;"
-                    placeholder="Ex: 6. CONSIDERAÇÕES FINAIS">
+                <input id="modalNovaSecao" class="modal-textarea" style="min-height:auto;padding:12px 16px;" placeholder="Ex: 6. CONSIDERAÇÕES FINAIS">
             </div>
 
             <label class="modal-label">Texto da pergunta</label>
@@ -3671,14 +4027,13 @@ function abrirModalEdicao(questionId){
                 <button class="btn btn-secondary" onclick="fecharModalEdicao()">Cancelar</button>
                 <button class="btn btn-primary" onclick="salvarModalEdicao()">💾 Salvar</button>
             </div>
-
         </div>
     `;
 
     document.body.appendChild(modal);
 
     const select = document.getElementById("modalSection");
-    select.onchange = () => {
+    select.onchange = ()=>{
         const wrap = document.getElementById("novaSecaoWrap");
         if(select.value === "__NOVA__"){
             wrap.style.display = "block";
@@ -3705,25 +4060,16 @@ function salvarModalEdicao(){
 
     const q = getQuestionnaire();
     const question = q.questions.find(x=>x.id===perguntaEditando);
-    if(!question){
-        fecharModalEdicao();
-        return;
-    }
+    if(!question){ fecharModalEdicao(); return; }
 
     const novoTexto = document.getElementById("modalTexto").value.trim();
-    if(!novoTexto){
-        alert("O texto da pergunta não pode ficar vazio.");
-        return;
-    }
+    if(!novoTexto){ alert("O texto não pode ficar vazio."); return; }
 
     let novaSecao = document.getElementById("modalSection").value;
 
     if(novaSecao === "__NOVA__"){
         const custom = document.getElementById("modalNovaSecao").value.trim();
-        if(!custom){
-            alert("Digite o nome da nova seção.");
-            return;
-        }
+        if(!custom){ alert("Digite o nome da nova seção."); return; }
         novaSecao = custom;
     }
 
@@ -3732,10 +4078,7 @@ function salvarModalEdicao(){
 
     persistQuestionnaire(q);
 
-    addHistory(
-        "edited_questionnaire",
-        "Editou uma pergunta da ficha do Pré-Conselho."
-    );
+    addHistory("edited_questionnaire", "Editou uma pergunta.");
 
     fecharModalEdicao();
     renderQuestionnaire();
@@ -3778,15 +4121,13 @@ function showToast(mensagem){
 
 function addNewQuestion(){
 
-    const q=getQuestionnaire();
+    const q = getQuestionnaire();
 
     const novaId = id();
 
     q.questions.push({
-        id: novaId,
-        section: q.questions.length > 0
-            ? q.questions[q.questions.length-1].section
-            : "1. PANORAMA DA TURMA",
+        id:novaId,
+        section: q.questions.length > 0 ? q.questions[q.questions.length-1].section : "1. PANORAMA DA TURMA",
         text: "Nova pergunta — clique para editar."
     });
 
@@ -3799,16 +4140,14 @@ function addNewQuestion(){
 
 function deleteQuestion(questionId){
 
-    const q=getQuestionnaire();
+    const q = getQuestionnaire();
 
     if(q.questions.length<=1){
         alert("O questionário precisa possuir pelo menos uma pergunta.");
         return;
     }
 
-    if(!confirm("Deseja realmente excluir esta pergunta?")){
-        return;
-    }
+    if(!confirm("Deseja realmente excluir esta pergunta?")) return;
 
     q.questions = q.questions.filter(x=>x.id!==questionId);
 
@@ -3820,7 +4159,7 @@ function deleteQuestion(questionId){
 
 
 /* =====================================================
-   ENVIAR FICHA COMPLETA (PROFESSOR) — POR TURMA
+   ENVIAR FICHA (PROFESSOR)
 ===================================================== */
 
 function submitFullQuestionnaire(turmaId){
@@ -3828,37 +4167,27 @@ function submitFullQuestionnaire(turmaId){
     const q = getQuestionnaire();
 
     const turmas = getTurmas();
-    const turma = turmas.find(t => t.id === turmaId);
+    const turma = turmas.find(t=>t.id===turmaId);
     if(!turma) return;
 
-    if(!turma.sent){
-        alert("Esta ficha ainda não foi enviada pela direção.");
-        return;
-    }
+    if(!turma.sent){ alert("Esta ficha ainda não foi enviada."); return; }
 
-    const answerInputs = document.querySelectorAll(
-        `.professor-answer[data-turma="${turmaId}"]`
-    );
+    const answerInputs = document.querySelectorAll(`.professor-answer[data-turma="${turmaId}"]`);
 
-    if(answerInputs.length === 0){
-        alert("Nenhuma pergunta foi encontrada. Recarregue a página.");
-        return;
-    }
+    if(answerInputs.length === 0){ alert("Nenhuma pergunta encontrada."); return; }
 
     const responses = [];
 
     for(const input of answerInputs){
-
         if(!input.value.trim()){
-            alert("Preencha todas as perguntas antes de enviar.");
+            alert("Preencha todas as perguntas.");
             input.focus();
             input.style.borderColor = "#dc3545";
             return;
         }
-
         input.style.borderColor = "";
 
-        const question = q.questions.find(x => x.id === input.dataset.id);
+        const question = q.questions.find(x=>x.id===input.dataset.id);
 
         responses.push({
             questionId: input.dataset.id,
@@ -3869,17 +4198,15 @@ function submitFullQuestionnaire(turmaId){
     }
 
     if(responses.length !== q.questions.length){
-        alert("Algumas perguntas não foram respondidas. Recarregue a página.");
+        alert("Algumas perguntas não foram respondidas.");
         return;
     }
 
-    if(!confirm(`Enviar a ficha da turma "${turma.nome}"? Não será possível editar depois.`)) return;
+    if(!confirm(`Enviar a ficha da turma "${turma.nome}"?`)) return;
 
     const answers = getAnswers();
 
-    const existingIndex = answers.findIndex(
-        a => a.turmaId === turmaId && a.userId === currentUser.id
-    );
+    const existingIndex = answers.findIndex(a=>a.turmaId===turmaId && a.userId===currentUser.id);
 
     const newAnswer = {
         id: existingIndex >= 0 ? answers[existingIndex].id : id(),
@@ -3901,10 +4228,7 @@ function submitFullQuestionnaire(turmaId){
 
     saveAnswers(answers);
 
-    addHistory(
-        "submitted_questionnaire",
-        `Enviou a ficha da turma "${turma.nome}".`
-    );
+    addHistory("submitted_questionnaire", `Enviou a ficha da turma "${turma.nome}".`);
 
     alert("Ficha enviada com sucesso!");
 
@@ -3915,7 +4239,7 @@ function submitFullQuestionnaire(turmaId){
 
 
 /* =====================================================
-   RESPOSTAS DO DIRETOR — POR TURMA
+   RESPOSTAS (DIRETOR)
 ===================================================== */
 
 function renderAnswers(){
@@ -3931,16 +4255,14 @@ function renderAnswers(){
     const turmas = getTurmas();
     const filterSelect = document.getElementById("filterTurma");
 
-    // Atualiza filtro de turmas
     const filtroAtual = filterSelect.value;
 
     filterSelect.innerHTML = `<option value="">Todas as turmas</option>`;
-    turmas.forEach(t => {
+    turmas.forEach(t=>{
         filterSelect.innerHTML += `<option value="${t.id}">${esc(t.nome)}</option>`;
     });
 
-    // Restaura filtro anterior se ainda existir
-    if(filtroAtual && turmas.some(t => t.id === filtroAtual)){
+    if(filtroAtual && turmas.some(t=>t.id===filtroAtual)){
         filterSelect.value = filtroAtual;
     }
 
@@ -3948,7 +4270,7 @@ function renderAnswers(){
 
     let answersFiltradas = answers;
     if(turmaFiltro){
-        answersFiltradas = answers.filter(a => a.turmaId === turmaFiltro);
+        answersFiltradas = answers.filter(a=>a.turmaId===turmaFiltro);
     }
 
     if(answersFiltradas.length === 0){
@@ -3956,17 +4278,15 @@ function renderAnswers(){
             <div class="card">
             <div class="empty">
             <div class="empty-icon">📩</div>
-            <h3>Nenhuma ficha respondida ${turmaFiltro ? "para esta turma" : "ainda"}</h3>
-            <p>As respostas dos professores aparecerão aqui.</p>
+            <h3>Nenhuma ficha respondida ${turmaFiltro?"para esta turma":"ainda"}</h3>
             </div>
             </div>
         `;
         return;
     }
 
-    // Agrupar por turma
     const porTurma = {};
-    answersFiltradas.forEach(a => {
+    answersFiltradas.forEach(a=>{
         const turmaNome = a.turmaNome || (turmas.find(t=>t.id===a.turmaId)||{}).nome || "Turma removida";
         if(!porTurma[turmaNome]) porTurma[turmaNome] = [];
         porTurma[turmaNome].push(a);
@@ -3974,22 +4294,18 @@ function renderAnswers(){
 
     let html = "";
 
-    Object.keys(porTurma).forEach(turmaNome => {
-
+    Object.keys(porTurma).forEach(turmaNome=>{
         html += `
             <div class="card" style="border-left:5px solid #0d6efd;">
-
                 <div class="card-header">
                     <h3 style="font-size:20px;">🏫 ${esc(turmaNome)}</h3>
                     <span class="badge">${porTurma[turmaNome].length} resposta(s)</span>
                 </div>
         `;
 
-        porTurma[turmaNome].forEach(answer => {
-
+        porTurma[turmaNome].forEach(answer=>{
             html += `
                 <div style="border-top:1px solid var(--borda);padding-top:18px;margin-top:14px;">
-
                     <div class="card-header" style="margin-bottom:14px;">
                         <div>
                             <h3 style="font-size:16px;">👤 ${esc(answer.userName)}</h3>
@@ -3997,23 +4313,17 @@ function renderAnswers(){
                         </div>
                         <span class="badge">${formatDateTime(answer.createdAt)}</span>
                     </div>
-
-                    ${
-                        answer.responses.map(response => {
-
-                            const section = response.questionSection || "";
-                            const text = response.questionText || "Pergunta";
-
-                            return `
-                            ${section ? `<div class="section-title" style="font-size:14px;margin:14px 0 8px;">${esc(section)}</div>` : ""}
-                            <div class="answer-box">
-                                <strong>${esc(text)}</strong>
-                                <div class="answer-text">${esc(response.text)}</div>
-                            </div>
-                            `;
-                        }).join("")
-                    }
-
+                    ${answer.responses.map(response=>{
+                        const section = response.questionSection || "";
+                        const text = response.questionText || "Pergunta";
+                        return `
+                        ${section ? `<div class="section-title" style="font-size:14px;margin:14px 0 8px;">${esc(section)}</div>` : ""}
+                        <div class="answer-box">
+                            <strong>${esc(text)}</strong>
+                            <div class="answer-text">${esc(response.text)}</div>
+                        </div>
+                        `;
+                    }).join("")}
                 </div>
             `;
         });
@@ -4035,22 +4345,24 @@ function updateDashboard(){
     const answers = getAnswers();
     const users = getUsers();
     const history = getHistory();
+    const avaliacoes = getAvaliacoes();
 
     document.getElementById("statQuestions").textContent = q.questions.length;
 
-    if(currentUser.role === "diretor"){
-        document.getElementById("statAnswers").textContent = answers.length;
+    if(currentUser.role==="diretor"){
+        document.getElementById("statAnswers").textContent = answers.length + avaliacoes.length;
     }else{
-        document.getElementById("statAnswers").textContent =
-        answers.filter(a => a.userId === currentUser.id).length;
+        const minhasFichas = answers.filter(a=>a.userId===currentUser.id).length;
+        const minhasAv = avaliacoes.filter(a=>a.userId===currentUser.id).length;
+        document.getElementById("statAnswers").textContent = minhasFichas + minhasAv;
     }
 
     document.getElementById("statUsers").textContent = users.length;
 
     document.getElementById("statHistory").textContent =
-    currentUser.role === "diretor"
+    currentUser.role==="diretor"
     ? history.length
-    : history.filter(h => h.userId === currentUser.id).length;
+    : history.filter(h=>h.userId===currentUser.id).length;
 
     renderDashboardHistory();
 }
@@ -4060,20 +4372,20 @@ function renderDashboardHistory(){
 
     let history = getHistory();
 
-    if(currentUser.role === "professor"){
-        history = history.filter(h => h.userId === currentUser.id);
+    if(currentUser.role==="professor"){
+        history = history.filter(h=>h.userId===currentUser.id);
     }
 
     history = history.slice(0,5);
 
     const container = document.getElementById("dashboardHistory");
 
-    if(history.length === 0){
+    if(history.length===0){
         container.innerHTML = `<div class="empty">Nenhuma atividade registrada.</div>`;
         return;
     }
 
-    container.innerHTML = history.map(h => historyHTML(h)).join("");
+    container.innerHTML = history.map(h=>historyHTML(h)).join("");
 }
 
 
@@ -4081,8 +4393,8 @@ function renderHistory(){
 
     let history = getHistory();
 
-    if(currentUser.role === "professor"){
-        history = history.filter(h => h.userId === currentUser.id);
+    if(currentUser.role==="professor"){
+        history = history.filter(h=>h.userId===currentUser.id);
         document.getElementById("historyDescription").textContent =
         "Aqui aparecem somente as suas atividades.";
     }else{
@@ -4092,7 +4404,7 @@ function renderHistory(){
 
     const container = document.getElementById("historyContainer");
 
-    if(history.length === 0){
+    if(history.length===0){
         container.innerHTML = `
         <div class="empty">
         <div class="empty-icon">🕐</div>
@@ -4102,7 +4414,7 @@ function renderHistory(){
         return;
     }
 
-    container.innerHTML = history.map(h => historyHTML(h)).join("");
+    container.innerHTML = history.map(h=>historyHTML(h)).join("");
 }
 
 
@@ -4116,7 +4428,11 @@ function historyHTML(h){
         submitted_questionnaire:"Ficha respondida",
         created_turma:"Turma criada",
         renamed_turma:"Turma renomeada",
-        deleted_turma:"Turma excluída"
+        deleted_turma:"Turma excluída",
+        saved_evaluation:"Avaliação de alunos",
+        created_aluno:"Aluno cadastrado",
+        renamed_aluno:"Aluno renomeado",
+        deleted_aluno:"Aluno removido"
     };
 
     const icons = {
@@ -4127,7 +4443,11 @@ function historyHTML(h){
         submitted_questionnaire:"📩",
         created_turma:"🏫",
         renamed_turma:"📝",
-        deleted_turma:"🗑️"
+        deleted_turma:"🗑️",
+        saved_evaluation:"⭐",
+        created_aluno:"🧑‍🎓",
+        renamed_aluno:"✏️",
+        deleted_aluno:"🗑️"
     };
 
     return `
@@ -4135,17 +4455,9 @@ function historyHTML(h){
     <div class="history-icon">${icons[h.action]||"📌"}</div>
     <div class="history-content">
     <strong>${names[h.action]||"Atividade"}</strong>
-    ${
-        currentUser.role === "diretor"
-        ?
-        `<div>
-        ${esc(h.userName)}
-        <span class="badge">
-        ${h.role==="diretor" ? "Diretor" : "Professor"}
-        </span>
-        </div>`
-        :""
-    }
+    ${currentUser.role==="diretor"
+        ? `<div>${esc(h.userName)} <span class="badge">${h.role==="diretor"?"Diretor":"Professor"}</span></div>`
+        : ""}
     <p>${esc(h.description)}</p>
     <div class="history-date">${formatDateTime(h.date)}</div>
     </div>
@@ -4155,7 +4467,7 @@ function historyHTML(h){
 
 
 /* =====================================================
-   BADGE DE NOTIFICAÇÃO NO MENU
+   BADGES
 ===================================================== */
 
 function updateMenuBadge(){
@@ -4168,20 +4480,46 @@ function updateMenuBadge(){
         return;
     }
 
-    const turmas = getTurmas().filter(t => t.sent);
+    const turmas = getTurmas().filter(t=>t.sent);
     const answers = getAnswers();
 
-    const temPendente = turmas.some(turma => {
-        return !answers.some(
-            a => a.turmaId === turma.id && a.userId === currentUser.id
+    const temPendente = turmas.some(turma =>
+        !answers.some(a => a.turmaId===turma.id && a.userId===currentUser.id)
+    );
+
+    badge.innerHTML = temPendente ? `<span class="menu-notification">NOVA</span>` : "";
+}
+
+
+function updateMenuAlunosBadge(){
+
+    const badge = document.getElementById("menuAlunosBadge");
+    if(!badge || !currentUser) return;
+
+    if(currentUser.role !== "professor"){
+        badge.innerHTML = "";
+        return;
+    }
+
+    const turmas = getTurmas();
+    const alunos = getAlunos();
+    const avaliacoes = getAvaliacoes();
+
+    const temAlunos = alunos.some(a=>turmas.some(t=>t.id===a.turmaId));
+
+    if(!temAlunos){
+        badge.innerHTML = "";
+        return;
+    }
+
+    const temPendente = alunos.some(aluno => {
+        const jaAvaliei = avaliacoes.some(av =>
+            av.alunoId===aluno.id && av.userId===currentUser.id
         );
+        return !jaAvaliei;
     });
 
-    if(temPendente){
-        badge.innerHTML = `<span class="menu-notification">NOVA</span>`;
-    }else{
-        badge.innerHTML = "";
-    }
+    badge.innerHTML = temPendente ? `<span class="menu-notification">NOVA</span>` : "";
 }
 
 
@@ -4191,11 +4529,8 @@ function updateMenuBadge(){
 
 function formatDateTime(date){
     return new Date(date).toLocaleString("pt-BR", {
-        day:"2-digit",
-        month:"2-digit",
-        year:"numeric",
-        hour:"2-digit",
-        minute:"2-digit"
+        day:"2-digit", month:"2-digit", year:"numeric",
+        hour:"2-digit", minute:"2-digit"
     });
 }
 
@@ -4206,9 +4541,7 @@ function formatDateTime(date){
 
 function logout(){
 
-    if(currentUser){
-        addHistory("logout", "Saiu do sistema.");
-    }
+    if(currentUser) addHistory("logout","Saiu do sistema.");
 
     localStorage.removeItem(SESSION_KEY);
     currentUser = null;
