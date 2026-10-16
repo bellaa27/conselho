@@ -1,0 +1,3665 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pré-Conselho de Classe</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:'Poppins',Arial,Helvetica,sans-serif;
+    background:#f4f7f5;
+    color:#26332c;
+    transition:background .3s, color .3s;
+}
+
+button,
+input,
+textarea,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.hidden{
+    display:none!important;
+}
+
+:root{
+    --verde:#198754;
+    --verdeescuro:#12663f;
+    --verdeclaro:#e8f6ee;
+    --borda:#dce5df;
+    --cinza:#68736d;
+    --vermelho:#dc3545;
+    --azul:#0d6efd;
+    --roxo:#7c3aed;
+    --grad:linear-gradient(135deg,#22c55e 0%,#198754 50%,#0d6efd 100%);
+    --bg-card:#ffffff;
+    --bg-app:#f4f7f5;
+    --texto:#26332c;
+}
+
+/* =========================
+   MODO ESCURO
+========================= */
+
+body.dark{
+    --bg-card:#1e2a24;
+    --bg-app:#121a15;
+    --borda:#2f4038;
+    --cinza:#9bb0a5;
+    --verdeclaro:#1a2f24;
+    --texto:#e8f0eb;
+    background:#121a15;
+    color:#e8f0eb;
+}
+
+body.dark .main,
+body.dark .content{
+    background:#121a15;
+}
+
+body.dark .topbar{
+    background:#1e2a24;
+    border-bottom-color:#2f4038;
+}
+
+body.dark .card,
+body.dark .stat,
+body.dark .professor-question{
+    background:#1e2a24;
+    color:#e8f0eb;
+}
+
+body.dark .form-group input,
+body.dark .form-group textarea,
+body.dark .professor-question textarea{
+    background:#121a15;
+    color:#e8f0eb;
+    border-color:#2f4038;
+}
+
+body.dark .answer-box{
+    background:#121a15;
+    border-color:#2f4038;
+}
+
+body.dark .history-item{
+    border-color:#2f4038;
+}
+
+body.dark .btn-secondary{
+    background:#2f4038;
+    color:#e8f0eb;
+}
+
+body.dark .page-title h2{
+    color:#4ade80;
+}
+
+/* =========================
+   TELA DE AUTENTICAÇÃO
+========================= */
+
+.screen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(135deg,
+            rgba(10, 50, 25, .88) 0%,
+            rgba(8, 60, 140, .82) 50%,
+            rgba(15, 80, 50, .88) 100%),
+        url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1920&q=80')
+        center/cover no-repeat fixed;
+}
+
+.screen::before{
+    content:"";
+    position:absolute;
+    inset:-50%;
+    background:radial-gradient(
+        circle at 30% 30%,
+        rgba(255,255,255,.15) 0%,
+        transparent 45%
+    );
+    animation:floatLight 12s ease-in-out infinite;
+    pointer-events:none;
+}
+
+@keyframes floatLight{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(5%,5%) scale(1.1);}
+}
+
+/* =========================
+   AUTH CARD (SPLIT SCREEN)
+========================= */
+
+.auth-card{
+    width:100%;
+    max-width:980px;
+    height:600px;
+    background:white;
+    border-radius:24px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:1fr 1.15fr;
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+    animation:fadeUp .7s ease both;
+    position:relative;
+    z-index:1;
+}
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+.auth-left{
+    background:linear-gradient(160deg,#0d6efd 0%,#0a58ca 100%);
+    color:white;
+    padding:38px 42px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+}
+
+.auth-left::before{
+    content:"";
+    position:absolute;
+    top:-80px;right:-80px;
+    width:220px;height:220px;
+    border-radius:50%;
+    background:rgba(255,255,255,.06);
+    pointer-events:none;
+}
+
+.auth-left::after{
+    content:"";
+    position:absolute;
+    bottom:-100px;left:-60px;
+    width:200px;height:200px;
+    border-radius:50%;
+    background:rgba(255,255,255,.05);
+    pointer-events:none;
+}
+
+.auth-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:.5px;
+    margin-bottom:22px;
+    position:relative;
+    z-index:1;
+}
+
+.auth-content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    z-index:1;
+    overflow-y:auto;
+    padding-right:4px;
+}
+
+.auth-content::-webkit-scrollbar{width:4px;}
+.auth-content::-webkit-scrollbar-thumb{background:rgba(255,255,255,.3);border-radius:4px;}
+
+.auth-content h2{
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.auth-subtitle{
+    font-size:13.5px;
+    opacity:.85;
+    margin-bottom:20px;
+}
+
+.auth-role-tabs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-bottom:16px;
+    background:rgba(255,255,255,.12);
+    padding:5px;
+    border-radius:12px;
+}
+
+.auth-role-tabs button{
+    border:0;
+    background:transparent;
+    color:rgba(255,255,255,.8);
+    padding:9px;
+    border-radius:9px;
+    font-weight:600;
+    font-size:12.5px;
+    transition:all .25s ease;
+    letter-spacing:.3px;
+}
+
+.auth-role-tabs button:hover{
+    color:white;
+}
+
+.auth-role-tabs button.active{
+    background:white;
+    color:#0d6efd;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+
+.auth-input{
+    position:relative;
+    margin-bottom:12px;
+}
+
+.auth-input input{
+    width:100%;
+    padding:13px 18px;
+    border:0;
+    border-radius:30px;
+    background:#f1f5f9;
+    font-size:13.5px;
+    color:#26332c;
+    outline:none;
+    transition:all .25s ease;
+    box-shadow:inset 0 0 0 1px #e2e8f0;
+}
+
+.auth-input input::placeholder{
+    color:#94a3b8;
+    font-weight:400;
+}
+
+.auth-input input:focus{
+    background:white;
+    box-shadow:inset 0 0 0 2px #22c55e, 0 4px 12px rgba(34,197,94,.15);
+}
+
+/* =========================
+   INPUT COM SUFIXO DE DOMÍNIO
+========================= */
+
+.auth-input-group{
+    display:flex;
+    align-items:stretch;
+    background:#f1f5f9;
+    border-radius:30px;
+    box-shadow:inset 0 0 0 1px #e2e8f0;
+    overflow:hidden;
+    margin-bottom:12px;
+    transition:all .25s ease;
+}
+
+.auth-input-group:focus-within{
+    background:white;
+    box-shadow:inset 0 0 0 2px #22c55e, 0 4px 12px rgba(34,197,94,.15);
+}
+
+.auth-input-group input{
+    flex:1;
+    border:0;
+    background:transparent;
+    padding:13px 8px 13px 18px;
+    font-size:13.5px;
+    color:#26332c;
+    outline:none;
+    min-width:0;
+}
+
+.auth-input-group input::placeholder{
+    color:#94a3b8;
+}
+
+.auth-input-suffix{
+    display:flex;
+    align-items:center;
+    padding:0 18px 0 4px;
+    font-size:13px;
+    font-weight:600;
+    color:#0d6efd;
+    background:transparent;
+    white-space:nowrap;
+    user-select:none;
+}
+
+@media(max-width:420px){
+    .auth-input-group{
+        flex-direction:column;
+        border-radius:14px;
+    }
+    .auth-input-group input{
+        padding:13px 18px;
+    }
+    .auth-input-suffix{
+        padding:0 18px 13px;
+    }
+}
+
+.auth-options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:11.5px;
+    margin:4px 4px 16px;
+    color:rgba(255,255,255,.9);
+}
+
+.auth-remember{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
+}
+
+.auth-remember input{
+    accent-color:#22c55e;
+    cursor:pointer;
+}
+
+.auth-forgot{
+    color:rgba(255,255,255,.85);
+    text-decoration:none;
+    transition:color .2s;
+}
+
+.auth-forgot:hover{
+    color:white;
+    text-decoration:underline;
+}
+
+.auth-submit{
+    width:100%;
+    padding:14px;
+    border:0;
+    border-radius:30px;
+    background:#22c55e;
+    color:white;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:1.5px;
+    transition:all .3s ease;
+    box-shadow:0 8px 20px rgba(34,197,94,.4);
+    margin-top:4px;
+}
+
+.auth-submit:hover{
+    background:#16a34a;
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(34,197,94,.55);
+}
+
+.auth-switch{
+    text-align:center;
+    font-size:12.5px;
+    margin-top:16px;
+    opacity:.9;
+}
+
+.auth-switch button{
+    border:0;
+    background:none;
+    color:white;
+    font-weight:700;
+    text-decoration:underline;
+    font-size:12.5px;
+    cursor:pointer;
+    padding:0 3px;
+}
+
+.auth-left .alert{
+    padding:10px 14px;
+    border-radius:10px;
+    font-size:12.5px;
+    margin-bottom:12px;
+    background:rgba(255,255,255,.95);
+    color:#a51d2d;
+    border-left:4px solid #dc3545;
+    animation:shake .4s ease;
+}
+
+.auth-left .alert-success{
+    color:#12663f;
+    border-left-color:#22c55e;
+}
+
+@keyframes shake{
+    0%,100%{transform:translateX(0);}
+    25%{transform:translateX(-6px);}
+    75%{transform:translateX(6px);}
+}
+
+/* =========================
+   LADO DIREITO — ILUSTRAÇÃO SVG
+========================= */
+
+.auth-right{
+    background:#f8fafc;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    padding:20px;
+}
+
+.auth-illustration{
+    width:100%;
+    max-width:520px;
+    height:auto;
+    display:block;
+    animation:floatImg 6s ease-in-out infinite;
+}
+
+@keyframes floatImg{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+
+/* =========================
+   BOTÕES GENÉRICOS
+========================= */
+
+.btn{
+    border:0;
+    border-radius:12px;
+    padding:13px 20px;
+    font-weight:600;
+    font-size:14.5px;
+    transition:all .3s ease;
+}
+
+.btn-primary{
+    background:var(--grad);
+    background-size:200% 200%;
+    color:white;
+    letter-spacing:.3px;
+    box-shadow:0 8px 20px rgba(25,135,84,.3);
+}
+
+.btn-primary:hover{
+    background-position:100% 0;
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(25,135,84,.45);
+}
+
+.btn-primary:active{
+    transform:translateY(0);
+}
+
+.btn-secondary{
+    background:#e9efec;
+    color:#26332c;
+}
+
+.btn-secondary:hover{
+    background:#dde5e0;
+}
+
+.btn-danger{
+    background:var(--vermelho);
+    color:white;
+}
+
+.btn-blue{
+    background:var(--azul);
+    color:white;
+}
+
+.btn-blue:hover{
+    background:#0b5ed7;
+}
+
+.btn-full{
+    width:100%;
+}
+
+/* =========================
+   TRANSIÇÃO DE TELAS
+========================= */
+
+.screen,
+.app{
+    animation:screenFade .5s ease both;
+}
+
+@keyframes screenFade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* =========================
+   SISTEMA
+========================= */
+
+.app{
+    min-height:100vh;
+    background:var(--bg-app);
+}
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:250px;
+    background:linear-gradient(180deg,#12663f 0%,#0d3b25 100%);
+    color:white;
+    padding:25px 15px;
+    z-index:10;
+    box-shadow:4px 0 20px rgba(0,0,0,.15);
+}
+
+.sidebar-logo{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.mini-logo{
+    width:55px;
+    height:55px;
+    margin:auto;
+    background:var(--grad);
+    color:white;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    margin-bottom:10px;
+    box-shadow:0 8px 20px rgba(13,110,253,.4);
+}
+
+.sidebar-logo h2{
+    font-size:18px;
+}
+
+.sidebar-logo p{
+    font-size:12px;
+    opacity:.8;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.menu button{
+    border:0;
+    background:transparent;
+    color:white;
+    text-align:left;
+    padding:13px;
+    border-radius:10px;
+    font-size:14.5px;
+    transition:all .25s ease;
+}
+
+.menu button:hover,
+.menu button.active{
+    background:rgba(255,255,255,.15);
+    transform:translateX(4px);
+}
+
+.menu-icon{
+    display:inline-block;
+    width:27px;
+}
+
+.sidebar-bottom{
+    position:absolute;
+    left:15px;
+    right:15px;
+    bottom:20px;
+}
+
+.user-mini{
+    border-top:1px solid rgba(255,255,255,.15);
+    padding-top:15px;
+    margin-bottom:10px;
+}
+
+.user-mini strong{
+    display:block;
+}
+
+.user-mini small{
+    opacity:.8;
+}
+
+.logout{
+    width:100%;
+    border:0;
+    border-radius:10px;
+    padding:11px;
+    background:rgba(255,255,255,.1);
+    color:white;
+    font-weight:600;
+    transition:all .25s ease;
+}
+
+.logout:hover{
+    background:rgba(220,53,69,.9);
+}
+
+.main{
+    margin-left:250px;
+    min-height:100vh;
+}
+
+.topbar{
+    height:75px;
+    background:var(--bg-card);
+    border-bottom:1px solid var(--borda);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 30px;
+    transition:background .3s;
+}
+
+.topbar h1{
+    color:var(--verdeescuro);
+    font-size:22px;
+    font-weight:700;
+}
+
+body.dark .topbar h1{
+    color:#4ade80;
+}
+
+.top-user{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:var(--grad);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    box-shadow:0 5px 12px rgba(13,110,253,.3);
+}
+
+.content{
+    padding:30px;
+    background:var(--bg-app);
+    transition:background .3s;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.page-title{
+    margin-bottom:25px;
+}
+
+.page-title h2{
+    color:var(--verdeescuro);
+    margin-bottom:5px;
+    font-weight:700;
+}
+
+.page-title p{
+    color:var(--cinza);
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.stat{
+    background:var(--bg-card);
+    padding:20px;
+    border-radius:16px;
+    border-left:4px solid var(--verde);
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+    transition:all .3s ease;
+}
+
+.stat:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+
+.stat-icon{
+    font-size:25px;
+}
+
+.stat h3{
+    font-size:28px;
+    color:var(--verdeescuro);
+    margin-top:5px;
+    font-weight:800;
+}
+
+body.dark .stat h3{
+    color:#4ade80;
+}
+
+.stat p{
+    color:var(--cinza);
+}
+
+.card{
+    background:var(--bg-card);
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+    transition:background .3s;
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.card-header h3{
+    color:var(--verdeescuro);
+    font-weight:700;
+}
+
+body.dark .card-header h3{
+    color:#4ade80;
+}
+
+/* =========================
+   FORM GROUP
+========================= */
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:600;
+    margin-bottom:8px;
+    color:var(--verdeescuro);
+    font-size:14px;
+}
+
+body.dark .form-group label{
+    color:#4ade80;
+}
+
+.form-group input{
+    width:100%;
+    padding:13px 18px;
+    border:2px solid var(--borda);
+    border-radius:12px;
+    font-size:14.5px;
+    background:var(--bg-card);
+    color:inherit;
+    outline:none;
+    transition:all .25s ease;
+}
+
+.form-group input:focus{
+    border-color:var(--verde);
+    box-shadow:0 0 0 4px rgba(25,135,84,.1);
+}
+
+/* =========================
+   PROFESSOR
+========================= */
+
+.professor-question{
+    background:var(--bg-card);
+    border:1px solid var(--borda);
+    border-radius:14px;
+    padding:20px;
+    margin-bottom:15px;
+    transition:all .25s ease;
+}
+
+.professor-question:focus-within{
+    border-color:var(--verde);
+    box-shadow:0 0 0 4px rgba(25,135,84,.1);
+}
+
+.professor-question label{
+    display:block;
+    font-weight:600;
+    line-height:1.5;
+    margin-bottom:12px;
+}
+
+.professor-question textarea{
+    width:100%;
+    min-height:130px;
+    border:2px solid var(--borda);
+    border-radius:10px;
+    padding:12px;
+    resize:vertical;
+    background:var(--bg-card);
+    color:inherit;
+    font-size:14px;
+}
+
+/* =========================
+   RESPOSTAS
+========================= */
+
+.answer-box{
+    background:var(--bg-app);
+    border:1px solid var(--borda);
+    border-radius:12px;
+    padding:17px;
+    margin-top:12px;
+}
+
+.answer-text{
+    white-space:pre-wrap;
+    line-height:1.6;
+    margin-top:10px;
+    color:inherit;
+}
+
+/* =========================
+   HISTÓRICO
+========================= */
+
+.history-item{
+    display:flex;
+    gap:15px;
+    border:1px solid var(--borda);
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:10px;
+    transition:all .25s ease;
+}
+
+.history-item:hover{
+    border-color:var(--verde);
+    transform:translateX(4px);
+}
+
+.history-icon{
+    width:40px;
+    height:40px;
+    flex-shrink:0;
+    border-radius:50%;
+    background:var(--verdeclaro);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+.history-content{
+    flex:1;
+}
+
+.history-content strong{
+    color:var(--verdeescuro);
+}
+
+body.dark .history-content strong{
+    color:#4ade80;
+}
+
+.history-content p{
+    margin-top:5px;
+}
+
+.history-date{
+    color:var(--cinza);
+    font-size:12px;
+    margin-top:6px;
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:20px;
+    background:var(--verdeclaro);
+    color:var(--verdeescuro);
+    font-size:12px;
+    font-weight:600;
+}
+
+body.dark .badge{
+    background:#1a2f24;
+    color:#4ade80;
+}
+
+/* =========================
+   VAZIO
+========================= */
+
+.empty{
+    text-align:center;
+    padding:40px 20px;
+    color:var(--cinza);
+}
+
+.empty-icon{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+/* =========================
+   TEMA TOGGLE
+========================= */
+
+.theme-toggle{
+    background:var(--bg-app);
+    border:1px solid var(--borda);
+    border-radius:50%;
+    width:40px;
+    height:40px;
+    font-size:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:all .25s ease;
+}
+
+.theme-toggle:hover{
+    transform:rotate(20deg) scale(1.1);
+}
+
+/* =========================
+   STATUS DE ENVIO E PROGRESSO
+========================= */
+
+.send-status{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 18px;
+    border-radius:12px;
+    margin-bottom:18px;
+    font-size:14px;
+    font-weight:500;
+}
+
+.send-status.status-sent{
+    background:#e8f6ee;
+    color:#12663f;
+    border-left:4px solid #22c55e;
+}
+
+.send-status.status-not-sent{
+    background:#fff4e5;
+    color:#8a5a00;
+    border-left:4px solid #f59e0b;
+}
+
+body.dark .send-status.status-sent{
+    background:#1a2f24;
+    color:#4ade80;
+}
+
+body.dark .send-status.status-not-sent{
+    background:#3a2a10;
+    color:#fbbf24;
+}
+
+.send-status-icon{
+    font-size:22px;
+}
+
+.progress-bar{
+    width:100%;
+    height:8px;
+    background:#e9efec;
+    border-radius:10px;
+    overflow:hidden;
+    margin-top:8px;
+}
+
+.progress-fill{
+    height:100%;
+    background:linear-gradient(90deg,#22c55e,#0d6efd);
+    border-radius:10px;
+    transition:width .5s ease;
+}
+
+body.dark .progress-bar{
+    background:#2f4038;
+}
+
+.teachers-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:15px;
+}
+
+.teacher-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 15px;
+    border:1px solid var(--borda);
+    border-radius:12px;
+    transition:all .25s ease;
+}
+
+.teacher-item:hover{
+    border-color:var(--verde);
+}
+
+.teacher-avatar{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:var(--grad);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:13px;
+    flex-shrink:0;
+}
+
+.teacher-info{
+    flex:1;
+}
+
+.teacher-info strong{
+    display:block;
+    font-size:14px;
+}
+
+.teacher-info small{
+    color:var(--cinza);
+    font-size:12px;
+}
+
+.teacher-status{
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+.teacher-status.answered{
+    background:#e8f6ee;
+    color:#12663f;
+}
+
+.teacher-status.pending{
+    background:#fff4e5;
+    color:#8a5a00;
+}
+
+body.dark .teacher-status.answered{
+    background:#1a2f24;
+    color:#4ade80;
+}
+
+body.dark .teacher-status.pending{
+    background:#3a2a10;
+    color:#fbbf24;
+}
+
+.menu-notification{
+    display:inline-block;
+    background:#dc3545;
+    color:white;
+    font-size:10px;
+    font-weight:800;
+    padding:2px 7px;
+    border-radius:10px;
+    margin-left:8px;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+}
+
+/* =========================
+   LAYOUT DO DIRETOR
+========================= */
+
+.director-layout{
+    display:block;
+}
+
+/* =========================
+   CARDS DE PERGUNTA
+========================= */
+
+.questions-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:10px;
+}
+
+@media(max-width:900px){
+    .questions-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+.question-card{
+    background:#ffffff;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    padding:20px 22px;
+    cursor:pointer;
+    transition:all .25s ease;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+    position:relative;
+}
+
+.question-card:hover{
+    border-color:#22c55e;
+    box-shadow:0 6px 20px rgba(34,197,94,.15);
+    transform:translateY(-2px);
+}
+
+body.dark .question-card{
+    background:#1e2a24;
+    border-color:#2f4038;
+    color:#e8f0eb;
+}
+
+body.dark .question-card:hover{
+    border-color:#22c55e;
+}
+
+.question-card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:10px;
+}
+
+.question-card-section{
+    font-size:11.5px;
+    font-weight:700;
+    color:#198754;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:6px;
+}
+
+body.dark .question-card-section{
+    color:#4ade80;
+}
+
+.question-card-number{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:#e8f6ee;
+    color:#12663f;
+    font-weight:800;
+    font-size:12px;
+    margin-right:10px;
+    flex-shrink:0;
+}
+
+body.dark .question-card-number{
+    background:#1a2f24;
+    color:#4ade80;
+}
+
+.question-card-text{
+    font-size:15px;
+    line-height:1.55;
+    color:#1f2937;
+    font-weight:500;
+    padding-right:6px;
+}
+
+body.dark .question-card-text{
+    color:#e8f0eb;
+}
+
+.question-card-actions{
+    display:flex;
+    gap:6px;
+    flex-shrink:0;
+}
+
+.question-card-btn{
+    border:0;
+    background:#f3f4f6;
+    color:#4b5563;
+    width:32px;
+    height:32px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    cursor:pointer;
+    transition:all .2s ease;
+}
+
+.question-card-btn:hover{
+    background:#d1fae5;
+    color:#065f46;
+    transform:scale(1.08);
+}
+
+.question-card-btn.danger:hover{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+body.dark .question-card-btn{
+    background:#2f4038;
+    color:#cbd5e1;
+}
+
+body.dark .question-card-btn:hover{
+    background:#166534;
+    color:#bbf7d0;
+}
+
+body.dark .question-card-btn.danger:hover{
+    background:#7f1d1d;
+    color:#fecaca;
+}
+
+.question-card-hint{
+    font-size:11.5px;
+    color:#9ca3af;
+    margin-top:8px;
+    font-style:italic;
+}
+
+body.dark .question-card-hint{
+    color:#6b7280;
+}
+
+/* =========================
+   MODAL DE EDIÇÃO
+========================= */
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(4px);
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    animation:fadeIn .25s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.modal-box{
+    background:white;
+    border-radius:20px;
+    width:100%;
+    max-width:680px;
+    padding:32px;
+    box-shadow:0 30px 80px rgba(0,0,0,.4);
+    animation:modalUp .3s ease;
+    position:relative;
+    max-height:90vh;
+    overflow-y:auto;
+}
+
+@keyframes modalUp{
+    from{opacity:0;transform:translateY(20px) scale(.98);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+}
+
+body.dark .modal-box{
+    background:#1e2a24;
+    color:#e8f0eb;
+}
+
+.modal-close{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    border:0;
+    background:#f3f4f6;
+    color:#6b7280;
+    font-size:18px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:all .2s ease;
+}
+
+.modal-close:hover{
+    background:#fee2e2;
+    color:#991b1b;
+    transform:rotate(90deg);
+}
+
+body.dark .modal-close{
+    background:#2f4038;
+    color:#cbd5e1;
+}
+
+.modal-title{
+    font-size:22px;
+    font-weight:700;
+    color:#1f2937;
+    margin-bottom:6px;
+    padding-right:40px;
+    line-height:1.35;
+}
+
+body.dark .modal-title{
+    color:#e8f0eb;
+}
+
+.modal-subtitle{
+    font-size:13px;
+    color:#6b7280;
+    margin-bottom:22px;
+}
+
+body.dark .modal-subtitle{
+    color:#9bb0a5;
+}
+
+.modal-label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    color:#374151;
+    margin-bottom:8px;
+}
+
+body.dark .modal-label{
+    color:#cbd5e1;
+}
+
+.modal-textarea{
+    width:100%;
+    min-height:140px;
+    border:2px solid #e5e7eb;
+    border-radius:12px;
+    padding:16px 18px;
+    font-size:15px;
+    line-height:1.55;
+    color:#1f2937;
+    resize:vertical;
+    outline:none;
+    transition:all .2s ease;
+    font-family:inherit;
+}
+
+.modal-textarea:focus{
+    border-color:#22c55e;
+    box-shadow:0 0 0 4px rgba(34,197,94,.15);
+}
+
+body.dark .modal-textarea{
+    background:#121a15;
+    color:#e8f0eb;
+    border-color:#2f4038;
+}
+
+.modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:22px;
+    flex-wrap:wrap;
+}
+
+.modal-actions .btn{
+    padding:11px 22px;
+    font-size:14px;
+}
+
+.modal-section-select{
+    width:100%;
+    padding:12px 16px;
+    border:2px solid #e5e7eb;
+    border-radius:12px;
+    font-size:14px;
+    color:#1f2937;
+    background:white;
+    outline:none;
+    margin-bottom:18px;
+    font-family:inherit;
+    cursor:pointer;
+}
+
+.modal-section-select:focus{
+    border-color:#22c55e;
+    box-shadow:0 0 0 4px rgba(34,197,94,.15);
+}
+
+body.dark .modal-section-select{
+    background:#121a15;
+    color:#e8f0eb;
+    border-color:#2f4038;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+.mobile-menu{
+    display:none;
+    border:0;
+    background:none;
+    font-size:25px;
+    color:inherit;
+}
+
+@media(max-width:900px){
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:800px){
+    .auth-card{
+        grid-template-columns:1fr;
+        max-width:440px;
+        height:auto;
+        min-height:560px;
+    }
+    .auth-right{
+        display:none;
+    }
+    .auth-left{
+        padding:34px 28px;
+    }
+}
+
+@media(max-width:700px){
+    .sidebar{
+        transform:translateX(-100%);
+        transition:.3s;
+    }
+    .sidebar.open{
+        transform:translateX(0);
+    }
+    .main{
+        margin-left:0;
+    }
+    .mobile-menu{
+        display:block;
+    }
+    .stats{
+        grid-template-columns:1fr;
+    }
+    .content{
+        padding:18px;
+    }
+    .topbar{
+        padding:0 18px;
+    }
+    .top-user span{
+        display:none;
+    }
+}
+
+@media(max-width:420px){
+    .auth-left{
+        padding:28px 22px;
+    }
+    .auth-content h2{
+        font-size:22px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     TELA DE AUTENTICAÇÃO
+===================================================== -->
+
+<section id="welcomeScreen" class="screen">
+
+<div class="auth-card">
+
+    <div class="auth-left">
+
+        <div class="auth-brand">
+            <span>Pré-Conselho de Classe</span>
+        </div>
+
+        <div class="auth-content">
+
+            <!-- LOGIN -->
+            <div id="loginPanel">
+
+                <h2>Bem-vindo</h2>
+                <p class="auth-subtitle">Entre com sua conta institucional</p>
+
+                <div class="auth-role-tabs">
+                    <button
+                        id="tabProfessor"
+                        type="button"
+                        class="active"
+                        onclick="selectAuthRole('professor')">
+                        Professor
+                    </button>
+                    <button
+                        id="tabDiretor"
+                        type="button"
+                        onclick="selectAuthRole('diretor')">
+                        Diretor
+                    </button>
+                </div>
+
+                <div id="loginAlert"></div>
+
+                <form onsubmit="login(event)">
+
+                    <div class="auth-input-group">
+                        <input
+                            id="loginEmail"
+                            type="text"
+                            placeholder="nome.sobrenome"
+                            autocomplete="username"
+                            required>
+                        <span class="auth-input-suffix">@escola.pr.gov.br</span>
+                    </div>
+
+                    <div class="auth-input">
+                        <input
+                            id="loginPassword"
+                            type="password"
+                            placeholder="Senha"
+                            required>
+                    </div>
+
+                    <div class="auth-options">
+                        <label class="auth-remember">
+                            <input type="checkbox">
+                            <span>Lembrar-me</span>
+                        </label>
+                        <a href="#" class="auth-forgot" onclick="event.preventDefault();alert('Procure a direção da escola para redefinir sua senha.')">
+                            Esqueceu a senha?
+                        </a>
+                    </div>
+
+                    <button type="submit" class="auth-submit">
+                        ENTRAR
+                    </button>
+
+                </form>
+
+                <p class="auth-switch">
+                    Não tem cadastro?
+                    <button type="button" onclick="switchAuthPanel('register')">
+                        Cadastre-se
+                    </button>
+                </p>
+
+            </div>
+
+            <!-- CADASTRO -->
+            <div id="registerPanel" class="hidden">
+
+                <h2>Criar conta</h2>
+                <p class="auth-subtitle">Cadastre sua conta institucional</p>
+
+                <div id="registerAlert"></div>
+
+                <div class="auth-role-tabs">
+                    <button
+                        id="registerProfessor"
+                        type="button"
+                        class="active"
+                        onclick="selectRegisterRole('professor')">
+                        Professor
+                    </button>
+                    <button
+                        id="registerDiretor"
+                        type="button"
+                        onclick="selectRegisterRole('diretor')">
+                        Diretor
+                    </button>
+                </div>
+
+                <form onsubmit="registerUser(event)">
+
+                    <div class="auth-input">
+                        <input
+                            id="registerName"
+                            placeholder="Nome completo"
+                            required>
+                    </div>
+
+                    <div class="auth-input-group">
+                        <input
+                            id="registerEmail"
+                            type="text"
+                            placeholder="nome.sobrenome"
+                            autocomplete="username"
+                            required>
+                        <span class="auth-input-suffix">@escola.pr.gov.br</span>
+                    </div>
+
+                    <div class="auth-input">
+                        <input
+                            id="registerPassword"
+                            type="password"
+                            placeholder="Senha"
+                            required>
+                    </div>
+
+                    <div class="auth-input">
+                        <input
+                            id="registerConfirm"
+                            type="password"
+                            placeholder="Confirmar senha"
+                            required>
+                    </div>
+
+                    <button type="submit" class="auth-submit">
+                        CRIAR CONTA
+                    </button>
+
+                </form>
+
+                <p class="auth-switch">
+                    Já tem conta?
+                    <button type="button" onclick="switchAuthPanel('login')">
+                        Entrar
+                    </button>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="auth-right">
+
+        <svg
+            class="auth-illustration"
+            viewBox="0 0 600 500"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <path
+                d="M 60 250 Q 60 90 220 80 Q 380 70 480 130 Q 560 180 555 290 Q 550 400 430 430 Q 300 460 180 430 Q 60 400 60 250 Z"
+                fill="#e8f0fb"/>
+
+            <g transform="translate(230, 90)">
+                <ellipse cx="0" cy="0" rx="38" ry="42" fill="#facc15"/>
+                <path d="M -18 30 L 18 30 L 14 48 L -14 48 Z" fill="#7c3aed"/>
+                <rect x="-8" y="-6" width="16" height="6" rx="2" fill="#7c3aed"/>
+                <path d="M -8 4 Q 0 -2 8 4" stroke="#7c3aed" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </g>
+
+            <g transform="translate(450, 110)">
+                <path
+                    d="M 0 -35 L 8 -35 L 10 -25 L 20 -22 L 27 -30 L 33 -24 L 26 -17 L 29 -7 L 39 -5 L 39 5 L 29 7 L 26 17 L 33 24 L 27 30 L 20 22 L 10 25 L 8 35 L 0 35 L -2 25 L -12 22 L -19 30 L -25 24 L -18 17 L -21 7 L -31 5 L -31 -5 L -21 -7 L -18 -17 L -25 -24 L -19 -30 L -12 -22 L -2 -25 Z"
+                    fill="#7c3aed"/>
+                <circle cx="4" cy="0" r="9" fill="#e8f0fb"/>
+            </g>
+
+            <g transform="translate(90, 100)">
+                <rect x="0" y="0" width="70" height="50" rx="6" fill="#7c3aed"/>
+                <rect x="8" y="10" width="45" height="4" rx="2" fill="white"/>
+                <rect x="8" y="20" width="55" height="4" rx="2" fill="white"/>
+                <rect x="8" y="30" width="35" height="4" rx="2" fill="white"/>
+                <circle cx="60" cy="12" r="3" fill="#22c55e"/>
+            </g>
+
+            <g transform="translate(120, 190)">
+                <rect x="0" y="20" width="8" height="20" fill="#7c3aed"/>
+                <rect x="14" y="10" width="8" height="30" fill="#7c3aed"/>
+                <rect x="28" y="0" width="8" height="40" fill="#22c55e"/>
+                <rect x="42" y="14" width="8" height="26" fill="#7c3aed"/>
+                <rect x="56" y="6" width="8" height="34" fill="#7c3aed"/>
+            </g>
+
+            <g transform="translate(340, 180)">
+                <rect x="0" y="0" width="60" height="40" rx="8" fill="white" stroke="#7c3aed" stroke-width="3"/>
+                <path d="M 15 40 L 15 50 L 25 40 Z" fill="white" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round"/>
+                <rect x="10" y="10" width="35" height="4" rx="2" fill="#7c3aed"/>
+                <rect x="10" y="20" width="25" height="4" rx="2" fill="#7c3aed"/>
+            </g>
+
+            <g transform="translate(500, 220)">
+                <circle cx="0" cy="0" r="28" fill="#7c3aed"/>
+                <path d="M 0 0 L 0 -28 A 28 28 0 0 1 24 14 Z" fill="#22c55e"/>
+                <path d="M 0 0 L 0 -28 A 28 28 0 0 0 -24 -14 Z" fill="#facc15"/>
+            </g>
+
+            <g transform="translate(105, 240)">
+                <circle cx="0" cy="0" r="22" fill="none" stroke="#7c3aed" stroke-width="10"/>
+                <path d="M 0 -22 A 22 22 0 0 1 19 11" stroke="#22c55e" stroke-width="10" fill="none"/>
+                <path d="M 19 11 A 22 22 0 0 1 -3 22" stroke="#facc15" stroke-width="10" fill="none"/>
+            </g>
+
+            <g transform="translate(500, 130)">
+                <circle cx="0" cy="0" r="14" fill="#22c55e"/>
+                <path d="M -6 0 L -2 4 L 7 -5" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+
+            <rect x="140" y="360" width="330" height="14" rx="7" fill="#7c3aed"/>
+
+            <path d="M 165 300 Q 165 285 180 285 Q 200 285 205 300 L 210 360 L 160 360 Z" fill="#ffffff"/>
+            <circle cx="182" cy="265" r="16" fill="#5b3a29"/>
+            <path d="M 168 258 Q 168 245 182 245 Q 196 245 196 258 Q 192 252 182 252 Q 172 252 168 258 Z" fill="#1e1e1e"/>
+            <rect x="165" y="355" width="16" height="50" rx="6" fill="#7c3aed"/>
+            <rect x="188" y="355" width="16" height="50" rx="6" fill="#7c3aed"/>
+            <ellipse cx="173" cy="408" rx="12" ry="6" fill="#1e1e1e"/>
+            <ellipse cx="196" cy="408" rx="12" ry="6" fill="#1e1e1e"/>
+            <path d="M 200 305 Q 220 320 235 340" stroke="#5b3a29" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+            <path d="M 250 300 Q 250 285 265 285 Q 285 285 290 300 L 295 360 L 245 360 Z" fill="#0d6efd"/>
+            <circle cx="267" cy="265" r="16" fill="#eab48c"/>
+            <path d="M 252 262 Q 252 245 267 245 Q 282 245 282 262 Q 278 256 267 256 Q 256 256 252 262 Z" fill="#1e1e1e"/>
+            <circle cx="267" cy="244" r="6" fill="#1e1e1e"/>
+            <rect x="250" y="355" width="16" height="45" rx="6" fill="#7c3aed"/>
+            <rect x="274" y="355" width="16" height="45" rx="6" fill="#7c3aed"/>
+            <ellipse cx="258" cy="404" rx="12" ry="6" fill="#7c3aed"/>
+            <ellipse cx="282" cy="404" rx="12" ry="6" fill="#7c3aed"/>
+            <path d="M 255 315 L 245 350" stroke="#eab48c" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M 285 315 L 295 350" stroke="#eab48c" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+            <path d="M 235 345 L 305 345 L 305 360 L 235 360 Z" fill="#5b21b6"/>
+            <rect x="240" y="320" width="60" height="30" rx="4" fill="#7c3aed"/>
+            <rect x="245" y="325" width="50" height="20" rx="2" fill="#e8f0fb"/>
+
+            <path d="M 355 260 Q 355 240 375 240 Q 395 240 400 260 L 405 360 L 350 360 Z" fill="#22c7b8"/>
+            <circle cx="375" cy="215" r="18" fill="#eab48c"/>
+            <path d="M 358 212 Q 355 190 375 190 Q 398 190 395 215 L 400 260 L 385 260 Q 385 220 375 210 Q 365 220 365 260 L 352 260 Z" fill="#1e1e1e"/>
+            <rect x="360" y="355" width="16" height="55" rx="6" fill="#4c1d95"/>
+            <rect x="383" y="355" width="16" height="55" rx="6" fill="#4c1d95"/>
+            <ellipse cx="368" cy="413" rx="12" ry="6" fill="#7c3aed"/>
+            <ellipse cx="391" cy="413" rx="12" ry="6" fill="#7c3aed"/>
+            <path d="M 358 285 Q 345 320 350 350" stroke="#eab48c" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M 395 275 Q 410 260 420 240" stroke="#eab48c" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <rect x="418" y="222" width="22" height="14" rx="2" fill="#facc15"/>
+
+            <path d="M 445 300 Q 445 285 460 285 Q 480 285 485 300 L 490 360 L 440 360 Z" fill="#facc15"/>
+            <circle cx="462" cy="265" r="16" fill="#eab48c"/>
+            <path d="M 446 262 Q 446 242 462 242 Q 480 242 480 262 L 485 300 L 478 300 Q 478 260 462 258 Q 448 260 448 300 L 442 300 Z" fill="#1e1e1e"/>
+            <rect x="448" y="355" width="16" height="45" rx="6" fill="#0d6efd"/>
+            <rect x="470" y="355" width="16" height="45" rx="6" fill="#0d6efd"/>
+            <ellipse cx="456" cy="404" rx="12" ry="6" fill="#7c3aed"/>
+            <ellipse cx="478" cy="404" rx="12" ry="6" fill="#7c3aed"/>
+            <path d="M 448 315 L 438 350" stroke="#eab48c" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+            <path d="M 425 345 L 495 345 L 495 360 L 425 360 Z" fill="#5b21b6"/>
+            <rect x="430" y="320" width="60" height="30" rx="4" fill="#7c3aed"/>
+            <rect x="435" y="325" width="50" height="20" rx="2" fill="#e8f0fb"/>
+
+            <path d="M 155 375 Q 155 370 160 370 L 210 370 Q 215 370 215 375 L 215 380 L 155 380 Z" fill="#1e1e1e"/>
+            <rect x="160" y="380" width="5" height="40" fill="#1e1e1e"/>
+            <rect x="205" y="380" width="5" height="40" fill="#1e1e1e"/>
+            <path d="M 240 375 Q 240 370 245 370 L 295 370 Q 300 370 300 375 L 300 380 L 240 380 Z" fill="#1e1e1e"/>
+            <rect x="245" y="380" width="5" height="40" fill="#1e1e1e"/>
+            <rect x="290" y="380" width="5" height="40" fill="#1e1e1e"/>
+            <path d="M 435 375 Q 435 370 440 370 L 490 370 Q 495 370 495 375 L 495 380 L 435 380 Z" fill="#1e1e1e"/>
+            <rect x="440" y="380" width="5" height="40" fill="#1e1e1e"/>
+            <rect x="485" y="380" width="5" height="40" fill="#1e1e1e"/>
+
+            <g transform="translate(540, 400)">
+                <path d="M -18 0 L 18 0 L 14 30 L -14 30 Z" fill="#7c3aed"/>
+                <path d="M 0 0 Q -20 -20 -10 -40 Q -5 -25 0 -10 Z" fill="#22c55e"/>
+                <path d="M 0 0 Q 20 -25 30 -35 Q 20 -20 5 -5 Z" fill="#16a34a"/>
+                <path d="M 0 0 Q -5 -30 5 -45 Q 8 -30 3 -10 Z" fill="#22c55e"/>
+            </g>
+
+            <circle cx="480" cy="180" r="3" fill="#0d6efd"/>
+            <circle cx="495" cy="180" r="3" fill="#0d6efd"/>
+            <circle cx="510" cy="180" r="3" fill="#0d6efd"/>
+
+            <ellipse cx="305" cy="435" rx="180" ry="8" fill="#cbd5e1" opacity=".5"/>
+
+        </svg>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     APLICAÇÃO
+===================================================== -->
+
+<div id="app" class="app hidden">
+
+<aside id="sidebar" class="sidebar">
+
+<div class="sidebar-logo">
+
+<div class="mini-logo">
+📚
+</div>
+
+<h2>
+Pré-Conselho
+</h2>
+
+<p>
+Sistema Escolar
+</p>
+
+</div>
+
+<nav class="menu">
+
+<button
+id="menuDashboard"
+onclick="showPage('dashboard')">
+
+<span class="menu-icon">🏠</span>
+Dashboard
+
+</button>
+
+<button
+id="menuQuestionarios"
+onclick="showPage('questionarios')">
+
+<span class="menu-icon">📝</span>
+Questionário
+<span id="menuQuestionariosBadge"></span>
+
+</button>
+
+<button
+id="menuRespostas"
+class="director-only"
+onclick="showPage('respostas')">
+
+<span class="menu-icon">📊</span>
+Respostas
+
+</button>
+
+<button
+id="menuHistorico"
+onclick="showPage('historico')">
+
+<span class="menu-icon">🕐</span>
+Histórico
+
+</button>
+
+</nav>
+
+<div class="sidebar-bottom">
+
+<div class="user-mini">
+
+<strong id="sidebarUserName">
+Usuário
+</strong>
+
+<small id="sidebarUserRole">
+Professor
+</small>
+
+</div>
+
+<button
+class="logout"
+onclick="logout()">
+
+Sair
+
+</button>
+
+</div>
+
+</aside>
+
+
+<main class="main">
+
+<header class="topbar">
+
+<div style="display:flex;align-items:center;gap:12px;">
+
+<button
+class="mobile-menu"
+onclick="toggleSidebar()">
+
+☰
+
+</button>
+
+<h1 id="pageTitle">
+Dashboard
+</h1>
+
+</div>
+
+<div class="top-user">
+
+<button
+class="theme-toggle"
+onclick="toggleTheme()"
+title="Alternar tema">
+
+🌙
+
+</button>
+
+<div id="avatar" class="avatar">
+U
+</div>
+
+<span id="topUserName">
+Usuário
+</span>
+
+</div>
+
+</header>
+
+
+<div class="content">
+
+
+<!-- DASHBOARD -->
+
+<section id="pageDashboard" class="page">
+
+<div class="page-title">
+
+<h2>
+Olá, <span id="welcomeName"></span>!
+</h2>
+
+<p>
+Bem-vindo ao sistema de Pré-Conselho de Classe.
+</p>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<div class="stat-icon">📝</div>
+<h3 id="statQuestions">0</h3>
+<p id="statQuestionsLabel">Perguntas</p>
+</div>
+
+<div class="stat">
+<div class="stat-icon">📩</div>
+<h3 id="statAnswers">0</h3>
+<p>Respostas</p>
+</div>
+
+<div class="stat">
+<div class="stat-icon">👥</div>
+<h3 id="statUsers">0</h3>
+<p>Usuários</p>
+</div>
+
+<div class="stat">
+<div class="stat-icon">🕐</div>
+<h3 id="statHistory">0</h3>
+<p>Atividades</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>Últimas atividades</h3>
+
+<button
+class="btn btn-secondary"
+onclick="showPage('historico')">
+
+Ver histórico
+
+</button>
+
+</div>
+
+<div id="dashboardHistory"></div>
+
+</div>
+
+</section>
+
+
+<!-- QUESTIONÁRIO -->
+
+<section
+id="pageQuestionarios"
+class="page hidden">
+
+<div class="page-title">
+
+<h2>
+Ficha Individual – Pré-Conselho
+</h2>
+
+<p id="questionPageDescription">
+Questionário do Pré-Conselho de Classe.
+</p>
+
+</div>
+
+
+<div
+id="directorQuestionEditor"
+class="card hidden">
+
+<div class="card-header">
+
+<div>
+
+<h3>Questionário do Diretor</h3>
+
+<p>
+Clique em um card para editar a pergunta.
+</p>
+
+</div>
+
+</div>
+
+<!-- Status de envio -->
+<div id="sendStatusContainer"></div>
+
+<div class="form-group">
+
+<label>Título do questionário</label>
+
+<input
+id="editorTitle"
+value="Ficha Individual – Pré-Conselho de Classe">
+
+</div>
+
+<!-- PERGUNTAS EM GRID -->
+<div class="director-layout">
+
+    <h3 style="color:var(--verdeescuro);font-weight:700;margin:10px 0 15px;font-size:16px;">
+        ✏️ Perguntas do questionário
+    </h3>
+
+    <div id="questionsEditor" class="questions-grid"></div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;">
+
+        <button
+        class="btn btn-secondary"
+        onclick="addNewQuestion()">
+
+        + Adicionar pergunta
+
+        </button>
+
+        <button
+        id="sendButton"
+        class="btn btn-blue"
+        onclick="sendQuestionnaire()">
+
+        📤 Enviar aos professores
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Painel de status dos professores -->
+<div id="teachersStatusPanel" style="margin-top:30px;padding-top:25px;border-top:2px solid var(--borda);">
+
+<div class="card-header">
+
+<div>
+
+<h3>Status dos professores</h3>
+
+<p>Veja quem já respondeu e quem está pendente.</p>
+
+</div>
+
+</div>
+
+<div id="teachersStatusContent"></div>
+
+</div>
+
+</div>
+
+
+<div
+id="professorQuestionnaire"
+class="hidden">
+
+<div class="card">
+
+<div class="card-header">
+
+<div>
+
+<h3 id="professorQuestionnaireTitle">
+Ficha Individual – Pré-Conselho
+</h3>
+
+<p>Responda todas as perguntas abaixo.</p>
+
+</div>
+
+<span
+id="questionnaireStatus"
+class="badge">
+
+Disponível
+
+</span>
+
+</div>
+
+<div id="professorQuestions"></div>
+
+<button
+id="submitQuestionnaireButton"
+class="btn btn-primary btn-full"
+onclick="submitFullQuestionnaire()">
+
+Enviar ficha preenchida
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RESPOSTAS -->
+
+<section
+id="pageRespostas"
+class="page hidden">
+
+<div class="page-title">
+
+<h2>Respostas dos Professores</h2>
+
+<p>Somente a direção possui acesso às respostas.</p>
+
+</div>
+
+<div id="answersContainer"></div>
+
+</section>
+
+
+<!-- HISTÓRICO -->
+
+<section
+id="pageHistorico"
+class="page hidden">
+
+<div class="page-title">
+
+<h2>Histórico</h2>
+
+<p id="historyDescription">Atividades realizadas no sistema.</p>
+
+</div>
+
+<div class="card">
+
+<div id="historyContainer"></div>
+
+</div>
+
+</section>
+
+
+</div>
+
+</main>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   BANCO DE DADOS
+===================================================== */
+
+const USERS_KEY="pc_users";
+const QUESTIONNAIRE_KEY="pc_questionnaire";
+const ANSWERS_KEY="pc_answers";
+const HISTORY_KEY="pc_history";
+const SESSION_KEY="pc_session";
+const THEME_KEY="pc_theme";
+
+let currentUser=null;
+let selectedRole="professor";
+
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+function getUsers(){
+    return JSON.parse(localStorage.getItem(USERS_KEY)||"[]");
+}
+
+function saveUsers(data){
+    localStorage.setItem(USERS_KEY, JSON.stringify(data));
+}
+
+function getQuestionnaire(){
+    return JSON.parse(localStorage.getItem(QUESTIONNAIRE_KEY)||"null");
+}
+
+function persistQuestionnaire(data){
+    try{
+        localStorage.setItem(QUESTIONNAIRE_KEY, JSON.stringify(data));
+    }catch(e){
+        alert("Não foi possível salvar (armazenamento cheio).");
+    }
+}
+
+function getAnswers(){
+    return JSON.parse(localStorage.getItem(ANSWERS_KEY)||"[]");
+}
+
+function saveAnswers(data){
+    try{
+        localStorage.setItem(ANSWERS_KEY, JSON.stringify(data));
+    }catch(e){
+        alert("Não foi possível salvar as respostas.");
+    }
+}
+
+function getHistory(){
+    return JSON.parse(localStorage.getItem(HISTORY_KEY)||"[]");
+}
+
+function saveHistory(data){
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(data));
+}
+
+
+/* =====================================================
+   TEMA
+===================================================== */
+
+function toggleTheme(){
+    const isDark=document.body.classList.toggle("dark");
+    localStorage.setItem(THEME_KEY, isDark?"dark":"light");
+    const btn=document.querySelector(".theme-toggle");
+    if(btn) btn.textContent=isDark?"☀️":"🌙";
+}
+
+function applyTheme(){
+    const theme=localStorage.getItem(THEME_KEY);
+    if(theme==="dark"){
+        document.body.classList.add("dark");
+        const btn=document.querySelector(".theme-toggle");
+        if(btn) btn.textContent="☀️";
+    }
+}
+
+
+/* =====================================================
+   ID
+===================================================== */
+
+function id(){
+    return Date.now().toString(36)+Math.random().toString(36).substring(2);
+}
+
+
+/* =====================================================
+   SEGURANÇA HTML
+===================================================== */
+
+function esc(value){
+    if(value===null||value===undefined) return "";
+    return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+/* =====================================================
+   QUESTIONÁRIO PADRÃO
+===================================================== */
+
+function defaultQuestionnaire(){
+
+return {
+
+id:id(),
+
+title:"Ficha Individual – Pré-Conselho de Classe",
+
+sent:false,
+
+createdAt:new Date().toISOString(),
+
+questions:[
+
+{
+id:id(),
+section:"1. PANORAMA DA TURMA",
+text:"Como você avalia o desenvolvimento geral da turma em relação à aprendizagem?"
+},
+
+{
+id:id(),
+section:"1. PANORAMA DA TURMA",
+text:"Como está a participação, o envolvimento e a postura dos estudantes nas aulas?"
+},
+
+{
+id:id(),
+section:"2. APRENDIZAGEM E FREQUÊNCIA",
+text:"Quais habilidades/conteúdos apresentam maior dificuldade para a turma?"
+},
+
+{
+id:id(),
+section:"2. APRENDIZAGEM E FREQUÊNCIA",
+text:"Há estudantes com baixa frequência ou que necessitam de acompanhamento mais próximo? Quais e por quê?"
+},
+
+{
+id:id(),
+section:"3. DESTAQUES E SITUAÇÕES QUE MERECEM ATENÇÃO",
+text:"Estudantes que se destacaram positivamente (aprendizagem, participação, responsabilidade ou protagonismo):"
+},
+
+{
+id:id(),
+section:"3. DESTAQUES E SITUAÇÕES QUE MERECEM ATENÇÃO",
+text:"Estudantes que apresentam dificuldades significativas ou que necessitam de intervenção/encaminhamento:"
+},
+
+{
+id:id(),
+section:"4. ENCAMINHAMENTOS",
+text:"Quais estratégias já foram realizadas e quais ações você sugere para o próximo período?"
+},
+
+{
+id:id(),
+section:"4. ENCAMINHAMENTOS",
+text:"Há alguma observação importante que deve ser registrada no Pré-Conselho?"
+},
+
+{
+id:id(),
+section:"5. SÍNTESE DO PROFESSOR",
+text:"Deixe aqui uma observação geral sobre a turma e/ou sobre algum estudante que considere relevante para o Conselho de Classe:"
+}
+
+]
+
+};
+
+}
+
+
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
+
+function initialize(){
+
+    let users=getUsers();
+
+    if(!users.some(u=>u.email==="diretor@escola.pr.gov.br")){
+        users.push({
+            id:"diretor-demo",
+            name:"Diretor",
+            email:"diretor@escola.pr.gov.br",
+            password:"1234",
+            role:"diretor"
+        });
+    }
+
+    if(!users.some(u=>u.email==="professor@escola.pr.gov.br")){
+        users.push({
+            id:"professor-demo",
+            name:"Professor",
+            email:"professor@escola.pr.gov.br",
+            password:"1234",
+            role:"professor"
+        });
+    }
+
+    saveUsers(users);
+
+    if(!getQuestionnaire()){
+        persistQuestionnaire(defaultQuestionnaire());
+    }
+
+    applyTheme();
+    checkSession();
+
+}
+
+
+/* =====================================================
+   HISTÓRICO
+===================================================== */
+
+function addHistory(action,description){
+
+    if(!currentUser)return;
+
+    let history=getHistory();
+
+    history.unshift({
+        id:id(),
+        userId:currentUser.id,
+        userName:currentUser.name,
+        role:currentUser.role,
+        action,
+        description,
+        date:new Date().toISOString()
+    });
+
+    saveHistory(history);
+
+}
+
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+function selectAuthRole(role){
+    selectedRole = role;
+    document.getElementById("tabProfessor").classList.toggle("active", role === "professor");
+    document.getElementById("tabDiretor").classList.toggle("active", role === "diretor");
+    document.getElementById("loginAlert").innerHTML = "";
+}
+
+function switchAuthPanel(panel){
+    const loginPanel = document.getElementById("loginPanel");
+    const registerPanel = document.getElementById("registerPanel");
+
+    if(panel === "register"){
+        loginPanel.classList.add("hidden");
+        registerPanel.classList.remove("hidden");
+    }else{
+        registerPanel.classList.add("hidden");
+        loginPanel.classList.remove("hidden");
+    }
+
+    document.getElementById("loginAlert").innerHTML = "";
+    document.getElementById("registerAlert").innerHTML = "";
+}
+
+
+function selectRegisterRole(role){
+    selectedRole=role;
+    document.getElementById("registerProfessor").classList.toggle("active", role==="professor");
+    document.getElementById("registerDiretor").classList.toggle("active", role==="diretor");
+}
+
+
+function registerUser(event){
+
+    event.preventDefault();
+
+    const name=document.getElementById("registerName").value.trim();
+    const username=document.getElementById("registerEmail").value.trim().toLowerCase();
+    const password=document.getElementById("registerPassword").value;
+    const confirm=document.getElementById("registerConfirm").value;
+    const alert=document.getElementById("registerAlert");
+
+    if(name.length<3){
+        alert.innerHTML=`<div class="alert alert-error">Digite seu nome completo.</div>`;
+        return;
+    }
+
+    if(username.length<3){
+        alert.innerHTML=`<div class="alert alert-error">O usuário deve ter pelo menos 3 caracteres.</div>`;
+        return;
+    }
+
+    let cleanUser = username.replace(/@escola\.pr\.gov\.br$/i, "").replace(/@.*$/, "");
+    const userRegex = /^[a-z0-9._-]+$/;
+
+    if(!userRegex.test(cleanUser)){
+        alert.innerHTML=`<div class="alert alert-error">O usuário deve conter apenas letras, números, ponto, underline ou hífen.</div>`;
+        return;
+    }
+
+    const email = cleanUser + "@escola.pr.gov.br";
+
+    if(password.length<4){
+        alert.innerHTML=`<div class="alert alert-error">A senha deve possuir pelo menos 4 caracteres.</div>`;
+        return;
+    }
+
+    if(password!==confirm){
+        alert.innerHTML=`<div class="alert alert-error">As senhas não são iguais.</div>`;
+        return;
+    }
+
+    let users=getUsers();
+
+    if(users.some(u=>u.email===email)){
+        alert.innerHTML=`<div class="alert alert-error">Este usuário já está cadastrado.</div>`;
+        return;
+    }
+
+    users.push({
+        id:id(),
+        name,
+        email,
+        password,
+        role:selectedRole
+    });
+
+    saveUsers(users);
+
+    alert.innerHTML=`<div class="alert alert-success">Cadastro realizado com sucesso!</div>`;
+
+    setTimeout(()=>{
+        switchAuthPanel("login");
+        document.getElementById("loginEmail").value=cleanUser;
+        selectAuthRole(selectedRole);
+    },1000);
+
+}
+
+
+function login(event){
+
+    event.preventDefault();
+
+    let username=document.getElementById("loginEmail").value.trim().toLowerCase();
+    const password=document.getElementById("loginPassword").value;
+
+    username = username.replace(/@escola\.pr\.gov\.br$/i, "").replace(/@.*$/, "");
+
+    const email = username + "@escola.pr.gov.br";
+
+    const user=getUsers().find(
+        u=> u.email===email && u.password===password && u.role===selectedRole
+    );
+
+    if(!user){
+        document.getElementById("loginAlert").innerHTML=
+        `<div class="alert alert-error">Usuário, senha ou perfil incorreto.</div>`;
+        return;
+    }
+
+    currentUser=user;
+
+    localStorage.setItem(SESSION_KEY, JSON.stringify({userId:user.id}));
+
+    addHistory("login", "Entrou no sistema.");
+
+    document.getElementById("welcomeScreen").classList.add("hidden");
+    document.getElementById("app").classList.remove("hidden");
+
+    initializeApp();
+
+}
+
+
+function checkSession(){
+
+    const session=JSON.parse(localStorage.getItem(SESSION_KEY)||"null");
+    if(!session)return;
+
+    const user=getUsers().find(u=>u.id===session.userId);
+    if(!user)return;
+
+    currentUser=user;
+
+    document.getElementById("welcomeScreen").classList.add("hidden");
+    document.getElementById("app").classList.remove("hidden");
+
+    initializeApp();
+
+}
+
+
+function initializeApp(){
+
+    document.getElementById("sidebarUserName").textContent=currentUser.name;
+    document.getElementById("sidebarUserRole").textContent=
+        currentUser.role==="diretor" ? "Diretor" : "Professor";
+    document.getElementById("topUserName").textContent=currentUser.name;
+    document.getElementById("welcomeName").textContent=currentUser.name.split(" ")[0];
+    document.getElementById("avatar").textContent=
+        currentUser.name.substring(0,2).toUpperCase();
+
+    document.querySelectorAll(".director-only").forEach(el=>{
+        if(currentUser.role==="diretor")
+            el.classList.remove("hidden");
+        else
+            el.classList.add("hidden");
+    });
+
+    updateDashboard();
+    showPage("dashboard");
+    updateMenuBadge();
+
+}
+
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
+
+function showPage(page){
+
+    const currentPage = document.querySelector(".page:not(.hidden)");
+
+    if(
+        currentPage &&
+        currentPage.id === "pageQuestionarios" &&
+        page === "questionarios" &&
+        currentUser &&
+        currentUser.role === "professor"
+    ){
+        document.getElementById("sidebar").classList.remove("open");
+        return;
+    }
+
+    document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
+
+    const element=document.getElementById(
+        "page"+page.charAt(0).toUpperCase()+page.slice(1)
+    );
+
+    if(element) element.classList.remove("hidden");
+
+    document.querySelectorAll(".menu button").forEach(b=>b.classList.remove("active"));
+
+    const menu=document.getElementById(
+        "menu"+page.charAt(0).toUpperCase()+page.slice(1)
+    );
+    if(menu) menu.classList.add("active");
+
+    const titles={
+        dashboard:"Dashboard",
+        questionarios:"Questionário",
+        respostas:"Respostas",
+        historico:"Histórico"
+    };
+
+    document.getElementById("pageTitle").textContent=titles[page];
+    document.getElementById("sidebar").classList.remove("open");
+
+    if(page==="dashboard") updateDashboard();
+    if(page==="questionarios") renderQuestionnaire();
+    if(page==="respostas") renderAnswers();
+    if(page==="historico") renderHistory();
+
+}
+
+
+/* =====================================================
+   QUESTIONÁRIO — DIRETOR
+===================================================== */
+
+function renderQuestionnaire(){
+
+    const q=getQuestionnaire();
+
+    if(currentUser.role==="diretor"){
+
+        document.getElementById("directorQuestionEditor").classList.remove("hidden");
+        document.getElementById("professorQuestionnaire").classList.add("hidden");
+
+        document.getElementById("editorTitle").value=q.title;
+
+        const statusContainer = document.getElementById("sendStatusContainer");
+
+        if(q.sent){
+            statusContainer.innerHTML = `
+                <div class="send-status status-sent">
+                    <span class="send-status-icon">✅</span>
+                    <div>
+                        <strong>Questionário enviado aos professores</strong>
+                        <div style="font-size:12px;opacity:.85;margin-top:2px;">
+                            Enviado em ${formatDateTime(q.sentAt)}
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById("sendButton").innerHTML = "🔄 Reenviar aos professores";
+        }else{
+            statusContainer.innerHTML = `
+                <div class="send-status status-not-sent">
+                    <span class="send-status-icon">⚠️</span>
+                    <div>
+                        <strong>Questionário ainda não enviado</strong>
+                        <div style="font-size:12px;opacity:.85;margin-top:2px;">
+                            Os professores não conseguem responder até você clicar em "Enviar aos professores".
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById("sendButton").innerHTML = "📤 Enviar aos professores";
+        }
+
+        const editor=document.getElementById("questionsEditor");
+        editor.innerHTML="";
+
+        if(q.questions.length===0){
+            editor.innerHTML = `
+                <div class="empty" style="padding:30px 20px;grid-column:1/-1;">
+                    <div class="empty-icon">📝</div>
+                    Nenhuma pergunta cadastrada.<br>
+                    Clique em <strong>"+ Adicionar pergunta"</strong> para começar.
+                </div>
+            `;
+        }else{
+            q.questions.forEach((question,index)=>{
+                editor.innerHTML += `
+                    <div class="question-card" onclick="abrirModalEdicao('${question.id}')">
+                        <div class="question-card-header">
+                            <div style="display:flex;align-items:flex-start;flex:1;">
+                                <span class="question-card-number">${index+1}</span>
+                                <div style="flex:1;">
+                                    <div class="question-card-section">${esc(question.section)}</div>
+                                    <div class="question-card-text">${esc(question.text)}</div>
+                                </div>
+                            </div>
+                            <div class="question-card-actions" onclick="event.stopPropagation()">
+                                <button
+                                class="question-card-btn"
+                                title="Editar"
+                                onclick="abrirModalEdicao('${question.id}')">
+                                    ✏️
+                                </button>
+                                <button
+                                class="question-card-btn danger"
+                                title="Excluir"
+                                onclick="deleteQuestion('${question.id}')">
+                                    🗑️
+                                </button>
+                            </div>
+                        </div>
+                        <div class="question-card-hint">Clique para editar</div>
+                    </div>
+                `;
+            });
+        }
+
+        renderTeachersStatus();
+
+    }else{
+        document.getElementById("directorQuestionEditor").classList.add("hidden");
+        document.getElementById("professorQuestionnaire").classList.remove("hidden");
+        renderProfessorQuestionnaire();
+    }
+
+}
+
+
+/* =====================================================
+   MODAL DE EDIÇÃO
+===================================================== */
+
+let perguntaEditando = null;
+
+function abrirModalEdicao(questionId){
+
+    const q = getQuestionnaire();
+    const question = q.questions.find(x=>x.id===questionId);
+    if(!question) return;
+
+    perguntaEditando = questionId;
+
+    const secoes = [...new Set(q.questions.map(x=>x.section))];
+
+    const modal = document.createElement("div");
+    modal.className = "modal-overlay";
+    modal.id = "modalEdicao";
+    modal.onclick = (e) => { if(e.target === modal) fecharModalEdicao(); };
+
+    modal.innerHTML = `
+        <div class="modal-box" onclick="event.stopPropagation()">
+
+            <button class="modal-close" onclick="fecharModalEdicao()">✕</button>
+
+            <h2 class="modal-title">Editar pergunta</h2>
+            <p class="modal-subtitle">Ajuste o texto da pergunta e a seção a que pertence.</p>
+
+            <label class="modal-label">Seção</label>
+            <select class="modal-section-select" id="modalSection">
+                ${secoes.map(s => `
+                    <option value="${esc(s)}" ${s===question.section?"selected":""}>
+                        ${esc(s)}
+                    </option>
+                `).join("")}
+                <option value="__NOVA__">+ Criar nova seção...</option>
+            </select>
+
+            <div id="novaSecaoWrap" style="display:none;margin-bottom:18px;">
+                <label class="modal-label">Nome da nova seção</label>
+                <input
+                    id="modalNovaSecao"
+                    class="modal-textarea"
+                    style="min-height:auto;padding:12px 16px;"
+                    placeholder="Ex: 6. CONSIDERAÇÕES FINAIS">
+            </div>
+
+            <label class="modal-label">Texto da pergunta</label>
+            <textarea class="modal-textarea" id="modalTexto">${esc(question.text)}</textarea>
+
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="fecharModalEdicao()">Cancelar</button>
+                <button class="btn btn-primary" onclick="salvarModalEdicao()">💾 Salvar</button>
+            </div>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const select = document.getElementById("modalSection");
+    select.onchange = () => {
+        const wrap = document.getElementById("novaSecaoWrap");
+        if(select.value === "__NOVA__"){
+            wrap.style.display = "block";
+            document.getElementById("modalNovaSecao").focus();
+        }else{
+            wrap.style.display = "none";
+        }
+    };
+
+    setTimeout(()=> document.getElementById("modalTexto").focus(), 100);
+}
+
+
+function fecharModalEdicao(){
+    const modal = document.getElementById("modalEdicao");
+    if(modal) modal.remove();
+    perguntaEditando = null;
+}
+
+
+function salvarModalEdicao(){
+
+    if(!perguntaEditando) return;
+
+    const q = getQuestionnaire();
+    const question = q.questions.find(x=>x.id===perguntaEditando);
+    if(!question){
+        fecharModalEdicao();
+        return;
+    }
+
+    const novoTexto = document.getElementById("modalTexto").value.trim();
+    if(!novoTexto){
+        alert("O texto da pergunta não pode ficar vazio.");
+        return;
+    }
+
+    let novaSecao = document.getElementById("modalSection").value;
+
+    if(novaSecao === "__NOVA__"){
+        const custom = document.getElementById("modalNovaSecao").value.trim();
+        if(!custom){
+            alert("Digite o nome da nova seção.");
+            return;
+        }
+        novaSecao = custom;
+    }
+
+    question.text = novoTexto;
+    question.section = novaSecao;
+
+    persistQuestionnaire(q);
+
+    addHistory(
+        "edited_questionnaire",
+        "Editou uma pergunta da ficha do Pré-Conselho."
+    );
+
+    fecharModalEdicao();
+    renderQuestionnaire();
+
+    showToast("✅ Pergunta atualizada!");
+}
+
+
+function showToast(mensagem){
+    const toast = document.createElement("div");
+    toast.textContent = mensagem;
+    toast.style.cssText = `
+        position:fixed;
+        bottom:30px;
+        left:50%;
+        transform:translateX(-50%);
+        background:#12663f;
+        color:white;
+        padding:14px 26px;
+        border-radius:30px;
+        font-weight:600;
+        font-size:14px;
+        box-shadow:0 10px 30px rgba(0,0,0,.3);
+        z-index:2000;
+    `;
+    document.body.appendChild(toast);
+
+    setTimeout(()=>{
+        toast.style.transition = "opacity .3s, transform .3s";
+        toast.style.opacity = "0";
+        toast.style.transform = "translateX(-50%) translateY(20px)";
+        setTimeout(()=> toast.remove(), 400);
+    }, 2200);
+}
+
+
+/* =====================================================
+   ADICIONAR PERGUNTA
+===================================================== */
+
+function addNewQuestion(){
+
+    const q=getQuestionnaire();
+
+    const novaId = id();
+
+    q.questions.push({
+        id: novaId,
+        section: q.questions.length > 0
+            ? q.questions[q.questions.length-1].section
+            : "1. PANORAMA DA TURMA",
+        text: "Nova pergunta — clique para editar."
+    });
+
+    persistQuestionnaire(q);
+    renderQuestionnaire();
+
+    setTimeout(()=> abrirModalEdicao(novaId), 100);
+}
+
+
+/* =====================================================
+   EXCLUIR PERGUNTA
+===================================================== */
+
+function deleteQuestion(questionId){
+
+    const q=getQuestionnaire();
+
+    if(q.questions.length<=1){
+        alert("O questionário precisa possuir pelo menos uma pergunta.");
+        return;
+    }
+
+    if(!confirm("Deseja realmente excluir esta pergunta?")){
+        return;
+    }
+
+    q.questions = q.questions.filter(x=>x.id!==questionId);
+
+    persistQuestionnaire(q);
+    renderQuestionnaire();
+
+    showToast("🗑️ Pergunta excluída.");
+}
+
+
+/* =====================================================
+   ENVIAR QUESTIONÁRIO
+===================================================== */
+
+function sendQuestionnaire(){
+
+    const q=getQuestionnaire();
+
+    const titleInput = document.getElementById("editorTitle");
+    if(titleInput && titleInput.value.trim()){
+        q.title = titleInput.value.trim();
+    }
+
+    if(q.questions.length===0){
+        alert("Adicione pelo menos uma pergunta.");
+        return;
+    }
+
+    for(const question of q.questions){
+        if(!question.text.trim()){
+            alert("Existe uma pergunta vazia. Preencha ou exclua.");
+            return;
+        }
+    }
+
+    const jaEnviado = q.sent;
+
+    const mensagem = jaEnviado
+        ? "Este questionário já foi enviado. Deseja reenviá-lo aos professores? (Isso não apaga as respostas já enviadas)"
+        : "Enviar esta ficha para todos os professores? Eles poderão responder imediatamente.";
+
+    if(!confirm(mensagem)) return;
+
+    q.sent = true;
+    q.sentAt = new Date().toISOString();
+
+    persistQuestionnaire(q);
+
+    addHistory(
+        "sent_questionnaire",
+        `${jaEnviado ? "Reenviou" : "Enviou"} a ficha "${q.title}" para os professores.`
+    );
+
+    alert(
+        jaEnviado
+        ? "✅ Questionário reenviado aos professores!"
+        : "✅ Questionário enviado! Os professores já podem responder."
+    );
+
+    renderQuestionnaire();
+}
+
+
+/* =====================================================
+   STATUS DOS PROFESSORES
+===================================================== */
+
+function renderTeachersStatus(){
+
+    const container = document.getElementById("teachersStatusContent");
+    if(!container) return;
+
+    const q = getQuestionnaire();
+    const users = getUsers().filter(u => u.role === "professor");
+    const answers = getAnswers();
+
+    if(users.length === 0){
+        container.innerHTML = `
+            <div class="empty">
+                <div class="empty-icon">👥</div>
+                Nenhum professor cadastrado.
+            </div>
+        `;
+        return;
+    }
+
+    const answered = users.filter(u =>
+        answers.some(a => a.questionnaireId === q.id && a.userId === u.id)
+    );
+
+    const percent = Math.round((answered.length / users.length) * 100);
+
+    let html = `
+        <div style="margin-bottom:18px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <strong style="color:var(--verdeescuro);">
+                    ${answered.length} de ${users.length} professores responderam
+                </strong>
+                <span class="badge">${percent}%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:${percent}%;"></div>
+            </div>
+        </div>
+
+        <div class="teachers-list">
+    `;
+
+    users.forEach(user => {
+
+        const answer = answers.find(
+            a => a.questionnaireId === q.id && a.userId === user.id
+        );
+
+        const initials = user.name
+            .split(" ")
+            .map(n => n[0])
+            .slice(0,2)
+            .join("")
+            .toUpperCase();
+
+        html += `
+            <div class="teacher-item">
+                <div class="teacher-avatar">${esc(initials)}</div>
+                <div class="teacher-info">
+                    <strong>${esc(user.name)}</strong>
+                    <small>${esc(user.email)}</small>
+                </div>
+                ${
+                    answer
+                    ? `<span class="teacher-status answered">✓ RESPONDEU</span>`
+                    : `<span class="teacher-status pending">⏳ PENDENTE</span>`
+                }
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+
+    container.innerHTML = html;
+}
+
+
+/* =====================================================
+   FORMULÁRIO DO PROFESSOR
+===================================================== */
+
+function renderProfessorQuestionnaire(){
+
+    const q=getQuestionnaire();
+    const container=document.getElementById("professorQuestions");
+
+    document.getElementById("professorQuestionnaireTitle").textContent=q.title;
+
+    if(!q.sent){
+        container.innerHTML=`
+        <div class="empty">
+            <div class="empty-icon">⏳</div>
+            <h3>Questionário ainda não enviado</h3>
+            <p>Aguarde a direção disponibilizar a ficha.</p>
+        </div>
+        `;
+        document.getElementById("submitQuestionnaireButton").classList.add("hidden");
+        document.getElementById("questionnaireStatus").textContent="Aguardando";
+        return;
+    }
+
+    const answers=getAnswers();
+
+    const myAnswer=answers.find(
+        a=> a.questionnaireId===q.id && a.userId===currentUser.id
+    );
+
+    if(myAnswer){
+
+        document.getElementById("submitQuestionnaireButton").classList.add("hidden");
+        document.getElementById("questionnaireStatus").textContent="Respondida";
+
+        let lastSection="";
+
+        container.innerHTML=`
+        <div class="alert alert-success">
+        ✅ Você já enviou esta ficha em
+        <strong>${formatDateTime(myAnswer.createdAt)}</strong>.
+        </div>
+        `;
+
+        myAnswer.responses.forEach((response,index)=>{
+
+            const question=q.questions.find(x=>x.id===response.questionId);
+            const section=question?question.section:"";
+
+            if(section!==lastSection){
+                lastSection=section;
+                container.innerHTML+=
+                `<div class="section-title">${esc(section)}</div>`;
+            }
+
+            container.innerHTML+=`
+            <div class="professor-question">
+            <label>${index+1}. ${esc(question?question.text:"Pergunta")}</label>
+            <div class="answer-text">${esc(response.text)}</div>
+            </div>
+            `;
+        });
+
+        return;
+    }
+
+    document.getElementById("submitQuestionnaireButton").classList.remove("hidden");
+    document.getElementById("questionnaireStatus").textContent="Disponível";
+
+    let lastSection="";
+
+    container.innerHTML=`
+    <div class="alert alert-success" style="background:#e8f6ee;color:#12663f;border-left:4px solid #22c55e;padding:14px 18px;border-radius:12px;margin-bottom:18px;font-size:14px;">
+    📩 <strong>Nova ficha disponível!</strong> Preencha todas as perguntas e clique em "Enviar ficha preenchida" ao final.
+    </div>
+    `;
+
+    q.questions.forEach((question,index)=>{
+
+        if(question.section!==lastSection){
+            lastSection=question.section;
+            container.innerHTML+=
+            `<div class="section-title">${esc(lastSection)}</div>`;
+        }
+
+        container.innerHTML+=`
+        <div class="professor-question">
+        <label>${index+1}. ${esc(question.text)}</label>
+        <textarea
+        class="professor-answer"
+        data-id="${question.id}"
+        placeholder="Digite sua resposta..."></textarea>
+        </div>
+        `;
+    });
+}
+
+
+/* =====================================================
+   ENVIAR FICHA COMPLETA (PROFESSOR)
+===================================================== */
+
+function submitFullQuestionnaire(){
+
+    const q=getQuestionnaire();
+
+    if(!q.sent){
+        alert("Este questionário ainda não foi enviado pela direção.");
+        return;
+    }
+
+    const answerInputs=document.querySelectorAll(".professor-answer");
+
+    if(answerInputs.length===0){
+        alert("Nenhuma pergunta foi encontrada. Atualize a página e tente novamente.");
+        return;
+    }
+
+    const responses=[];
+
+    for(const input of answerInputs){
+
+        if(!input.value.trim()){
+            alert("Preencha todas as perguntas antes de enviar.");
+            input.focus();
+            input.style.borderColor="#dc3545";
+            return;
+        }
+
+        input.style.borderColor="";
+
+        const question=q.questions.find(x=>x.id===input.dataset.id);
+
+        responses.push({
+            questionId:input.dataset.id,
+            questionText:question?question.text:"",
+            text:input.value.trim()
+        });
+    }
+
+    if(responses.length!==q.questions.length){
+        alert("Algumas perguntas não foram respondidas. Recarregue a página e tente novamente.");
+        return;
+    }
+
+    if(!confirm("Enviar sua ficha preenchida? Não será possível editar depois.")){
+        return;
+    }
+
+    const answers=getAnswers();
+
+    const existingIndex=answers.findIndex(
+        a=> a.questionnaireId===q.id && a.userId===currentUser.id
+    );
+
+    const newAnswer={
+        id: existingIndex>=0 ? answers[existingIndex].id : id(),
+        questionnaireId:q.id,
+        questionnaireTitle:q.title,
+        userId:currentUser.id,
+        userName:currentUser.name,
+        userEmail:currentUser.email,
+        responses:responses,
+        createdAt:new Date().toISOString()
+    };
+
+    if(existingIndex>=0){
+        answers[existingIndex]=newAnswer;
+    }else{
+        answers.push(newAnswer);
+    }
+
+    saveAnswers(answers);
+
+    addHistory("submitted_questionnaire", `Enviou a ficha "${q.title}".`);
+
+    alert("Ficha enviada com sucesso!");
+
+    renderProfessorQuestionnaire();
+    updateDashboard();
+    updateMenuBadge();
+}
+
+
+/* =====================================================
+   RESPOSTAS DO DIRETOR
+===================================================== */
+
+function renderAnswers(){
+
+    const container=document.getElementById("answersContainer");
+
+    if(currentUser.role!=="diretor"){
+        container.innerHTML="";
+        return;
+    }
+
+    const answers=getAnswers();
+    const q=getQuestionnaire();
+
+    if(answers.length===0){
+        container.innerHTML=`
+        <div class="card">
+        <div class="empty">
+        <div class="empty-icon">📩</div>
+        <h3>Nenhuma ficha respondida ainda</h3>
+        <p>As respostas dos professores aparecerão aqui.</p>
+        </div>
+        </div>
+        `;
+        return;
+    }
+
+    container.innerHTML=answers.map(answer=>{
+
+        return `
+        <div class="card">
+        <div class="card-header">
+        <div>
+        <h3>${esc(answer.userName)}</h3>
+        <p>${esc(answer.userEmail)}</p>
+        </div>
+        <span class="badge">${formatDateTime(answer.createdAt)}</span>
+        </div>
+
+        ${
+            answer.responses.map(response=>{
+
+                const question=q.questions.find(x=>x.id===response.questionId);
+                const text = question ? question.text : (response.questionText||"Pergunta");
+
+                return `
+                <div class="answer-box">
+                <strong>${esc(text)}</strong>
+                <div class="answer-text">${esc(response.text)}</div>
+                </div>
+                `;
+            }).join("")
+        }
+        </div>
+        `;
+    }).join("");
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+function updateDashboard(){
+
+    const q=getQuestionnaire();
+    const answers=getAnswers();
+    const users=getUsers();
+    const history=getHistory();
+
+    document.getElementById("statQuestions").textContent=q.questions.length;
+
+    if(currentUser.role==="diretor"){
+        document.getElementById("statAnswers").textContent=answers.length;
+    }else{
+        document.getElementById("statAnswers").textContent=
+        answers.filter(a=>a.userId===currentUser.id).length;
+    }
+
+    document.getElementById("statUsers").textContent=users.length;
+
+    document.getElementById("statHistory").textContent=
+    currentUser.role==="diretor"
+    ? history.length
+    : history.filter(h=>h.userId===currentUser.id).length;
+
+    renderDashboardHistory();
+}
+
+
+function renderDashboardHistory(){
+
+    let history=getHistory();
+
+    if(currentUser.role==="professor"){
+        history=history.filter(h=>h.userId===currentUser.id);
+    }
+
+    history=history.slice(0,5);
+
+    const container=document.getElementById("dashboardHistory");
+
+    if(history.length===0){
+        container.innerHTML=`<div class="empty">Nenhuma atividade registrada.</div>`;
+        return;
+    }
+
+    container.innerHTML=history.map(h=>historyHTML(h)).join("");
+}
+
+
+function renderHistory(){
+
+    let history=getHistory();
+
+    if(currentUser.role==="professor"){
+        history=history.filter(h=>h.userId===currentUser.id);
+        document.getElementById("historyDescription").textContent=
+        "Aqui aparecem somente as suas atividades.";
+    }else{
+        document.getElementById("historyDescription").textContent=
+        "Histórico geral das atividades realizadas no sistema.";
+    }
+
+    const container=document.getElementById("historyContainer");
+
+    if(history.length===0){
+        container.innerHTML=`
+        <div class="empty">
+        <div class="empty-icon">🕐</div>
+        Nenhuma atividade registrada.
+        </div>
+        `;
+        return;
+    }
+
+    container.innerHTML=history.map(h=>historyHTML(h)).join("");
+}
+
+
+function historyHTML(h){
+
+    const names={
+        login:"Login realizado",
+        logout:"Logout",
+        edited_questionnaire:"Questionário editado",
+        sent_questionnaire:"Questionário enviado",
+        submitted_questionnaire:"Ficha respondida"
+    };
+
+    const icons={
+        login:"🔐",
+        logout:"🚪",
+        edited_questionnaire:"✏️",
+        sent_questionnaire:"📤",
+        submitted_questionnaire:"📩"
+    };
+
+    return `
+    <div class="history-item">
+    <div class="history-icon">${icons[h.action]||"📌"}</div>
+    <div class="history-content">
+    <strong>${names[h.action]||"Atividade"}</strong>
+    ${
+        currentUser.role==="diretor"
+        ?
+        `<div>
+        ${esc(h.userName)}
+        <span class="badge">
+        ${h.role==="diretor" ? "Diretor" : "Professor"}
+        </span>
+        </div>`
+        :""
+    }
+    <p>${esc(h.description)}</p>
+    <div class="history-date">${formatDateTime(h.date)}</div>
+    </div>
+    </div>
+    `;
+}
+
+
+/* =====================================================
+   BADGE DE NOTIFICAÇÃO NO MENU
+===================================================== */
+
+function updateMenuBadge(){
+
+    const badge = document.getElementById("menuQuestionariosBadge");
+    if(!badge || !currentUser) return;
+
+    if(currentUser.role !== "professor"){
+        badge.innerHTML = "";
+        return;
+    }
+
+    const q = getQuestionnaire();
+    const answers = getAnswers();
+
+    const jaRespondeu = answers.some(
+        a => a.questionnaireId === q.id && a.userId === currentUser.id
+    );
+
+    if(q.sent && !jaRespondeu){
+        badge.innerHTML = `<span class="menu-notification">NOVA</span>`;
+    }else{
+        badge.innerHTML = "";
+    }
+}
+
+
+/* =====================================================
+   DATAS
+===================================================== */
+
+function formatDateTime(date){
+    return new Date(date).toLocaleString("pt-BR", {
+        day:"2-digit",
+        month:"2-digit",
+        year:"numeric",
+        hour:"2-digit",
+        minute:"2-digit"
+    });
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout(){
+
+    if(currentUser){
+        addHistory("logout", "Saiu do sistema.");
+    }
+
+    localStorage.removeItem(SESSION_KEY);
+    currentUser=null;
+
+    document.getElementById("app").classList.add("hidden");
+    document.getElementById("welcomeScreen").classList.remove("hidden");
+
+    switchAuthPanel("login");
+}
+
+
+/* =====================================================
+   MENU MOBILE
+===================================================== */
+
+function toggleSidebar(){
+    document.getElementById("sidebar").classList.toggle("open");
+}
+
+
+/* =====================================================
+   INICIAR
+===================================================== */
+
+initialize();
+
+</script>
+
+</body>
+</html>
