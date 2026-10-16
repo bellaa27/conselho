@@ -154,10 +154,6 @@ body.dark .page-title h2{
     50%{transform:translate(5%,5%) scale(1.1);}
 }
 
-/* =========================
-   AUTH CARD (SPLIT SCREEN)
-========================= */
-
 .auth-card{
     width:100%;
     max-width:980px;
@@ -305,10 +301,6 @@ body.dark .page-title h2{
     background:white;
     box-shadow:inset 0 0 0 2px #22c55e, 0 4px 12px rgba(34,197,94,.15);
 }
-
-/* =========================
-   INPUT COM SUFIXO DE DOMÍNIO
-========================= */
 
 .auth-input-group{
     display:flex;
@@ -459,10 +451,6 @@ body.dark .page-title h2{
     75%{transform:translateX(6px);}
 }
 
-/* =========================
-   LADO DIREITO — ILUSTRAÇÃO SVG
-========================= */
-
 .auth-right{
     background:#f8fafc;
     display:flex;
@@ -538,6 +526,15 @@ body.dark .page-title h2{
 
 .btn-blue:hover{
     background:#0b5ed7;
+}
+
+.btn-success{
+    background:#22c55e;
+    color:white;
+}
+
+.btn-success:hover{
+    background:#16a34a;
 }
 
 .btn-full{
@@ -969,10 +966,6 @@ body.dark .badge{
     color:#4ade80;
 }
 
-/* =========================
-   VAZIO
-========================= */
-
 .empty{
     text-align:center;
     padding:40px 20px;
@@ -1161,14 +1154,6 @@ body.dark .teacher-status.pending{
 }
 
 /* =========================
-   LAYOUT DO DIRETOR
-========================= */
-
-.director-layout{
-    display:block;
-}
-
-/* =========================
    CARDS DE PERGUNTA
 ========================= */
 
@@ -1324,7 +1309,7 @@ body.dark .question-card-hint{
 }
 
 /* =========================
-   MODAL DE EDIÇÃO
+   MODAL
 ========================= */
 
 .modal-overlay{
@@ -1494,6 +1479,287 @@ body.dark .modal-section-select{
     background:#121a15;
     color:#e8f0eb;
     border-color:#2f4038;
+}
+
+/* =========================
+   TURMAS
+========================= */
+
+.turmas-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+    gap:18px;
+    margin-top:15px;
+}
+
+.turma-card{
+    background:var(--bg-card);
+    border:1px solid var(--borda);
+    border-radius:14px;
+    padding:20px;
+    transition:all .25s ease;
+    position:relative;
+}
+
+.turma-card:hover{
+    border-color:var(--verde);
+    box-shadow:0 6px 20px rgba(25,135,84,.12);
+}
+
+.turma-card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+}
+
+.turma-card-name{
+    font-size:17px;
+    font-weight:700;
+    color:var(--verdeescuro);
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+body.dark .turma-card-name{
+    color:#4ade80;
+}
+
+.turma-card-actions{
+    display:flex;
+    gap:6px;
+}
+
+.turma-card-btn{
+    border:0;
+    background:#f3f4f6;
+    color:#4b5563;
+    width:32px;
+    height:32px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    cursor:pointer;
+    transition:all .2s ease;
+}
+
+.turma-card-btn:hover{
+    background:#d1fae5;
+    color:#065f46;
+    transform:scale(1.08);
+}
+
+.turma-card-btn.danger:hover{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+body.dark .turma-card-btn{
+    background:#2f4038;
+    color:#cbd5e1;
+}
+
+.turma-info-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 0;
+    border-top:1px dashed var(--borda);
+    font-size:13px;
+    color:var(--cinza);
+}
+
+.turma-info-row:first-of-type{
+    border-top:0;
+}
+
+.turma-send-status{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    font-size:11.5px;
+    font-weight:700;
+    padding:4px 10px;
+    border-radius:20px;
+}
+
+.turma-send-status.sent{
+    background:#e8f6ee;
+    color:#12663f;
+}
+
+.turma-send-status.not-sent{
+    background:#fff4e5;
+    color:#8a5a00;
+}
+
+body.dark .turma-send-status.sent{
+    background:#1a2f24;
+    color:#4ade80;
+}
+
+body.dark .turma-send-status.not-sent{
+    background:#3a2a10;
+    color:#fbbf24;
+}
+
+.turma-btn-send{
+    width:100%;
+    margin-top:14px;
+    padding:11px;
+    border:0;
+    border-radius:10px;
+    font-weight:600;
+    font-size:13.5px;
+    transition:all .25s ease;
+}
+
+.turma-btn-send.enviar{
+    background:#0d6efd;
+    color:white;
+}
+
+.turma-btn-send.enviar:hover{
+    background:#0b5ed7;
+}
+
+.turma-btn-send.reenviar{
+    background:#e9efec;
+    color:#12663f;
+}
+
+.turma-btn-send.reenviar:hover{
+    background:#d1fae5;
+}
+
+body.dark .turma-btn-send.reenviar{
+    background:#2f4038;
+    color:#4ade80;
+}
+
+/* Cards de turma do professor */
+.turma-prof-card{
+    background:var(--bg-card);
+    border:1px solid var(--borda);
+    border-radius:14px;
+    padding:20px;
+    margin-bottom:14px;
+    transition:all .25s ease;
+}
+
+.turma-prof-card:hover{
+    border-color:var(--verde);
+    box-shadow:0 4px 16px rgba(25,135,84,.1);
+}
+
+.turma-prof-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+}
+
+.turma-prof-name{
+    font-size:16px;
+    font-weight:700;
+    color:var(--verdeescuro);
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+body.dark .turma-prof-name{
+    color:#4ade80;
+}
+
+.turma-prof-status{
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+.turma-prof-status.answered{
+    background:#e8f6ee;
+    color:#12663f;
+}
+
+.turma-prof-status.pending{
+    background:#fff4e5;
+    color:#8a5a00;
+}
+
+body.dark .turma-prof-status.answered{
+    background:#1a2f24;
+    color:#4ade80;
+}
+
+body.dark .turma-prof-status.pending{
+    background:#3a2a10;
+    color:#fbbf24;
+}
+
+.turma-prof-body{
+    margin-top:18px;
+    padding-top:18px;
+    border-top:1px solid var(--borda);
+}
+
+.turma-prof-body.hidden{
+    display:none!important;
+}
+
+.turma-prof-toggle-icon{
+    font-size:18px;
+    color:var(--cinza);
+    transition:transform .25s ease;
+}
+
+.turma-prof-card.open .turma-prof-toggle-icon{
+    transform:rotate(180deg);
+}
+
+/* Filtros */
+.filter-bar{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+    align-items:center;
+}
+
+.filter-bar label{
+    font-weight:600;
+    font-size:13.5px;
+    color:var(--verdeescuro);
+}
+
+body.dark .filter-bar label{
+    color:#4ade80;
+}
+
+.filter-select{
+    padding:10px 14px;
+    border:2px solid var(--borda);
+    border-radius:10px;
+    font-size:14px;
+    background:var(--bg-card);
+    color:inherit;
+    outline:none;
+    cursor:pointer;
+    font-family:inherit;
+    transition:all .25s ease;
+}
+
+.filter-select:focus{
+    border-color:var(--verde);
+    box-shadow:0 0 0 4px rgba(25,135,84,.1);
 }
 
 /* =========================
@@ -1897,13 +2163,9 @@ body.dark .modal-section-select{
 📚
 </div>
 
-<h2>
-Pré-Conselho
-</h2>
+<h2>Pré-Conselho</h2>
 
-<p>
-Sistema Escolar
-</p>
+<p>Sistema Escolar</p>
 
 </div>
 
@@ -1953,13 +2215,9 @@ Histórico
 
 <div class="user-mini">
 
-<strong id="sidebarUserName">
-Usuário
-</strong>
+<strong id="sidebarUserName">Usuário</strong>
 
-<small id="sidebarUserRole">
-Professor
-</small>
+<small id="sidebarUserRole">Professor</small>
 
 </div>
 
@@ -1990,9 +2248,7 @@ onclick="toggleSidebar()">
 
 </button>
 
-<h1 id="pageTitle">
-Dashboard
-</h1>
+<h1 id="pageTitle">Dashboard</h1>
 
 </div>
 
@@ -2007,13 +2263,9 @@ title="Alternar tema">
 
 </button>
 
-<div id="avatar" class="avatar">
-U
-</div>
+<div id="avatar" class="avatar">U</div>
 
-<span id="topUserName">
-Usuário
-</span>
+<span id="topUserName">Usuário</span>
 
 </div>
 
@@ -2029,13 +2281,9 @@ Usuário
 
 <div class="page-title">
 
-<h2>
-Olá, <span id="welcomeName"></span>!
-</h2>
+<h2>Olá, <span id="welcomeName"></span>!</h2>
 
-<p>
-Bem-vindo ao sistema de Pré-Conselho de Classe.
-</p>
+<p>Bem-vindo ao sistema de Pré-Conselho de Classe.</p>
 
 </div>
 
@@ -2044,7 +2292,7 @@ Bem-vindo ao sistema de Pré-Conselho de Classe.
 <div class="stat">
 <div class="stat-icon">📝</div>
 <h3 id="statQuestions">0</h3>
-<p id="statQuestionsLabel">Perguntas</p>
+<p>Perguntas</p>
 </div>
 
 <div class="stat">
@@ -2092,15 +2340,11 @@ Ver histórico
 
 <!-- QUESTIONÁRIO -->
 
-<section
-id="pageQuestionarios"
-class="page hidden">
+<section id="pageQuestionarios" class="page hidden">
 
 <div class="page-title">
 
-<h2>
-Ficha Individual – Pré-Conselho
-</h2>
+<h2>Ficha Individual – Pré-Conselho</h2>
 
 <p id="questionPageDescription">
 Questionário do Pré-Conselho de Classe.
@@ -2109,131 +2353,110 @@ Questionário do Pré-Conselho de Classe.
 </div>
 
 
-<div
-id="directorQuestionEditor"
-class="card hidden">
+<!-- ==================== DIRETOR ==================== -->
+<div id="directorQuestionEditor" class="hidden">
 
-<div class="card-header">
+    <!-- Editor de perguntas -->
+    <div class="card">
 
-<div>
+        <div class="card-header">
 
-<h3>Questionário do Diretor</h3>
+            <div>
+                <h3>✏️ Perguntas do questionário</h3>
+                <p>Clique em um card para editar. As perguntas são compartilhadas por todas as turmas.</p>
+            </div>
 
-<p>
-Clique em um card para editar a pergunta.
-</p>
+        </div>
 
-</div>
+        <div class="form-group">
 
-</div>
+            <label>Título do questionário</label>
 
-<!-- Status de envio -->
-<div id="sendStatusContainer"></div>
+            <input
+            id="editorTitle"
+            value="Ficha Individual – Pré-Conselho de Classe">
 
-<div class="form-group">
+        </div>
 
-<label>Título do questionário</label>
+        <div id="questionsEditor" class="questions-grid"></div>
 
-<input
-id="editorTitle"
-value="Ficha Individual – Pré-Conselho de Classe">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;">
 
-</div>
+            <button
+            class="btn btn-secondary"
+            onclick="addNewQuestion()">
 
-<!-- PERGUNTAS EM GRID -->
-<div class="director-layout">
+            + Adicionar pergunta
 
-    <h3 style="color:var(--verdeescuro);font-weight:700;margin:10px 0 15px;font-size:16px;">
-        ✏️ Perguntas do questionário
-    </h3>
+            </button>
 
-    <div id="questionsEditor" class="questions-grid"></div>
+        </div>
 
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;">
+    </div>
 
-        <button
-        class="btn btn-secondary"
-        onclick="addNewQuestion()">
+    <!-- Turmas -->
+    <div class="card">
 
-        + Adicionar pergunta
+        <div class="card-header">
 
-        </button>
+            <div>
+                <h3>🏫 Turmas</h3>
+                <p>Gerencie as turmas e envie o questionário para cada uma.</p>
+            </div>
 
-        <button
-        id="sendButton"
-        class="btn btn-blue"
-        onclick="sendQuestionnaire()">
+            <button
+            class="btn btn-primary"
+            onclick="abrirModalNovaTurma()">
 
-        📤 Enviar aos professores
+            + Nova turma
 
-        </button>
+            </button>
+
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;">
+
+            <button
+            class="btn btn-blue"
+            onclick="enviarParaTodasTurmas()">
+
+            📤 Enviar para todas as turmas
+
+            </button>
+
+        </div>
+
+        <div id="turmasContainer"></div>
 
     </div>
 
 </div>
 
-<!-- Painel de status dos professores -->
-<div id="teachersStatusPanel" style="margin-top:30px;padding-top:25px;border-top:2px solid var(--borda);">
 
-<div class="card-header">
+<!-- ==================== PROFESSOR ==================== -->
+<div id="professorQuestionnaire" class="hidden">
 
-<div>
+    <div class="card">
 
-<h3>Status dos professores</h3>
+        <div class="card-header">
 
-<p>Veja quem já respondeu e quem está pendente.</p>
+            <div>
 
-</div>
+                <h3 id="professorQuestionnaireTitle">
+                Ficha Individual – Pré-Conselho
+                </h3>
 
-</div>
+                <p>
+                Escolha uma turma abaixo e preencha a ficha.
+                </p>
 
-<div id="teachersStatusContent"></div>
+            </div>
 
-</div>
+        </div>
 
-</div>
+        <div id="professorTurmasContainer"></div>
 
-
-<div
-id="professorQuestionnaire"
-class="hidden">
-
-<div class="card">
-
-<div class="card-header">
-
-<div>
-
-<h3 id="professorQuestionnaireTitle">
-Ficha Individual – Pré-Conselho
-</h3>
-
-<p>Responda todas as perguntas abaixo.</p>
-
-</div>
-
-<span
-id="questionnaireStatus"
-class="badge">
-
-Disponível
-
-</span>
-
-</div>
-
-<div id="professorQuestions"></div>
-
-<button
-id="submitQuestionnaireButton"
-class="btn btn-primary btn-full"
-onclick="submitFullQuestionnaire()">
-
-Enviar ficha preenchida
-
-</button>
-
-</div>
+    </div>
 
 </div>
 
@@ -2242,15 +2465,25 @@ Enviar ficha preenchida
 
 <!-- RESPOSTAS -->
 
-<section
-id="pageRespostas"
-class="page hidden">
+<section id="pageRespostas" class="page hidden">
 
 <div class="page-title">
 
 <h2>Respostas dos Professores</h2>
 
 <p>Somente a direção possui acesso às respostas.</p>
+
+</div>
+
+<div class="filter-bar">
+
+<label for="filterTurma">Filtrar por turma:</label>
+
+<select id="filterTurma" class="filter-select" onchange="renderAnswers()">
+
+<option value="">Todas as turmas</option>
+
+</select>
 
 </div>
 
@@ -2261,9 +2494,7 @@ class="page hidden">
 
 <!-- HISTÓRICO -->
 
-<section
-id="pageHistorico"
-class="page hidden">
+<section id="pageHistorico" class="page hidden">
 
 <div class="page-title">
 
@@ -2297,6 +2528,7 @@ class="page hidden">
 
 const USERS_KEY="pc_users";
 const QUESTIONNAIRE_KEY="pc_questionnaire";
+const TURMAS_KEY="pc_turmas";
 const ANSWERS_KEY="pc_answers";
 const HISTORY_KEY="pc_history";
 const SESSION_KEY="pc_session";
@@ -2328,6 +2560,14 @@ function persistQuestionnaire(data){
     }catch(e){
         alert("Não foi possível salvar (armazenamento cheio).");
     }
+}
+
+function getTurmas(){
+    return JSON.parse(localStorage.getItem(TURMAS_KEY)||"[]");
+}
+
+function saveTurmas(data){
+    localStorage.setItem(TURMAS_KEY, JSON.stringify(data));
 }
 
 function getAnswers(){
@@ -2407,8 +2647,6 @@ return {
 id:id(),
 
 title:"Ficha Individual – Pré-Conselho de Classe",
-
-sent:false,
 
 createdAt:new Date().toISOString(),
 
@@ -2507,6 +2745,10 @@ function initialize(){
 
     if(!getQuestionnaire()){
         persistQuestionnaire(defaultQuestionnaire());
+    }
+
+    if(!localStorage.getItem(TURMAS_KEY)){
+        saveTurmas([]);
     }
 
     applyTheme();
@@ -2726,19 +2968,6 @@ function initializeApp(){
 
 function showPage(page){
 
-    const currentPage = document.querySelector(".page:not(.hidden)");
-
-    if(
-        currentPage &&
-        currentPage.id === "pageQuestionarios" &&
-        page === "questionarios" &&
-        currentUser &&
-        currentUser.role === "professor"
-    ){
-        document.getElementById("sidebar").classList.remove("open");
-        return;
-    }
-
     document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
 
     const element=document.getElementById(
@@ -2773,49 +3002,18 @@ function showPage(page){
 
 
 /* =====================================================
-   QUESTIONÁRIO — DIRETOR
+   RENDERIZAÇÃO DO QUESTIONÁRIO
 ===================================================== */
 
 function renderQuestionnaire(){
-
-    const q=getQuestionnaire();
 
     if(currentUser.role==="diretor"){
 
         document.getElementById("directorQuestionEditor").classList.remove("hidden");
         document.getElementById("professorQuestionnaire").classList.add("hidden");
 
+        const q=getQuestionnaire();
         document.getElementById("editorTitle").value=q.title;
-
-        const statusContainer = document.getElementById("sendStatusContainer");
-
-        if(q.sent){
-            statusContainer.innerHTML = `
-                <div class="send-status status-sent">
-                    <span class="send-status-icon">✅</span>
-                    <div>
-                        <strong>Questionário enviado aos professores</strong>
-                        <div style="font-size:12px;opacity:.85;margin-top:2px;">
-                            Enviado em ${formatDateTime(q.sentAt)}
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.getElementById("sendButton").innerHTML = "🔄 Reenviar aos professores";
-        }else{
-            statusContainer.innerHTML = `
-                <div class="send-status status-not-sent">
-                    <span class="send-status-icon">⚠️</span>
-                    <div>
-                        <strong>Questionário ainda não enviado</strong>
-                        <div style="font-size:12px;opacity:.85;margin-top:2px;">
-                            Os professores não conseguem responder até você clicar em "Enviar aos professores".
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.getElementById("sendButton").innerHTML = "📤 Enviar aos professores";
-        }
 
         const editor=document.getElementById("questionsEditor");
         editor.innerHTML="";
@@ -2861,19 +3059,565 @@ function renderQuestionnaire(){
             });
         }
 
-        renderTeachersStatus();
+        renderTurmas();
 
     }else{
         document.getElementById("directorQuestionEditor").classList.add("hidden");
         document.getElementById("professorQuestionnaire").classList.remove("hidden");
-        renderProfessorQuestionnaire();
+        renderProfessorTurmas();
     }
 
 }
 
 
 /* =====================================================
-   MODAL DE EDIÇÃO
+   TURMAS — DIRETOR
+===================================================== */
+
+function renderTurmas(){
+
+    const container = document.getElementById("turmasContainer");
+    if(!container) return;
+
+    const turmas = getTurmas();
+
+    if(turmas.length === 0){
+        container.innerHTML = `
+            <div class="empty">
+                <div class="empty-icon">🏫</div>
+                <h3>Nenhuma turma cadastrada</h3>
+                <p>Clique em <strong>"+ Nova turma"</strong> para começar.</p>
+            </div>
+        `;
+        return;
+    }
+
+    const answers = getAnswers();
+
+    let html = `<div class="turmas-grid">`;
+
+    turmas.forEach(turma => {
+
+        const enviada = !!turma.sent;
+        const enviadaEm = turma.sentAt ? formatDateTime(turma.sentAt) : "";
+
+        const totalRespostas = answers.filter(a => a.turmaId === turma.id).length;
+
+        html += `
+            <div class="turma-card">
+
+                <div class="turma-card-header">
+
+                    <div class="turma-card-name">
+                        🏫 ${esc(turma.nome)}
+                    </div>
+
+                    <div class="turma-card-actions">
+
+                        <button
+                        class="turma-card-btn"
+                        title="Renomear"
+                        onclick="abrirModalRenomearTurma('${turma.id}')">
+                            ✏️
+                        </button>
+
+                        <button
+                        class="turma-card-btn danger"
+                        title="Excluir"
+                        onclick="excluirTurma('${turma.id}')">
+                            🗑️
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="turma-info-row">
+                    <span>Status:</span>
+                    <span class="turma-send-status ${enviada?'sent':'not-sent'}">
+                        ${enviada ? '✓ ENVIADA' : '⏳ NÃO ENVIADA'}
+                    </span>
+                </div>
+
+                ${enviada ? `
+                <div class="turma-info-row">
+                    <span>Enviada em:</span>
+                    <span style="font-size:12px;">${enviadaEm}</span>
+                </div>
+                ` : ''}
+
+                <div class="turma-info-row">
+                    <span>Respostas recebidas:</span>
+                    <span><strong>${totalRespostas}</strong></span>
+                </div>
+
+                <button
+                class="turma-btn-send ${enviada ? 'reenviar' : 'enviar'}"
+                onclick="enviarParaTurma('${turma.id}')">
+
+                ${enviada ? '🔄 Reenviar para esta turma' : '📤 Enviar para esta turma'}
+
+                </button>
+
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+
+    container.innerHTML = html;
+}
+
+
+function abrirModalNovaTurma(){
+
+    const modal = document.createElement("div");
+    modal.className = "modal-overlay";
+    modal.id = "modalTurma";
+    modal.onclick = (e) => { if(e.target === modal) fecharModalTurma(); };
+
+    modal.innerHTML = `
+        <div class="modal-box" style="max-width:500px;" onclick="event.stopPropagation()">
+
+            <button class="modal-close" onclick="fecharModalTurma()">✕</button>
+
+            <h2 class="modal-title">Nova turma</h2>
+            <p class="modal-subtitle">Digite o nome da turma.</p>
+
+            <label class="modal-label">Nome da turma</label>
+            <input
+                id="novaTurmaNome"
+                class="modal-textarea"
+                style="min-height:auto;padding:14px 18px;"
+                placeholder="Ex: 1º Ano A"
+                onkeydown="if(event.key==='Enter'){event.preventDefault();salvarNovaTurma();}">
+
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="fecharModalTurma()">Cancelar</button>
+                <button class="btn btn-primary" onclick="salvarNovaTurma()">💾 Criar turma</button>
+            </div>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    setTimeout(()=> document.getElementById("novaTurmaNome").focus(), 100);
+}
+
+
+function fecharModalTurma(){
+    const modal = document.getElementById("modalTurma");
+    if(modal) modal.remove();
+}
+
+
+function salvarNovaTurma(){
+
+    const nome = document.getElementById("novaTurmaNome").value.trim();
+
+    if(nome.length < 2){
+        alert("Digite um nome válido para a turma.");
+        return;
+    }
+
+    const turmas = getTurmas();
+
+    if(turmas.some(t => t.nome.toLowerCase() === nome.toLowerCase())){
+        alert("Já existe uma turma com este nome.");
+        return;
+    }
+
+    turmas.push({
+        id: id(),
+        nome: nome,
+        sent: false,
+        sentAt: null,
+        createdAt: new Date().toISOString()
+    });
+
+    saveTurmas(turmas);
+
+    addHistory("created_turma", `Criou a turma "${nome}".`);
+
+    fecharModalTurma();
+    renderTurmas();
+    showToast("✅ Turma criada!");
+}
+
+
+function abrirModalRenomearTurma(turmaId){
+
+    const turmas = getTurmas();
+    const turma = turmas.find(t => t.id === turmaId);
+    if(!turma) return;
+
+    const modal = document.createElement("div");
+    modal.className = "modal-overlay";
+    modal.id = "modalTurma";
+    modal.onclick = (e) => { if(e.target === modal) fecharModalTurma(); };
+
+    modal.innerHTML = `
+        <div class="modal-box" style="max-width:500px;" onclick="event.stopPropagation()">
+
+            <button class="modal-close" onclick="fecharModalTurma()">✕</button>
+
+            <h2 class="modal-title">Renomear turma</h2>
+            <p class="modal-subtitle">Altere o nome da turma.</p>
+
+            <label class="modal-label">Nome da turma</label>
+            <input
+                id="novaTurmaNome"
+                class="modal-textarea"
+                style="min-height:auto;padding:14px 18px;"
+                value="${esc(turma.nome)}"
+                onkeydown="if(event.key==='Enter'){event.preventDefault();salvarRenomearTurma('${turmaId}');}">
+
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="fecharModalTurma()">Cancelar</button>
+                <button class="btn btn-primary" onclick="salvarRenomearTurma('${turmaId}')">💾 Salvar</button>
+            </div>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    setTimeout(()=> document.getElementById("novaTurmaNome").focus(), 100);
+}
+
+
+function salvarRenomearTurma(turmaId){
+
+    const nome = document.getElementById("novaTurmaNome").value.trim();
+
+    if(nome.length < 2){
+        alert("Digite um nome válido para a turma.");
+        return;
+    }
+
+    const turmas = getTurmas();
+
+    if(turmas.some(t => t.id !== turmaId && t.nome.toLowerCase() === nome.toLowerCase())){
+        alert("Já existe outra turma com este nome.");
+        return;
+    }
+
+    const turma = turmas.find(t => t.id === turmaId);
+    if(!turma){
+        fecharModalTurma();
+        return;
+    }
+
+    const nomeAntigo = turma.nome;
+    turma.nome = nome;
+
+    saveTurmas(turmas);
+
+    addHistory("renamed_turma", `Renomeou a turma "${nomeAntigo}" para "${nome}".`);
+
+    fecharModalTurma();
+    renderTurmas();
+    showToast("✅ Turma renomeada!");
+}
+
+
+function excluirTurma(turmaId){
+
+    const turmas = getTurmas();
+    const turma = turmas.find(t => t.id === turmaId);
+    if(!turma) return;
+
+    const respostas = getAnswers().filter(a => a.turmaId === turmaId).length;
+
+    let msg = `Deseja realmente excluir a turma "${turma.nome}"?`;
+    if(respostas > 0){
+        msg += `\n\n⚠️ Existem ${respostas} resposta(s) vinculada(s) a esta turma.`;
+    }
+
+    if(!confirm(msg)) return;
+
+    const novasTurmas = turmas.filter(t => t.id !== turmaId);
+    saveTurmas(novasTurmas);
+
+    addHistory("deleted_turma", `Excluiu a turma "${turma.nome}".`);
+
+    renderTurmas();
+    showToast("🗑️ Turma excluída.");
+}
+
+
+function enviarParaTurma(turmaId){
+
+    const q = getQuestionnaire();
+
+    if(q.questions.length === 0){
+        alert("Adicione pelo menos uma pergunta antes de enviar.");
+        return;
+    }
+
+    for(const question of q.questions){
+        if(!question.text.trim()){
+            alert("Existe uma pergunta vazia. Preencha ou exclua.");
+            return;
+        }
+    }
+
+    const turmas = getTurmas();
+    const turma = turmas.find(t => t.id === turmaId);
+    if(!turma) return;
+
+    const titleInput = document.getElementById("editorTitle");
+    if(titleInput && titleInput.value.trim()){
+        q.title = titleInput.value.trim();
+        persistQuestionnaire(q);
+    }
+
+    const jaEnviada = turma.sent;
+
+    const msg = jaEnviada
+        ? `Reenviar o questionário para a turma "${turma.nome}"?`
+        : `Enviar o questionário para a turma "${turma.nome}"?`;
+
+    if(!confirm(msg)) return;
+
+    turma.sent = true;
+    turma.sentAt = new Date().toISOString();
+
+    saveTurmas(turmas);
+
+    addHistory(
+        "sent_questionnaire",
+        `${jaEnviada?"Reenviou":"Enviou"} o questionário para a turma "${turma.nome}".`
+    );
+
+    renderTurmas();
+    showToast(jaEnviada ? "✅ Reenviado!" : "✅ Enviado para a turma!");
+}
+
+
+function enviarParaTodasTurmas(){
+
+    const q = getQuestionnaire();
+
+    if(q.questions.length === 0){
+        alert("Adicione pelo menos uma pergunta antes de enviar.");
+        return;
+    }
+
+    for(const question of q.questions){
+        if(!question.text.trim()){
+            alert("Existe uma pergunta vazia. Preencha ou exclua.");
+            return;
+        }
+    }
+
+    const turmas = getTurmas();
+
+    if(turmas.length === 0){
+        alert("Cadastre pelo menos uma turma antes de enviar.");
+        return;
+    }
+
+    const titleInput = document.getElementById("editorTitle");
+    if(titleInput && titleInput.value.trim()){
+        q.title = titleInput.value.trim();
+        persistQuestionnaire(q);
+    }
+
+    if(!confirm(`Enviar o questionário para TODAS as ${turmas.length} turmas?`)) return;
+
+    const agora = new Date().toISOString();
+
+    turmas.forEach(turma => {
+        turma.sent = true;
+        turma.sentAt = agora;
+    });
+
+    saveTurmas(turmas);
+
+    addHistory(
+        "sent_questionnaire",
+        `Enviou o questionário para todas as ${turmas.length} turmas.`
+    );
+
+    renderTurmas();
+    showToast(`✅ Enviado para ${turmas.length} turma(s)!`);
+}
+
+
+/* =====================================================
+   TURMAS — PROFESSOR
+===================================================== */
+
+function renderProfessorTurmas(){
+
+    const container = document.getElementById("professorTurmasContainer");
+    if(!container) return;
+
+    const turmas = getTurmas();
+    const q = getQuestionnaire();
+    const answers = getAnswers();
+
+    document.getElementById("professorQuestionnaireTitle").textContent = q.title;
+
+    if(turmas.length === 0){
+        container.innerHTML = `
+            <div class="empty">
+                <div class="empty-icon">⏳</div>
+                <h3>Nenhuma turma disponível</h3>
+                <p>Aguarde a direção cadastrar e enviar as fichas.</p>
+            </div>
+        `;
+        return;
+    }
+
+    const turmasEnviadas = turmas.filter(t => t.sent);
+
+    if(turmasEnviadas.length === 0){
+        container.innerHTML = `
+            <div class="empty">
+                <div class="empty-icon">⏳</div>
+                <h3>Nenhuma ficha enviada ainda</h3>
+                <p>Aguarde a direção enviar o questionário.</p>
+            </div>
+        `;
+        return;
+    }
+
+    let html = "";
+
+    turmasEnviadas.forEach(turma => {
+
+        const minhaResposta = answers.find(
+            a => a.turmaId === turma.id && a.userId === currentUser.id
+        );
+
+        const respondida = !!minhaResposta;
+
+        html += `
+            <div class="turma-prof-card" id="turmaProf${turma.id}">
+
+                <div class="turma-prof-header" onclick="toggleTurmaProfessor('${turma.id}')">
+
+                    <div class="turma-prof-name">
+                        🏫 ${esc(turma.nome)}
+                    </div>
+
+                    <div style="display:flex;align-items:center;gap:12px;">
+
+                        <span class="turma-prof-status ${respondida?'answered':'pending'}">
+                            ${respondida ? '✓ RESPONDIDA' : '⏳ PENDENTE'}
+                        </span>
+
+                        <span class="turma-prof-toggle-icon">▼</span>
+
+                    </div>
+
+                </div>
+
+                <div class="turma-prof-body hidden" id="turmaBody${turma.id}">
+
+                    ${renderTurmaProfessorBody(turma, minhaResposta, q)}
+
+                </div>
+
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
+}
+
+
+function renderTurmaProfessorBody(turma, minhaResposta, q){
+
+    if(minhaResposta){
+
+        let html = `
+            <div class="alert alert-success" style="background:#e8f6ee;color:#12663f;border-left:4px solid #22c55e;padding:12px 16px;border-radius:12px;margin-bottom:16px;font-size:13.5px;">
+            ✅ Você respondeu em <strong>${formatDateTime(minhaResposta.createdAt)}</strong>.
+            </div>
+        `;
+
+        let lastSection = "";
+
+        minhaResposta.responses.forEach((response, index) => {
+
+            const question = q.questions.find(x => x.id === response.questionId);
+            const section = question ? question.section : "";
+
+            if(section !== lastSection){
+                lastSection = section;
+                html += `<div class="section-title">${esc(section)}</div>`;
+            }
+
+            html += `
+                <div class="professor-question">
+                    <label>${index+1}. ${esc(response.questionText || (question?question.text:"Pergunta"))}</label>
+                    <div class="answer-text">${esc(response.text)}</div>
+                </div>
+            `;
+        });
+
+        return html;
+    }
+
+    let html = `
+        <div style="background:#e8f6ee;color:#12663f;border-left:4px solid #22c55e;padding:12px 16px;border-radius:12px;margin-bottom:16px;font-size:13.5px;">
+        📩 <strong>Nova ficha disponível!</strong> Preencha todas as perguntas e clique em "Enviar ficha preenchida".
+        </div>
+    `;
+
+    let lastSection = "";
+
+    q.questions.forEach((question, index) => {
+
+        if(question.section !== lastSection){
+            lastSection = question.section;
+            html += `<div class="section-title">${esc(lastSection)}</div>`;
+        }
+
+        html += `
+            <div class="professor-question">
+                <label>${index+1}. ${esc(question.text)}</label>
+                <textarea
+                class="professor-answer"
+                data-turma="${turma.id}"
+                data-id="${question.id}"
+                placeholder="Digite sua resposta..."></textarea>
+            </div>
+        `;
+    });
+
+    html += `
+        <button
+        class="btn btn-primary btn-full"
+        onclick="submitFullQuestionnaire('${turma.id}')">
+
+        Enviar ficha preenchida
+
+        </button>
+    `;
+
+    return html;
+}
+
+
+function toggleTurmaProfessor(turmaId){
+
+    const card = document.getElementById("turmaProf" + turmaId);
+    const body = document.getElementById("turmaBody" + turmaId);
+
+    if(!card || !body) return;
+
+    card.classList.toggle("open");
+    body.classList.toggle("hidden");
+}
+
+
+/* =====================================================
+   MODAL DE EDIÇÃO DE PERGUNTA
 ===================================================== */
 
 let perguntaEditando = null;
@@ -3029,7 +3773,7 @@ function showToast(mensagem){
 
 
 /* =====================================================
-   ADICIONAR PERGUNTA
+   ADICIONAR / EXCLUIR PERGUNTA
 ===================================================== */
 
 function addNewQuestion(){
@@ -3052,10 +3796,6 @@ function addNewQuestion(){
     setTimeout(()=> abrirModalEdicao(novaId), 100);
 }
 
-
-/* =====================================================
-   EXCLUIR PERGUNTA
-===================================================== */
 
 function deleteQuestion(questionId){
 
@@ -3080,380 +3820,208 @@ function deleteQuestion(questionId){
 
 
 /* =====================================================
-   ENVIAR QUESTIONÁRIO
+   ENVIAR FICHA COMPLETA (PROFESSOR) — POR TURMA
 ===================================================== */
 
-function sendQuestionnaire(){
-
-    const q=getQuestionnaire();
-
-    const titleInput = document.getElementById("editorTitle");
-    if(titleInput && titleInput.value.trim()){
-        q.title = titleInput.value.trim();
-    }
-
-    if(q.questions.length===0){
-        alert("Adicione pelo menos uma pergunta.");
-        return;
-    }
-
-    for(const question of q.questions){
-        if(!question.text.trim()){
-            alert("Existe uma pergunta vazia. Preencha ou exclua.");
-            return;
-        }
-    }
-
-    const jaEnviado = q.sent;
-
-    const mensagem = jaEnviado
-        ? "Este questionário já foi enviado. Deseja reenviá-lo aos professores? (Isso não apaga as respostas já enviadas)"
-        : "Enviar esta ficha para todos os professores? Eles poderão responder imediatamente.";
-
-    if(!confirm(mensagem)) return;
-
-    q.sent = true;
-    q.sentAt = new Date().toISOString();
-
-    persistQuestionnaire(q);
-
-    addHistory(
-        "sent_questionnaire",
-        `${jaEnviado ? "Reenviou" : "Enviou"} a ficha "${q.title}" para os professores.`
-    );
-
-    alert(
-        jaEnviado
-        ? "✅ Questionário reenviado aos professores!"
-        : "✅ Questionário enviado! Os professores já podem responder."
-    );
-
-    renderQuestionnaire();
-}
-
-
-/* =====================================================
-   STATUS DOS PROFESSORES
-===================================================== */
-
-function renderTeachersStatus(){
-
-    const container = document.getElementById("teachersStatusContent");
-    if(!container) return;
+function submitFullQuestionnaire(turmaId){
 
     const q = getQuestionnaire();
-    const users = getUsers().filter(u => u.role === "professor");
-    const answers = getAnswers();
 
-    if(users.length === 0){
-        container.innerHTML = `
-            <div class="empty">
-                <div class="empty-icon">👥</div>
-                Nenhum professor cadastrado.
-            </div>
-        `;
+    const turmas = getTurmas();
+    const turma = turmas.find(t => t.id === turmaId);
+    if(!turma) return;
+
+    if(!turma.sent){
+        alert("Esta ficha ainda não foi enviada pela direção.");
         return;
     }
 
-    const answered = users.filter(u =>
-        answers.some(a => a.questionnaireId === q.id && a.userId === u.id)
+    const answerInputs = document.querySelectorAll(
+        `.professor-answer[data-turma="${turmaId}"]`
     );
 
-    const percent = Math.round((answered.length / users.length) * 100);
-
-    let html = `
-        <div style="margin-bottom:18px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-                <strong style="color:var(--verdeescuro);">
-                    ${answered.length} de ${users.length} professores responderam
-                </strong>
-                <span class="badge">${percent}%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width:${percent}%;"></div>
-            </div>
-        </div>
-
-        <div class="teachers-list">
-    `;
-
-    users.forEach(user => {
-
-        const answer = answers.find(
-            a => a.questionnaireId === q.id && a.userId === user.id
-        );
-
-        const initials = user.name
-            .split(" ")
-            .map(n => n[0])
-            .slice(0,2)
-            .join("")
-            .toUpperCase();
-
-        html += `
-            <div class="teacher-item">
-                <div class="teacher-avatar">${esc(initials)}</div>
-                <div class="teacher-info">
-                    <strong>${esc(user.name)}</strong>
-                    <small>${esc(user.email)}</small>
-                </div>
-                ${
-                    answer
-                    ? `<span class="teacher-status answered">✓ RESPONDEU</span>`
-                    : `<span class="teacher-status pending">⏳ PENDENTE</span>`
-                }
-            </div>
-        `;
-    });
-
-    html += `</div>`;
-
-    container.innerHTML = html;
-}
-
-
-/* =====================================================
-   FORMULÁRIO DO PROFESSOR
-===================================================== */
-
-function renderProfessorQuestionnaire(){
-
-    const q=getQuestionnaire();
-    const container=document.getElementById("professorQuestions");
-
-    document.getElementById("professorQuestionnaireTitle").textContent=q.title;
-
-    if(!q.sent){
-        container.innerHTML=`
-        <div class="empty">
-            <div class="empty-icon">⏳</div>
-            <h3>Questionário ainda não enviado</h3>
-            <p>Aguarde a direção disponibilizar a ficha.</p>
-        </div>
-        `;
-        document.getElementById("submitQuestionnaireButton").classList.add("hidden");
-        document.getElementById("questionnaireStatus").textContent="Aguardando";
+    if(answerInputs.length === 0){
+        alert("Nenhuma pergunta foi encontrada. Recarregue a página.");
         return;
     }
 
-    const answers=getAnswers();
-
-    const myAnswer=answers.find(
-        a=> a.questionnaireId===q.id && a.userId===currentUser.id
-    );
-
-    if(myAnswer){
-
-        document.getElementById("submitQuestionnaireButton").classList.add("hidden");
-        document.getElementById("questionnaireStatus").textContent="Respondida";
-
-        let lastSection="";
-
-        container.innerHTML=`
-        <div class="alert alert-success">
-        ✅ Você já enviou esta ficha em
-        <strong>${formatDateTime(myAnswer.createdAt)}</strong>.
-        </div>
-        `;
-
-        myAnswer.responses.forEach((response,index)=>{
-
-            const question=q.questions.find(x=>x.id===response.questionId);
-            const section=question?question.section:"";
-
-            if(section!==lastSection){
-                lastSection=section;
-                container.innerHTML+=
-                `<div class="section-title">${esc(section)}</div>`;
-            }
-
-            container.innerHTML+=`
-            <div class="professor-question">
-            <label>${index+1}. ${esc(question?question.text:"Pergunta")}</label>
-            <div class="answer-text">${esc(response.text)}</div>
-            </div>
-            `;
-        });
-
-        return;
-    }
-
-    document.getElementById("submitQuestionnaireButton").classList.remove("hidden");
-    document.getElementById("questionnaireStatus").textContent="Disponível";
-
-    let lastSection="";
-
-    container.innerHTML=`
-    <div class="alert alert-success" style="background:#e8f6ee;color:#12663f;border-left:4px solid #22c55e;padding:14px 18px;border-radius:12px;margin-bottom:18px;font-size:14px;">
-    📩 <strong>Nova ficha disponível!</strong> Preencha todas as perguntas e clique em "Enviar ficha preenchida" ao final.
-    </div>
-    `;
-
-    q.questions.forEach((question,index)=>{
-
-        if(question.section!==lastSection){
-            lastSection=question.section;
-            container.innerHTML+=
-            `<div class="section-title">${esc(lastSection)}</div>`;
-        }
-
-        container.innerHTML+=`
-        <div class="professor-question">
-        <label>${index+1}. ${esc(question.text)}</label>
-        <textarea
-        class="professor-answer"
-        data-id="${question.id}"
-        placeholder="Digite sua resposta..."></textarea>
-        </div>
-        `;
-    });
-}
-
-
-/* =====================================================
-   ENVIAR FICHA COMPLETA (PROFESSOR)
-===================================================== */
-
-function submitFullQuestionnaire(){
-
-    const q=getQuestionnaire();
-
-    if(!q.sent){
-        alert("Este questionário ainda não foi enviado pela direção.");
-        return;
-    }
-
-    const answerInputs=document.querySelectorAll(".professor-answer");
-
-    if(answerInputs.length===0){
-        alert("Nenhuma pergunta foi encontrada. Atualize a página e tente novamente.");
-        return;
-    }
-
-    const responses=[];
+    const responses = [];
 
     for(const input of answerInputs){
 
         if(!input.value.trim()){
             alert("Preencha todas as perguntas antes de enviar.");
             input.focus();
-            input.style.borderColor="#dc3545";
+            input.style.borderColor = "#dc3545";
             return;
         }
 
-        input.style.borderColor="";
+        input.style.borderColor = "";
 
-        const question=q.questions.find(x=>x.id===input.dataset.id);
+        const question = q.questions.find(x => x.id === input.dataset.id);
 
         responses.push({
-            questionId:input.dataset.id,
-            questionText:question?question.text:"",
-            text:input.value.trim()
+            questionId: input.dataset.id,
+            questionText: question ? question.text : "",
+            questionSection: question ? question.section : "",
+            text: input.value.trim()
         });
     }
 
-    if(responses.length!==q.questions.length){
-        alert("Algumas perguntas não foram respondidas. Recarregue a página e tente novamente.");
+    if(responses.length !== q.questions.length){
+        alert("Algumas perguntas não foram respondidas. Recarregue a página.");
         return;
     }
 
-    if(!confirm("Enviar sua ficha preenchida? Não será possível editar depois.")){
-        return;
-    }
+    if(!confirm(`Enviar a ficha da turma "${turma.nome}"? Não será possível editar depois.`)) return;
 
-    const answers=getAnswers();
+    const answers = getAnswers();
 
-    const existingIndex=answers.findIndex(
-        a=> a.questionnaireId===q.id && a.userId===currentUser.id
+    const existingIndex = answers.findIndex(
+        a => a.turmaId === turmaId && a.userId === currentUser.id
     );
 
-    const newAnswer={
-        id: existingIndex>=0 ? answers[existingIndex].id : id(),
-        questionnaireId:q.id,
-        questionnaireTitle:q.title,
-        userId:currentUser.id,
-        userName:currentUser.name,
-        userEmail:currentUser.email,
-        responses:responses,
-        createdAt:new Date().toISOString()
+    const newAnswer = {
+        id: existingIndex >= 0 ? answers[existingIndex].id : id(),
+        turmaId: turma.id,
+        turmaNome: turma.nome,
+        questionnaireTitle: q.title,
+        userId: currentUser.id,
+        userName: currentUser.name,
+        userEmail: currentUser.email,
+        responses: responses,
+        createdAt: new Date().toISOString()
     };
 
-    if(existingIndex>=0){
-        answers[existingIndex]=newAnswer;
+    if(existingIndex >= 0){
+        answers[existingIndex] = newAnswer;
     }else{
         answers.push(newAnswer);
     }
 
     saveAnswers(answers);
 
-    addHistory("submitted_questionnaire", `Enviou a ficha "${q.title}".`);
+    addHistory(
+        "submitted_questionnaire",
+        `Enviou a ficha da turma "${turma.nome}".`
+    );
 
     alert("Ficha enviada com sucesso!");
 
-    renderProfessorQuestionnaire();
+    renderProfessorTurmas();
     updateDashboard();
     updateMenuBadge();
 }
 
 
 /* =====================================================
-   RESPOSTAS DO DIRETOR
+   RESPOSTAS DO DIRETOR — POR TURMA
 ===================================================== */
 
 function renderAnswers(){
 
-    const container=document.getElementById("answersContainer");
+    const container = document.getElementById("answersContainer");
 
-    if(currentUser.role!=="diretor"){
-        container.innerHTML="";
+    if(currentUser.role !== "diretor"){
+        container.innerHTML = "";
         return;
     }
 
-    const answers=getAnswers();
-    const q=getQuestionnaire();
+    const answers = getAnswers();
+    const turmas = getTurmas();
+    const filterSelect = document.getElementById("filterTurma");
 
-    if(answers.length===0){
-        container.innerHTML=`
-        <div class="card">
-        <div class="empty">
-        <div class="empty-icon">📩</div>
-        <h3>Nenhuma ficha respondida ainda</h3>
-        <p>As respostas dos professores aparecerão aqui.</p>
-        </div>
-        </div>
+    // Atualiza filtro de turmas
+    const filtroAtual = filterSelect.value;
+
+    filterSelect.innerHTML = `<option value="">Todas as turmas</option>`;
+    turmas.forEach(t => {
+        filterSelect.innerHTML += `<option value="${t.id}">${esc(t.nome)}</option>`;
+    });
+
+    // Restaura filtro anterior se ainda existir
+    if(filtroAtual && turmas.some(t => t.id === filtroAtual)){
+        filterSelect.value = filtroAtual;
+    }
+
+    const turmaFiltro = filterSelect.value;
+
+    let answersFiltradas = answers;
+    if(turmaFiltro){
+        answersFiltradas = answers.filter(a => a.turmaId === turmaFiltro);
+    }
+
+    if(answersFiltradas.length === 0){
+        container.innerHTML = `
+            <div class="card">
+            <div class="empty">
+            <div class="empty-icon">📩</div>
+            <h3>Nenhuma ficha respondida ${turmaFiltro ? "para esta turma" : "ainda"}</h3>
+            <p>As respostas dos professores aparecerão aqui.</p>
+            </div>
+            </div>
         `;
         return;
     }
 
-    container.innerHTML=answers.map(answer=>{
+    // Agrupar por turma
+    const porTurma = {};
+    answersFiltradas.forEach(a => {
+        const turmaNome = a.turmaNome || (turmas.find(t=>t.id===a.turmaId)||{}).nome || "Turma removida";
+        if(!porTurma[turmaNome]) porTurma[turmaNome] = [];
+        porTurma[turmaNome].push(a);
+    });
 
-        return `
-        <div class="card">
-        <div class="card-header">
-        <div>
-        <h3>${esc(answer.userName)}</h3>
-        <p>${esc(answer.userEmail)}</p>
-        </div>
-        <span class="badge">${formatDateTime(answer.createdAt)}</span>
-        </div>
+    let html = "";
 
-        ${
-            answer.responses.map(response=>{
+    Object.keys(porTurma).forEach(turmaNome => {
 
-                const question=q.questions.find(x=>x.id===response.questionId);
-                const text = question ? question.text : (response.questionText||"Pergunta");
+        html += `
+            <div class="card" style="border-left:5px solid #0d6efd;">
 
-                return `
-                <div class="answer-box">
-                <strong>${esc(text)}</strong>
-                <div class="answer-text">${esc(response.text)}</div>
+                <div class="card-header">
+                    <h3 style="font-size:20px;">🏫 ${esc(turmaNome)}</h3>
+                    <span class="badge">${porTurma[turmaNome].length} resposta(s)</span>
                 </div>
-                `;
-            }).join("")
-        }
-        </div>
         `;
-    }).join("");
+
+        porTurma[turmaNome].forEach(answer => {
+
+            html += `
+                <div style="border-top:1px solid var(--borda);padding-top:18px;margin-top:14px;">
+
+                    <div class="card-header" style="margin-bottom:14px;">
+                        <div>
+                            <h3 style="font-size:16px;">👤 ${esc(answer.userName)}</h3>
+                            <p style="font-size:12.5px;color:var(--cinza);">${esc(answer.userEmail)}</p>
+                        </div>
+                        <span class="badge">${formatDateTime(answer.createdAt)}</span>
+                    </div>
+
+                    ${
+                        answer.responses.map(response => {
+
+                            const section = response.questionSection || "";
+                            const text = response.questionText || "Pergunta";
+
+                            return `
+                            ${section ? `<div class="section-title" style="font-size:14px;margin:14px 0 8px;">${esc(section)}</div>` : ""}
+                            <div class="answer-box">
+                                <strong>${esc(text)}</strong>
+                                <div class="answer-text">${esc(response.text)}</div>
+                            </div>
+                            `;
+                        }).join("")
+                    }
+
+                </div>
+            `;
+        });
+
+        html += `</div>`;
+    });
+
+    container.innerHTML = html;
 }
 
 
@@ -3463,26 +4031,26 @@ function renderAnswers(){
 
 function updateDashboard(){
 
-    const q=getQuestionnaire();
-    const answers=getAnswers();
-    const users=getUsers();
-    const history=getHistory();
+    const q = getQuestionnaire();
+    const answers = getAnswers();
+    const users = getUsers();
+    const history = getHistory();
 
-    document.getElementById("statQuestions").textContent=q.questions.length;
+    document.getElementById("statQuestions").textContent = q.questions.length;
 
-    if(currentUser.role==="diretor"){
-        document.getElementById("statAnswers").textContent=answers.length;
+    if(currentUser.role === "diretor"){
+        document.getElementById("statAnswers").textContent = answers.length;
     }else{
-        document.getElementById("statAnswers").textContent=
-        answers.filter(a=>a.userId===currentUser.id).length;
+        document.getElementById("statAnswers").textContent =
+        answers.filter(a => a.userId === currentUser.id).length;
     }
 
-    document.getElementById("statUsers").textContent=users.length;
+    document.getElementById("statUsers").textContent = users.length;
 
-    document.getElementById("statHistory").textContent=
-    currentUser.role==="diretor"
+    document.getElementById("statHistory").textContent =
+    currentUser.role === "diretor"
     ? history.length
-    : history.filter(h=>h.userId===currentUser.id).length;
+    : history.filter(h => h.userId === currentUser.id).length;
 
     renderDashboardHistory();
 }
@@ -3490,42 +4058,42 @@ function updateDashboard(){
 
 function renderDashboardHistory(){
 
-    let history=getHistory();
+    let history = getHistory();
 
-    if(currentUser.role==="professor"){
-        history=history.filter(h=>h.userId===currentUser.id);
+    if(currentUser.role === "professor"){
+        history = history.filter(h => h.userId === currentUser.id);
     }
 
-    history=history.slice(0,5);
+    history = history.slice(0,5);
 
-    const container=document.getElementById("dashboardHistory");
+    const container = document.getElementById("dashboardHistory");
 
-    if(history.length===0){
-        container.innerHTML=`<div class="empty">Nenhuma atividade registrada.</div>`;
+    if(history.length === 0){
+        container.innerHTML = `<div class="empty">Nenhuma atividade registrada.</div>`;
         return;
     }
 
-    container.innerHTML=history.map(h=>historyHTML(h)).join("");
+    container.innerHTML = history.map(h => historyHTML(h)).join("");
 }
 
 
 function renderHistory(){
 
-    let history=getHistory();
+    let history = getHistory();
 
-    if(currentUser.role==="professor"){
-        history=history.filter(h=>h.userId===currentUser.id);
-        document.getElementById("historyDescription").textContent=
+    if(currentUser.role === "professor"){
+        history = history.filter(h => h.userId === currentUser.id);
+        document.getElementById("historyDescription").textContent =
         "Aqui aparecem somente as suas atividades.";
     }else{
-        document.getElementById("historyDescription").textContent=
+        document.getElementById("historyDescription").textContent =
         "Histórico geral das atividades realizadas no sistema.";
     }
 
-    const container=document.getElementById("historyContainer");
+    const container = document.getElementById("historyContainer");
 
-    if(history.length===0){
-        container.innerHTML=`
+    if(history.length === 0){
+        container.innerHTML = `
         <div class="empty">
         <div class="empty-icon">🕐</div>
         Nenhuma atividade registrada.
@@ -3534,26 +4102,32 @@ function renderHistory(){
         return;
     }
 
-    container.innerHTML=history.map(h=>historyHTML(h)).join("");
+    container.innerHTML = history.map(h => historyHTML(h)).join("");
 }
 
 
 function historyHTML(h){
 
-    const names={
+    const names = {
         login:"Login realizado",
         logout:"Logout",
         edited_questionnaire:"Questionário editado",
         sent_questionnaire:"Questionário enviado",
-        submitted_questionnaire:"Ficha respondida"
+        submitted_questionnaire:"Ficha respondida",
+        created_turma:"Turma criada",
+        renamed_turma:"Turma renomeada",
+        deleted_turma:"Turma excluída"
     };
 
-    const icons={
+    const icons = {
         login:"🔐",
         logout:"🚪",
         edited_questionnaire:"✏️",
         sent_questionnaire:"📤",
-        submitted_questionnaire:"📩"
+        submitted_questionnaire:"📩",
+        created_turma:"🏫",
+        renamed_turma:"📝",
+        deleted_turma:"🗑️"
     };
 
     return `
@@ -3562,7 +4136,7 @@ function historyHTML(h){
     <div class="history-content">
     <strong>${names[h.action]||"Atividade"}</strong>
     ${
-        currentUser.role==="diretor"
+        currentUser.role === "diretor"
         ?
         `<div>
         ${esc(h.userName)}
@@ -3594,14 +4168,16 @@ function updateMenuBadge(){
         return;
     }
 
-    const q = getQuestionnaire();
+    const turmas = getTurmas().filter(t => t.sent);
     const answers = getAnswers();
 
-    const jaRespondeu = answers.some(
-        a => a.questionnaireId === q.id && a.userId === currentUser.id
-    );
+    const temPendente = turmas.some(turma => {
+        return !answers.some(
+            a => a.turmaId === turma.id && a.userId === currentUser.id
+        );
+    });
 
-    if(q.sent && !jaRespondeu){
+    if(temPendente){
         badge.innerHTML = `<span class="menu-notification">NOVA</span>`;
     }else{
         badge.innerHTML = "";
@@ -3635,7 +4211,7 @@ function logout(){
     }
 
     localStorage.removeItem(SESSION_KEY);
-    currentUser=null;
+    currentUser = null;
 
     document.getElementById("app").classList.add("hidden");
     document.getElementById("welcomeScreen").classList.remove("hidden");
