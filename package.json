@@ -1,0 +1,18 @@
+
+{
+  "name": "pre-conselho-de-classe",
+  "version": "2.0.0",
+  "description": "Sistema de pre-conselho de classe para multiplas escolas com MySQL",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test-db": "node test-db.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.0"
+  }
+}
